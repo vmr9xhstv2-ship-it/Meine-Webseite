@@ -1,425 +1,1845 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FoilVengers – Zukunft der Folien, Technik & Möbel | Wien</title>
-  <meta name="description" content="FoilVengers – Premium Möbelfolierungen & Glasfolien in Wien. Zukunft der Folien, Technik & Möbel. Kostenlose Visualisierung, schnelle Montage, edles Schwarz-Gold Design." />
-  <meta name="theme-color" content="#0b0c10" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#0b0c10; --panel:#10131a; --panel2:#0f1117;
-      --txt:#eef2f7; --muted:#9aa3b2;
-      --gold:#d4af37; --gold2:#f5d76e; --green:#27c93f;
-      --radius:18px; --shadow:0 12px 32px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--txt);background:linear-gradient(180deg,#0b0c10,#0f1117 40%,#0b0c10 100%);}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block;border-radius:16px}
-    .container{width:min(1180px,92%);margin-inline:auto}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);
-         background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:var(--shadow);transition:.2s}
-    .btn:hover{transform:translateY(-1px)}
-    .btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0b0f;border:none;font-weight:700}
-    .pill{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
-    h1{font-size:clamp(34px,5.5vw,60px);letter-spacing:-.02em;margin:0 0 10px}
-    h2{font-size:clamp(26px,3.2vw,38px);margin:0 0 8px}
-    .sub{color:var(--muted);margin:0 0 26px}
-    section{padding:80px 0}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px}
-    .row{display:flex;gap:10px;color:var(--muted)}
-    .price{font-weight:800;font-size:26px}
-    .tag{display:inline-block;padding:6px 10px;border:1px dashed rgba(255,255,255,.18);border-radius:10px;font-size:12px;color:var(--muted)}
-    /* NAV / HAMBURGER */
-    .nav{position:sticky;top:0;z-index:50;background:rgba(15,17,23,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#000;background:linear-gradient(135deg,var(--gold),var(--gold2))}
-    .hamb{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:1px solid rgba(255,255,255,.12);cursor:pointer}
-    .hamb span{display:block;width:20px;height:2px;background:#fff;margin:3px 0;border-radius:2px}
-    .drawer{position:fixed;inset:0 0 0 auto;transform:translateX(100%);transition:.25s;background:rgba(0,0,0,.5)}
-    .drawer.open{transform:translateX(0)}
-    .panel{position:absolute;right:0;top:0;height:100%;width:min(320px,86%);background:#0f1117;padding:18px;border-left:1px solid rgba(255,255,255,.08)}
-    .panel a{display:block;padding:14px;border-radius:10px}
-    .panel a:hover{background:rgba(255,255,255,.06)}
-    /* HERO */
-    .hero{padding:90px 0 64px}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-    .mock{border-radius:22px;padding:8px;background:linear-gradient(180deg,#0f1320,#0a0c12);border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow)}
-    .mock .bar{height:36px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);display:flex;gap:8px;align-items:center;padding:0 10px}
-    .dot{width:10px;height:10px;border-radius:999px;background:#ff6b6b}.dot:nth-child(2){background:#ffd166}.dot:nth-child(3){background:#06d6a0}
-    .screen{padding:14px}
-    /* ALWAYS-ON CALL/WHATSAPP */
-    .floatbar{position:fixed;left:14px;bottom:14px;display:flex;gap:10px;z-index:60}
-    .floatbar a{background:#1f9040;border:1px solid rgba(0,0,0,.2);padding:10px 14px;border-radius:999px;font-weight:700;box-shadow:0 8px 18px rgba(0,0,0,.25)}
-    .floatbar a.wa{background:#25D366}
-    /* FOLIENFORSCHER */
-    .folio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .folio-item{border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03)}
-    .folio-item label{display:block;padding:10px}
-    .total{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
-    /* ACCORDION */
-    details.card summary{cursor:pointer;font-weight:600}
-    /* RESPONSIVE */
-    @media (max-width: 1024px){.hero-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.folio-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width: 640px){.grid-2,.grid-3{grid-template-columns:1fr}.folio-grid{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-
-  <!-- Always visible call + WhatsApp -->
-  <div class="floatbar" aria-label="Schnellkontakt">
-    <a href="tel:+430394930590" class="call">📞 Rufen Sie uns jetzt an</a>
-    <a class="wa" target="_blank" rel="noopener" href="https://wa.me/430394930590?text=Hallo%20FoilVengers%2C%20ich%20habe%20eine%20Frage%20zur%20Folierung.">🟢 WhatsApp</a>
-  </div>
-
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
-        <div class="logo">FV</div>
-        <strong>FoilVengers</strong>
-      </div>
-      <div class="hamb" id="hamb" aria-label="Menü öffnen" tabindex="0">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-    <div class="drawer" id="drawer" aria-hidden="true">
-      <div class="panel">
-        <a href="#start">Startseite</a>
-        <a href="#moebelfolien">Möbelfolien</a>
-        <a href="#forscher">Möbelfolienforscher</a>
-        <a href="#unsere-folien">Unsere Folien</a>
-        <a href="#erstgespraech">Kostenloses Erstgespräch</a>
-        <a href="#faq">Häufig gestellte Fragen</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- STARTSEITE -->
-  <header id="start" class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="pill">Die Zukunft der <b>Folien</b>, <b>Technik</b> & <b>Möbel</b></span>
-        <h1>Premium-Folierungen für Küche, Möbel & Glas – schneller als jede Renovierung.</h1>
-        <p class="sub">Schwarz-Gold Look, edle Materialien, präzise Verarbeitung. FoilVengers macht Räume stark – ohne Baustelle.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn primary" href="#erstgespraech">Kostenloses Erstgespräch</a>
-          <a class="btn" href="#moebelfolien">Möbelfolien entdecken</a>
-        </div>
-        <div style="margin-top:12px" class="tag">📍 Wien & Umgebung · 🛡️ Schutz | ✨ Design | ⚡ Tempo</div>
-      </div>
-      <div class="mock">
-        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-        <div class="screen">
-          <img src="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1600&auto=format&fit=crop" alt="Modernisierte Küche in Schwarz">
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- MÖBELFOLIEN -->
-  <section id="moebelfolien">
-    <div class="container">
-      <h2>Möbelfolien in Perfektion</h2>
-      <p class="sub"><a class="btn primary" href="#visual">Kostenlose Visualisierung</a></p>
-
-      <!-- 1 -->
-      <div class="grid-2" style="align-items:center;margin:24px 0">
-        <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1400&auto=format&fit=crop" alt="Marmoroptik">
-        <div>
-          <h3>Eleganz ohne Baustelle</h3>
-          <p class="sub">Marmor-, Stein-, Holz- und Metall-Optiken – sauber verklebt, in Tagen statt Wochen.</p>
-        </div>
-      </div>
-      <!-- 2 -->
-      <div class="grid-2" style="align-items:center;margin:24px 0">
-        <div>
-          <h3>Individuelle Stilberatung</h3>
-          <p class="sub">Wir empfehlen Kombinationen, die zu Licht, Raum und Nutzung passen – damit es wirklich wirkt.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=1400&auto=format&fit=crop" alt="Stilberatung">
-      </div>
-      <!-- 3 -->
-      <div class="grid-2" style="align-items:center;margin:24px 0">
-        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop" alt="Vielfalt">
-        <div>
-          <h3>Vielfalt ohne Kompromisse</h3>
-          <p class="sub">Matt, hochglanz, strukturiert – fühlbare Qualität, die hält und pflegeleicht ist.</p>
-        </div>
-      </div>
-      <!-- 4 -->
-      <div class="grid-2" style="align-items:center;margin:24px 0">
-        <div>
-          <h3>Schutz & Beständigkeit</h3>
-          <p class="sub">Kratzfest, hitzebeständig, wasserresistent – ideal für Küche, Bad & viel genutzte Oberflächen.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop" alt="Beständigkeit">
-      </div>
-    </div>
-  </section>
-
-  <!-- KOSTENLOSE VISUALISIERUNG -->
-  <section id="visual">
-    <div class="container">
-      <h2>Einfache, funktionierende & exklusive Beratung</h2>
-      <p class="sub">Laden Sie ein Foto des Raumes, der Küche oder des Möbels hoch. Wir verwandeln es in eine fotorealistische Vorschau. In 24–48 h erhalten Sie Ihre personalisierte Visualisierung.</p>
-      <div class="card">
-        <!-- TODO: Formspree Endpoint eintragen -->
-        <form id="vizForm" action="https://formspree.io/f/XXXXXXXX" method="POST" enctype="multipart/form-data">
-          <div class="grid-3">
-            <label>Ihr Name<br><input name="name" required placeholder="Vor- und Nachname"></label>
-            <label>E-Mail<br><input type="email" name="email" required placeholder="name@domain.at"></label>
-            <label>Telefon (optional)<br><input name="phone" placeholder="+43 …"></label>
-          </div>
-          <label style="display:block;margin:12px 0">Bild hochladen (JPG/PNG, max. 15 MB)
-            <input type="file" name="photo" accept="image/*" required>
-          </label>
-          <label>Wunsch-Stil (optional)
-            <input name="style" placeholder="z. B. Schwarz-Gold Matt, Marmor hell …">
-          </label>
-          <button class="btn primary" type="submit">Anfrage senden</button>
-          <span class="tag" id="vizStatus"></span>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- MÖBELFOLIENFORSCHER -->
-  <section id="forscher">
-    <div class="container">
-      <h2>Möbelfolien-Forscher</h2>
-      <p class="sub">Wählen Sie Ihre Wunsch-Folien. Jede Folie: <b>130 €</b>.</p>
-
-      <div class="folio-grid" id="folioGrid">
-        <!-- 6 Muster -->
-        <div class="folio-item">
-          <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?q=80&w=800&auto=format&fit=crop" alt="Stein">
-          <label><input type="checkbox" value="Stein"> Stein</label>
-        </div>
-        <div class="folio-item">
-          <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=800&auto=format&fit=crop" alt="Schwarzer Marmor">
-          <label><input type="checkbox" value="Schwarzer Marmor"> Schwarzer Marmor</label>
-        </div>
-        <div class="folio-item">
-          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=800&auto=format&fit=crop" alt="Weißer Marmor">
-          <label><input type="checkbox" value="Weißer Marmor"> Weißer Marmor</label>
-        </div>
-        <div class="folio-item">
-          <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=800&auto=format&fit=crop" alt="Braunes Holz">
-          <label><input type="checkbox" value="Braunes Holz"> Braunes Holz</label>
-        </div>
-        <div class="folio-item">
-          <img src="https://images.unsplash.com/photo-1523419409543-63f6dbd49b97?q=80&w=800&auto=format&fit=crop" alt="Helles Holz">
-          <label><input type="checkbox" value="Helles Holz"> Helles Holz</label>
-        </div>
-        <div class="folio-item">
-          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=800&auto=format&fit=crop" alt="Luzengo Weiß">
-          <label><input type="checkbox" value="Luzengo Weiß"> Luzengo Weiß</label>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:16px">
-        <div class="total">
-          <div>Ausgewählt: <b><span id="count">0</span></b> • Summe: <b><span id="sum">€ 0</span></b></div>
-          <a class="btn primary" href="#order">Weiter & bestellen</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BESTELLUNG -->
-  <section id="order">
-    <div class="container">
-      <h2>Bestellung abschließen</h2>
-      <div class="card">
-        <!-- TODO: Formspree Endpoint eintragen -->
-        <form id="orderForm" action="https://formspree.io/f/YYYYYYYY" method="POST">
-          <input type="hidden" name="selection" id="selField">
-          <input type="hidden" name="sum" id="sumField">
-          <div class="grid-3">
-            <label>Name<br><input name="name" required></label>
-            <label>E-Mail<br><input type="email" name="email" required></label>
-            <label>Adresse<br><input name="address" required placeholder="Straße, PLZ Ort"></label>
-          </div>
-          <label>Nachricht (optional)
-            <input name="msg" placeholder="Maße, Frontenanzahl, Wunschtermin …">
-          </label>
-          <button class="btn primary" type="submit">Verbindlich anfragen</button>
-          <span class="tag" id="orderStatus"></span>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- UNSERE FOLIEN -->
-  <section id="unsere-folien">
-    <div class="container">
-      <h2>Unsere Folien</h2>
-      <p class="sub">Hochwertige Markenfolien – optisch stark, technisch zuverlässig.</p>
-      <div class="grid-3">
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1200&auto=format&fit=crop" alt="Hitzeschutz">
-          <h3>Hitzeschutzfolien</h3>
-          <p class="sub">Spürbar kühler & UV-Reduktion für Fensterfronten.</p>
-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Verbessert Raumklima, reduziert Blendung, schont Möbel. Ideal für Süd/West-Lagen.</p></details>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Werbe- und Designfolien">
-          <h3>Werbe- & Designfolien</h3>
-          <p class="sub">Schaufenster, Logos, Beschriftungen – stark und rückstandsfrei.</p>
-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Feine Konturschnitte, Matt/Glanz, transluzent oder deckend. Perfekt für Markenauftritte.</p></details>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1200&auto=format&fit=crop" alt="Sicherheitsfolien">
-          <h3>Sicherheitsfolien</h3>
-          <p class="sub">Splitterschutz & Einbruchhemmung für Glasflächen.</p>
-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Erhöht Bruchfestigkeit, hält Splitter zusammen, optional Opaque-Sichtschutz.</p></details>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1200&auto=format&fit=crop" alt="UV-Schutz">
-          <h3>UV-Schutzfolien</h3>
-          <p class="sub">Schützt Möbel & Stoffe vor Ausbleichen.</p>
-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Bis zu 99% UV-Filter, transparent. Ideal für Auslagen & Wohnräume.</p></details>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?q=80&w=1200&auto=format&fit=crop" alt="Sichtschutz">
-          <h3>Sichtschutzfolien</h3>
-          <p class="sub">Privatsphäre ohne Lichtverlust – Milchglas & Muster.</p>
-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Individuelle Designs, logos & Linien. Bäder, Büros, Eingänge.</p></details>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1200&auto=format&fit=crop" alt="Smart-Switch">
-          <h3>Smart-Switch-Folie</h3>
-          <p class="sub">Per Knopfdruck von klar zu blickdicht.</p>
-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Elektrisch schaltbar, Meetingräume & Bäder. Integration durch Fachpartner.</p></details>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200&auto=format&fit=crop" alt="Insektenschutz">
-          <h3>Insektenschutz</h3>
-          <p class="sub">Feinmaschig, stabil, maßgefertigt – Türen & Fenster.</p>
-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Rahmenlösungen, Schiebe-Elemente, magnetisch. Unauffällig & effektiv.</p></details>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?q=80&w=1200&auto=format&fit=crop" alt="Anti-Graffiti">
-          <h3>Anti-Graffiti-Folie</h3>
-          <p class="sub">Schützt Oberflächen, lässt sich einfach erneuern.</p>
-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Transparenter Opferschutz für Glas & Metall – spart Reinigungskosten.</p></details>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ERSTGESPRÄCH -->
-  <section id="erstgespraech">
-    <div class="container">
-      <h2>Kostenlose Erstberatung</h2>
-      <p class="sub">Wählen Sie einen Slot – unser Design-Team meldet sich.</p>
-      <div class="grid-3">
-        <a class="card btn" style="justify-content:center" href="mailto:kontakt@foilvengers.at?subject=Erstgespr%C3%A4ch&body=Hallo%20FoilVengers%2C%20ich%20m%C3%B6chte%20eine%20kostenlose%20Erstberatung.">📧 1h Erstberatung (Online)</a>
-        <a class="card btn" style="justify-content:center" href="https://wa.me/430394930590?text=Kostenloser%20QuickCheck%20bitte">⚡ QuickCheck (1h, WhatsApp)</a>
-        <!-- TODO: Wenn du Calendly hast, hier Link einsetzen -->
-        <a class="card btn" style="justify-content:center" href="#visual">🏠 Interieur-Beratung vor Ort (Anfrage)</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <h2>Häufig gestellte Fragen</h2>
-      <div class="grid-2">
-        <details class="card"><summary>Wie lange dauert eine Küche?</summary><p class="sub">Meist 2–5 Tage – abhängig von Größe, Material & Vorbereitung.</p></details>
-        <details class="card"><summary>Halten die Folien in der Küche?</summary><p class="sub">Ja. Wir nutzen hitzebeständige, wasserresistente Markenfolien mit starker Haftung.</p></details>
-        <details class="card"><summary>Kann ich Muster sehen?</summary><p class="sub">Klar – im Gespräch oder per Post. Der Möbelfolien-Forscher hilft bei der Vorauswahl.</p></details>
-        <details class="card"><summary>Macht ihr auch Fenster/Schaufenster?</summary><p class="sub">Ja: Hitzeschutz, UV, Sichtschutz, Werbung & Sicherheit.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer style="border-top:1px solid rgba(255,255,255,.08);padding:34px 0">
-    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <small>© <span id="year"></span> FoilVengers – Leunam Bratkovic, Schlossstraße, 1090 Wien · <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a></small>
-    </div>
-  </footer>
-
-  <!-- IMPRESSUM -->
-  <section id="impressum">
-    <div class="container">
-      <h2>Impressum</h2>
-      <div class="card">
-        <p><strong>FoilVengers – Einzelunternehmen</strong><br>
-        Inhaber: Leunam Bratkovic<br>
-        Schlossstraße, 1090 Wien, Österreich<br>
-        Tel: +43 0394 930 590 · E-Mail: kontakt@foilvengers.at</p>
-        <p>Mitglied der WKÖ (falls zutreffend). UID-Nr. & Firmenbuch-Nr. werden nachgereicht.</p>
-        <p>Verbraucherstreitbeilegung: Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren teilzunehmen.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DATENSCHUTZ -->
-  <section id="datenschutz">
-    <div class="container">
-      <h2>Datenschutz</h2>
-      <div class="card">
-        <p>Wir verarbeiten personenbezogene Daten nur zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO).</p>
-        <p>Hosting: GitHub Pages. Beim Seitenaufruf werden technische Daten verarbeitet. Keine Tracking-Cookies.</p>
-        <p>Kontakt: kontakt@foilvengers.at – Rechte auf Auskunft, Berichtigung, Löschung und Beschwerde bestehen.</p>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // Footer-Jahr
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Drawer
-    const hamb=document.getElementById('hamb'); const drawer=document.getElementById('drawer');
-    function toggle(){drawer.classList.toggle('open'); drawer.setAttribute('aria-hidden', !drawer.classList.contains('open'))}
-    hamb.addEventListener('click',toggle); hamb.addEventListener('keyup',e=>{if(e.key==='Enter') toggle()}); drawer.addEventListener('click',e=>{if(e.target===drawer) toggle()});
-    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',toggle));
-
-    // Folienforscher: Preisberechnung
-    const PRICE = 130;
-    const countEl = document.getElementById('count');
-    const sumEl = document.getElementById('sum');
-    const selField = document.getElementById('selField');
-    const sumField = document.getElementById('sumField');
-    function recalc(){
-      const boxes = [...document.querySelectorAll('#folioGrid input[type=checkbox]')];
-      const picked = boxes.filter(b=>b.checked).map(b=>b.value);
-      const total = picked.length * PRICE;
-      countEl.textContent = picked.length;
-      sumEl.textContent = `€ ${total.toLocaleString('de-AT')}`;
-      selField.value = picked.join(', ');
-      sumField.value = total;
-    }
-    document.querySelectorAll('#folioGrid input[type=checkbox]').forEach(cb=>cb.addEventListener('change',recalc));
-    recalc();
-
-    // Formspree Status (Visualisierung)
-    const vizForm = document.getElementById('vizForm');
-    const vizStatus = document.getElementById('vizStatus');
-    vizForm.addEventListener('submit', async (e)=>{
-      vizStatus.textContent = 'Senden …';
-    });
-
-    // Formspree Status (Bestellung)
-    const orderForm = document.getElementById('orderForm');
-    const orderStatus = document.getElementById('orderStatus');
-    orderForm.addEventListener('submit', async (e)=>{
-      orderStatus.textContent = 'Senden …';
-    });
-  </script>
-</body>
-</html>
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da3bbeaa62 100644
+--- a/index.html
++++ b/index.html
+@@ -1,425 +1,1426 @@
+ <!DOCTYPE html>
+ <html lang="de">
+-<head>
+-  <meta charset="utf-8" />
+-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+-  <title>FoilVengers – Zukunft der Folien, Technik & Möbel | Wien</title>
+-  <meta name="description" content="FoilVengers – Premium Möbelfolierungen & Glasfolien in Wien. Zukunft der Folien, Technik & Möbel. Kostenlose Visualisierung, schnelle Montage, edles Schwarz-Gold Design." />
+-  <meta name="theme-color" content="#0b0c10" />
+-  <link rel="preconnect" href="https://fonts.googleapis.com">
+-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+-
+-  <style>
+-    :root{
+-      --bg:#0b0c10; --panel:#10131a; --panel2:#0f1117;
+-      --txt:#eef2f7; --muted:#9aa3b2;
+-      --gold:#d4af37; --gold2:#f5d76e; --green:#27c93f;
+-      --radius:18px; --shadow:0 12px 32px rgba(0,0,0,.35);
+-    }
+-    *{box-sizing:border-box}
+-    html{scroll-behavior:smooth}
+-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--txt);background:linear-gradient(180deg,#0b0c10,#0f1117 40%,#0b0c10 100%);}
+-    a{color:inherit;text-decoration:none}
+-    img{max-width:100%;display:block;border-radius:16px}
+-    .container{width:min(1180px,92%);margin-inline:auto}
+-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);
+-         background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:var(--shadow);transition:.2s}
+-    .btn:hover{transform:translateY(-1px)}
+-    .btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0b0f;border:none;font-weight:700}
+-    .pill{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
+-    h1{font-size:clamp(34px,5.5vw,60px);letter-spacing:-.02em;margin:0 0 10px}
+-    h2{font-size:clamp(26px,3.2vw,38px);margin:0 0 8px}
+-    .sub{color:var(--muted);margin:0 0 26px}
+-    section{padding:80px 0}
+-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+-    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px}
+-    .row{display:flex;gap:10px;color:var(--muted)}
+-    .price{font-weight:800;font-size:26px}
+-    .tag{display:inline-block;padding:6px 10px;border:1px dashed rgba(255,255,255,.18);border-radius:10px;font-size:12px;color:var(--muted)}
+-    /* NAV / HAMBURGER */
+-    .nav{position:sticky;top:0;z-index:50;background:rgba(15,17,23,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+-    .brand{display:flex;align-items:center;gap:10px}
+-    .logo{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#000;background:linear-gradient(135deg,var(--gold),var(--gold2))}
+-    .hamb{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:1px solid rgba(255,255,255,.12);cursor:pointer}
+-    .hamb span{display:block;width:20px;height:2px;background:#fff;margin:3px 0;border-radius:2px}
+-    .drawer{position:fixed;inset:0 0 0 auto;transform:translateX(100%);transition:.25s;background:rgba(0,0,0,.5)}
+-    .drawer.open{transform:translateX(0)}
+-    .panel{position:absolute;right:0;top:0;height:100%;width:min(320px,86%);background:#0f1117;padding:18px;border-left:1px solid rgba(255,255,255,.08)}
+-    .panel a{display:block;padding:14px;border-radius:10px}
+-    .panel a:hover{background:rgba(255,255,255,.06)}
+-    /* HERO */
+-    .hero{padding:90px 0 64px}
+-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+-    .mock{border-radius:22px;padding:8px;background:linear-gradient(180deg,#0f1320,#0a0c12);border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow)}
+-    .mock .bar{height:36px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);display:flex;gap:8px;align-items:center;padding:0 10px}
+-    .dot{width:10px;height:10px;border-radius:999px;background:#ff6b6b}.dot:nth-child(2){background:#ffd166}.dot:nth-child(3){background:#06d6a0}
+-    .screen{padding:14px}
+-    /* ALWAYS-ON CALL/WHATSAPP */
+-    .floatbar{position:fixed;left:14px;bottom:14px;display:flex;gap:10px;z-index:60}
+-    .floatbar a{background:#1f9040;border:1px solid rgba(0,0,0,.2);padding:10px 14px;border-radius:999px;font-weight:700;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+-    .floatbar a.wa{background:#25D366}
+-    /* FOLIENFORSCHER */
+-    .folio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+-    .folio-item{border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03)}
+-    .folio-item label{display:block;padding:10px}
+-    .total{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+-    /* ACCORDION */
+-    details.card summary{cursor:pointer;font-weight:600}
+-    /* RESPONSIVE */
+-    @media (max-width: 1024px){.hero-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.folio-grid{grid-template-columns:1fr 1fr}}
+-    @media (max-width: 640px){.grid-2,.grid-3{grid-template-columns:1fr}.folio-grid{grid-template-columns:1fr}}
+-  </style>
+-</head>
+-<body>
+-
+-  <!-- Always visible call + WhatsApp -->
+-  <div class="floatbar" aria-label="Schnellkontakt">
+-    <a href="tel:+430394930590" class="call">📞 Rufen Sie uns jetzt an</a>
+-    <a class="wa" target="_blank" rel="noopener" href="https://wa.me/430394930590?text=Hallo%20FoilVengers%2C%20ich%20habe%20eine%20Frage%20zur%20Folierung.">🟢 WhatsApp</a>
+-  </div>
+-
+-  <!-- NAV -->
+-  <nav class="nav">
+-    <div class="container nav-inner">
+-      <div class="brand">
+-        <div class="logo">FV</div>
+-        <strong>FoilVengers</strong>
+-      </div>
+-      <div class="hamb" id="hamb" aria-label="Menü öffnen" tabindex="0">
+-        <span></span><span></span><span></span>
+-      </div>
+-    </div>
+-    <div class="drawer" id="drawer" aria-hidden="true">
+-      <div class="panel">
+-        <a href="#start">Startseite</a>
+-        <a href="#moebelfolien">Möbelfolien</a>
+-        <a href="#forscher">Möbelfolienforscher</a>
+-        <a href="#unsere-folien">Unsere Folien</a>
+-        <a href="#erstgespraech">Kostenloses Erstgespräch</a>
+-        <a href="#faq">Häufig gestellte Fragen</a>
+-      </div>
+-    </div>
+-  </nav>
+-
+-  <!-- STARTSEITE -->
+-  <header id="start" class="hero">
+-    <div class="container hero-grid">
+-      <div>
+-        <span class="pill">Die Zukunft der <b>Folien</b>, <b>Technik</b> & <b>Möbel</b></span>
+-        <h1>Premium-Folierungen für Küche, Möbel & Glas – schneller als jede Renovierung.</h1>
+-        <p class="sub">Schwarz-Gold Look, edle Materialien, präzise Verarbeitung. FoilVengers macht Räume stark – ohne Baustelle.</p>
+-        <div style="display:flex;gap:12px;flex-wrap:wrap">
+-          <a class="btn primary" href="#erstgespraech">Kostenloses Erstgespräch</a>
+-          <a class="btn" href="#moebelfolien">Möbelfolien entdecken</a>
+-        </div>
+-        <div style="margin-top:12px" class="tag">📍 Wien & Umgebung · 🛡️ Schutz | ✨ Design | ⚡ Tempo</div>
+-      </div>
+-      <div class="mock">
+-        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+-        <div class="screen">
+-          <img src="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1600&auto=format&fit=crop" alt="Modernisierte Küche in Schwarz">
+-        </div>
+-      </div>
+-    </div>
+-  </header>
+-
+-  <!-- MÖBELFOLIEN -->
+-  <section id="moebelfolien">
+-    <div class="container">
+-      <h2>Möbelfolien in Perfektion</h2>
+-      <p class="sub"><a class="btn primary" href="#visual">Kostenlose Visualisierung</a></p>
+-
+-      <!-- 1 -->
+-      <div class="grid-2" style="align-items:center;margin:24px 0">
+-        <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1400&auto=format&fit=crop" alt="Marmoroptik">
+-        <div>
+-          <h3>Eleganz ohne Baustelle</h3>
+-          <p class="sub">Marmor-, Stein-, Holz- und Metall-Optiken – sauber verklebt, in Tagen statt Wochen.</p>
+-        </div>
++  <head>
++    <meta charset="utf-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1" />
++    <title>Loft Folienstudio</title>
++    <style>
++      :root {
++        color-scheme: dark;
++        --surface: #04060a;
++        --surface-strong: rgba(10, 15, 23, 0.9);
++        --text: #f2f5fb;
++        --muted: #aab3c7;
++        --accent: #7bb7ff;
++        --highlight: #d4af37;
++        --card: rgba(17, 23, 36, 0.82);
++        --line: rgba(255, 255, 255, 0.08);
++      }
++
++      *,
++      *::before,
++      *::after {
++        box-sizing: border-box;
++      }
++
++      body {
++        margin: 0;
++        font-family: "Poppins", "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont,
++          sans-serif;
++        background: radial-gradient(circle at top, #0b101d, var(--surface));
++        color: var(--text);
++        min-height: 100vh;
++        overflow-x: hidden;
++      }
++
++      a {
++        color: inherit;
++        text-decoration: none;
++      }
++
++      button {
++        font: inherit;
++        cursor: pointer;
++      }
++
++      img {
++        max-width: 100%;
++        display: block;
++      }
++
++      .sr-only {
++        position: absolute;
++        width: 1px;
++        height: 1px;
++        padding: 0;
++        margin: -1px;
++        overflow: hidden;
++        clip: rect(0, 0, 0, 0);
++        white-space: nowrap;
++        border: 0;
++      }
++
++      header {
++        position: fixed;
++        inset: 0 0 auto 0;
++        z-index: 20;
++        backdrop-filter: blur(16px);
++        background: linear-gradient(180deg, rgba(5, 7, 12, 0.9), rgba(5, 7, 12, 0.3));
++        border-bottom: 1px solid var(--line);
++      }
++
++      .top-bar {
++        max-width: 1280px;
++        margin: 0 auto;
++        padding: 18px 24px;
++        display: flex;
++        align-items: center;
++        justify-content: space-between;
++        gap: 24px;
++      }
++
++      .brand {
++        display: inline-flex;
++        align-items: center;
++        gap: 12px;
++        font-weight: 700;
++        letter-spacing: 0.18em;
++        text-transform: uppercase;
++      }
++
++      .brand span {
++        display: grid;
++        place-items: center;
++        width: 40px;
++        height: 40px;
++        border-radius: 14px;
++        background: linear-gradient(135deg, #ffffff, #b7c2d6);
++        color: #101624;
++        font-weight: 800;
++      }
++
++      .menu-toggle {
++        position: relative;
++        width: 48px;
++        height: 48px;
++        border-radius: 16px;
++        border: 1px solid var(--line);
++        background: rgba(17, 23, 36, 0.7);
++        display: grid;
++        place-items: center;
++        transition: border-color 0.2s ease, background 0.2s ease;
++      }
++
++      .menu-toggle:hover,
++      .menu-toggle:focus-visible {
++        border-color: var(--accent);
++        background: rgba(30, 40, 60, 0.85);
++      }
++
++      .menu-toggle span,
++      .menu-toggle::before,
++      .menu-toggle::after {
++        content: "";
++        display: block;
++        width: 22px;
++        height: 2px;
++        border-radius: 999px;
++        background: var(--text);
++        transition: transform 0.3s ease, opacity 0.3s ease;
++      }
++
++      .menu-toggle span {
++        width: 18px;
++      }
++
++      .menu-toggle::before {
++        transform: translateY(-6px);
++      }
++
++      .menu-toggle::after {
++        transform: translateY(6px);
++      }
++
++      .menu-toggle[aria-expanded="true"] span {
++        opacity: 0;
++      }
++
++      .menu-toggle[aria-expanded="true"]::before {
++        transform: translateY(0) rotate(45deg);
++      }
++
++      .menu-toggle[aria-expanded="true"]::after {
++        transform: translateY(0) rotate(-45deg);
++      }
++
++      .menu-panel {
++        position: fixed;
++        inset: 80px 24px auto;
++        right: 24px;
++        width: min(320px, calc(100% - 48px));
++        padding: 24px;
++        border-radius: 20px;
++        background: var(--card);
++        border: 1px solid var(--line);
++        box-shadow: 0 28px 64px rgba(0, 0, 0, 0.35);
++        opacity: 0;
++        pointer-events: none;
++        transform: translateY(-8px);
++        transition: opacity 0.25s ease, transform 0.25s ease;
++      }
++
++      .menu-panel nav ul {
++        margin: 0;
++        padding: 0;
++        list-style: none;
++        display: grid;
++        gap: 16px;
++        font-weight: 600;
++      }
++
++      .menu-panel nav a {
++        display: flex;
++        justify-content: space-between;
++        align-items: center;
++        padding: 12px 16px;
++        border-radius: 14px;
++        background: rgba(255, 255, 255, 0.02);
++        border: 1px solid rgba(255, 255, 255, 0.06);
++        letter-spacing: 0.06em;
++        text-transform: uppercase;
++        font-size: 12px;
++        transition: border-color 0.2s ease, transform 0.2s ease;
++      }
++
++      .menu-panel nav a:hover,
++      .menu-panel nav a:focus-visible {
++        border-color: var(--accent);
++        transform: translateX(4px);
++      }
++
++      .menu-panel[data-open="true"] {
++        opacity: 1;
++        pointer-events: auto;
++        transform: translateY(0);
++      }
++
++      main {
++        padding-top: 120px;
++      }
++
++      section {
++        padding: clamp(60px, 8vw, 120px) 24px;
++      }
++
++      .window-entry {
++        min-height: 100vh;
++        display: grid;
++        place-items: center;
++        position: relative;
++        overflow: hidden;
++      }
++
++      .window-portal {
++        position: relative;
++        width: min(720px, 86vw);
++        aspect-ratio: 3 / 4;
++        border-radius: 36px;
++        padding: 42px;
++        border: 1px solid rgba(255, 255, 255, 0.2);
++        background:
++          radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 50%),
++          radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.6), transparent 60%),
++          linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02));
++        backdrop-filter: blur(8px);
++        box-shadow: 0 34px 60px rgba(0, 0, 0, 0.45);
++        cursor: pointer;
++        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
++      }
++
++      .window-portal:hover {
++        transform: translateY(-4px) scale(1.01);
++        box-shadow: 0 40px 68px rgba(0, 0, 0, 0.55);
++      }
++
++      .window-portal::before {
++        content: "";
++        position: absolute;
++        inset: 24px;
++        border-radius: 24px;
++        background:
++          linear-gradient(180deg, rgba(4, 7, 16, 0.2), rgba(4, 7, 16, 0.85)),
++          url("https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1400&q=80")
++            center / cover;
++        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
++          opacity 0.4s ease;
++      }
++
++      .window-portal::after {
++        content: "Trete ein";
++        position: absolute;
++        inset: auto 25% 32px 25%;
++        padding: 14px 18px;
++        text-align: center;
++        border-radius: 999px;
++        background: rgba(4, 8, 16, 0.7);
++        border: 1px solid rgba(255, 255, 255, 0.16);
++        letter-spacing: 0.18em;
++        text-transform: uppercase;
++        font-size: 13px;
++        font-weight: 600;
++      }
++
++      body.state-apartment .window-portal {
++        cursor: default;
++        pointer-events: none;
++      }
++
++      body.state-apartment .window-portal::before {
++        transform: rotateY(68deg) translateX(28%);
++        opacity: 0;
++      }
++
++      .window-entry h1 {
++        position: absolute;
++        top: clamp(80px, 10vw, 160px);
++        width: min(600px, 90vw);
++        text-align: center;
++        font-size: clamp(36px, 6vw, 72px);
++        letter-spacing: -0.02em;
++        color: var(--text);
++        text-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
++      }
++
++      .window-entry p {
++        position: absolute;
++        bottom: clamp(80px, 8vw, 140px);
++        width: min(520px, 80vw);
++        text-align: center;
++        margin: 0 auto;
++        color: var(--muted);
++        line-height: 1.6;
++      }
++
++      .apartment {
++        position: relative;
++        background: linear-gradient(180deg, rgba(5, 7, 12, 0.1), rgba(5, 7, 12, 0.8));
++        transition: opacity 0.6s ease, transform 0.6s ease;
++      }
++
++      body.state-window .apartment {
++        opacity: 0;
++        pointer-events: none;
++        transform: translateY(40px);
++      }
++
++      body.state-apartment .apartment {
++        opacity: 1;
++        pointer-events: auto;
++        transform: translateY(0);
++      }
++
++      .living-room-stage {
++        position: relative;
++        border-radius: 36px;
++        overflow: hidden;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        background: url("https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=1800&q=80")
++            center / cover;
++        min-height: clamp(540px, 80vw, 880px);
++        box-shadow: 0 48px 96px rgba(0, 0, 0, 0.45);
++      }
++
++      .living-room-stage::after {
++        content: "";
++        position: absolute;
++        inset: 0;
++        background: linear-gradient(120deg, rgba(5, 9, 18, 0.35), rgba(5, 7, 12, 0.65));
++      }
++
++      .hotspot {
++        position: absolute;
++        z-index: 2;
++        display: inline-flex;
++        align-items: center;
++        gap: 12px;
++        padding: 12px 18px;
++        border-radius: 999px;
++        border: 1px solid rgba(255, 255, 255, 0.16);
++        background: rgba(8, 12, 20, 0.72);
++        font-weight: 600;
++        letter-spacing: 0.08em;
++        text-transform: uppercase;
++        font-size: 11px;
++        transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
++      }
++
++      .hotspot::before {
++        content: "";
++        width: 10px;
++        height: 10px;
++        border-radius: 50%;
++        background: var(--highlight);
++        box-shadow: 0 0 12px var(--highlight);
++      }
++
++      .hotspot:hover,
++      .hotspot:focus-visible {
++        transform: translateY(-3px) scale(1.02);
++        border-color: var(--accent);
++        background: rgba(14, 20, 32, 0.82);
++      }
++
++      .hotspot[data-item="kitchen"] {
++        top: 32%;
++        left: 18%;
++      }
++
++      .hotspot[data-item="table"] {
++        top: 58%;
++        left: 46%;
++      }
++
++      .hotspot[data-item="wall"] {
++        top: 20%;
++        right: 12%;
++      }
++
++      .hotspot[data-item="sofa"] {
++        bottom: 18%;
++        left: 12%;
++      }
++
++      .window-film-drawer {
++        margin-top: clamp(32px, 5vw, 64px);
++        padding: clamp(24px, 4vw, 48px);
++        border-radius: 32px;
++        border: 1px solid rgba(255, 255, 255, 0.12);
++        background: linear-gradient(135deg, rgba(10, 15, 25, 0.94), rgba(10, 18, 34, 0.7));
++        display: grid;
++        gap: 24px;
++      }
++
++      .window-film-drawer h2 {
++        margin: 0;
++        font-size: clamp(28px, 3.6vw, 44px);
++        letter-spacing: -0.01em;
++      }
++
++      .window-film-drawer p {
++        margin: 0;
++        color: var(--muted);
++        max-width: 720px;
++        line-height: 1.6;
++      }
++
++      .film-options {
++        display: grid;
++        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
++        gap: 18px;
++      }
++
++      .film-card {
++        position: relative;
++        padding: 18px 18px 28px;
++        border-radius: 22px;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        background: rgba(16, 22, 34, 0.72);
++        text-align: left;
++        transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
++      }
++
++      .film-card[aria-pressed="true"] {
++        border-color: var(--highlight);
++        background: rgba(24, 32, 48, 0.82);
++        transform: translateY(-4px);
++      }
++
++      .film-card strong {
++        display: block;
++        font-size: 16px;
++        letter-spacing: 0.08em;
++        text-transform: uppercase;
++        margin-bottom: 8px;
++      }
++
++      .film-card span {
++        font-size: 13px;
++        color: var(--muted);
++        line-height: 1.5;
++      }
++
++      .film-preview {
++        margin-top: 16px;
++        height: 120px;
++        border-radius: 18px;
++        background:
++          linear-gradient(180deg, rgba(8, 12, 20, 0.4), rgba(8, 12, 20, 0.7)),
++          var(--texture, url("https://images.unsplash.com/photo-1529429617124-aee0a35d21fe?auto=format&fit=crop&w=800&q=80"))
++            center / cover;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        transition: opacity 0.25s ease;
++      }
++
++      .film-details {
++        font-size: 14px;
++        color: var(--muted);
++        line-height: 1.6;
++      }
++
++      .material-overlay {
++        position: fixed;
++        inset: 0;
++        z-index: 40;
++        background: rgba(3, 6, 12, 0.82);
++        backdrop-filter: blur(12px);
++        display: grid;
++        place-items: center;
++        padding: 32px;
++        opacity: 0;
++        pointer-events: none;
++        transition: opacity 0.3s ease;
++      }
++
++      .material-overlay[aria-hidden="false"] {
++        opacity: 1;
++        pointer-events: auto;
++      }
++
++      .overlay-card {
++        position: relative;
++        width: min(960px, 96vw);
++        max-height: min(720px, 90vh);
++        overflow: hidden;
++        border-radius: 32px;
++        border: 1px solid rgba(255, 255, 255, 0.12);
++        background: rgba(9, 14, 24, 0.92);
++        box-shadow: 0 48px 128px rgba(0, 0, 0, 0.55);
++        display: grid;
++        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
++      }
++
++      .overlay-close {
++        position: absolute;
++        top: 18px;
++        right: 18px;
++        width: 44px;
++        height: 44px;
++        border-radius: 16px;
++        border: 1px solid rgba(255, 255, 255, 0.12);
++        background: rgba(15, 20, 32, 0.8);
++        color: var(--text);
++        display: grid;
++        place-items: center;
++        font-size: 20px;
++      }
++
++      .overlay-content {
++        overflow-y: auto;
++        padding: clamp(28px, 4vw, 48px);
++        display: grid;
++        gap: 28px;
++      }
++
++      .overlay-content h3 {
++        margin: 0;
++        font-size: clamp(26px, 3vw, 38px);
++      }
++
++      .overlay-content p {
++        margin: 0;
++        color: var(--muted);
++      }
++
++      .preview-stage {
++        position: relative;
++        border-radius: 26px;
++        overflow: hidden;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        display: grid;
++        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
++      }
++
++      .preview-panel {
++        position: relative;
++        min-height: 260px;
++        display: grid;
++        place-items: end;
++        padding: 18px;
++        background: var(--base) center / cover;
++      }
++
++      .preview-panel span {
++        background: rgba(8, 12, 20, 0.78);
++        border-radius: 12px;
++        padding: 8px 14px;
++        font-size: 12px;
++        letter-spacing: 0.12em;
++        text-transform: uppercase;
++        border: 1px solid rgba(255, 255, 255, 0.12);
++      }
++
++      .preview-panel[data-role="after"]::after {
++        content: "";
++        position: absolute;
++        inset: 0;
++        border-radius: inherit;
++        background:
++          linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)),
++          var(--texture, none);
++        mix-blend-mode: lighten;
++        opacity: 0.8;
++        transition: background 0.35s ease, opacity 0.35s ease;
++      }
++
++      .material-meta {
++        display: grid;
++        gap: 16px;
++      }
++
++      .material-meta strong {
++        letter-spacing: 0.18em;
++        text-transform: uppercase;
++        font-size: 13px;
++        color: var(--highlight);
++      }
++
++      .material-swatches {
++        display: grid;
++        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
++        gap: 14px;
++        margin: 0;
++        padding: 0;
++        list-style: none;
++      }
++
++      .material-swatches button {
++        position: relative;
++        display: flex;
++        flex-direction: column;
++        align-items: flex-start;
++        gap: 10px;
++        width: 100%;
++        min-height: 120px;
++        border-radius: 18px;
++        padding: 14px;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        background: rgba(16, 22, 34, 0.68);
++        text-align: left;
++        color: inherit;
++        transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
++      }
++
++      .material-swatches button::before {
++        content: "";
++        display: block;
++        width: 100%;
++        height: 56px;
++        border-radius: 14px;
++        background: var(--swatch) center / cover;
++        border: 1px solid rgba(255, 255, 255, 0.1);
++      }
++
++      .material-swatches button strong {
++        font-size: 14px;
++        letter-spacing: 0.08em;
++        text-transform: uppercase;
++      }
++
++      .material-swatches button span {
++        font-size: 12px;
++        color: var(--muted);
++      }
++
++      .material-swatches button[aria-pressed="true"] {
++        border-color: var(--accent);
++        background: rgba(24, 34, 52, 0.82);
++        transform: translateY(-3px);
++      }
++
++      #contact {
++        background: linear-gradient(180deg, rgba(6, 9, 16, 0.8), rgba(6, 9, 16, 0.95));
++      }
++
++      #contact h2 {
++        font-size: clamp(34px, 4vw, 48px);
++        margin-bottom: 24px;
++      }
++
++      .contact-shell {
++        max-width: 960px;
++        margin: 0 auto;
++        display: grid;
++        gap: 36px;
++        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
++      }
++
++      .contact-intro p {
++        color: var(--muted);
++        line-height: 1.7;
++      }
++
++      form {
++        display: grid;
++        gap: 18px;
++        background: rgba(10, 16, 26, 0.82);
++        padding: clamp(24px, 4vw, 48px);
++        border-radius: 28px;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++      }
++
++      label {
++        display: grid;
++        gap: 8px;
++        font-size: 13px;
++        letter-spacing: 0.12em;
++        text-transform: uppercase;
++      }
++
++      input,
++      textarea,
++      select {
++        width: 100%;
++        padding: 14px 16px;
++        border-radius: 14px;
++        border: 1px solid rgba(255, 255, 255, 0.12);
++        background: rgba(8, 12, 20, 0.78);
++        color: var(--text);
++        font: inherit;
++      }
++
++      textarea {
++        min-height: 140px;
++        resize: vertical;
++      }
++
++      .submit {
++        margin-top: 12px;
++        padding: 16px 22px;
++        border-radius: 999px;
++        border: none;
++        background: linear-gradient(135deg, var(--accent), #94c7ff);
++        color: #04060a;
++        font-weight: 700;
++        letter-spacing: 0.18em;
++        text-transform: uppercase;
++      }
++
++      #impressum {
++        background: rgba(4, 6, 10, 0.9);
++      }
++
++      #impressum h2 {
++        font-size: clamp(30px, 3.4vw, 42px);
++      }
++
++      .impressum-grid {
++        display: grid;
++        gap: 24px;
++        max-width: 960px;
++        margin: 0 auto;
++        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
++      }
++
++      .impressum-card {
++        padding: 22px;
++        border-radius: 22px;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        background: rgba(10, 16, 26, 0.78);
++        display: grid;
++        gap: 8px;
++      }
++
++      .impressum-card strong {
++        letter-spacing: 0.16em;
++        text-transform: uppercase;
++        font-size: 12px;
++        color: var(--highlight);
++      }
++
++      footer {
++        padding: 32px 24px 80px;
++        text-align: center;
++        color: var(--muted);
++        font-size: 13px;
++        letter-spacing: 0.12em;
++        text-transform: uppercase;
++      }
++
++      @media (max-width: 720px) {
++        .overlay-card {
++          grid-template-columns: 1fr;
++        }
++
++        .window-portal {
++          padding: 28px;
++        }
++
++        .window-portal::after {
++          inset: auto 18% 24px 18%;
++        }
++
++        .hotspot {
++          transform: scale(0.88);
++        }
++      }
++
++      @media (prefers-reduced-motion: reduce) {
++        *,
++        *::before,
++        *::after {
++          transition-duration: 0.01ms !important;
++          animation-duration: 0.01ms !important;
++        }
++      }
++    </style>
++  </head>
++  <body class="state-window">
++    <header>
++      <div class="top-bar">
++        <a class="brand" href="#start"><span>LF</span> Loft Folienstudio</a>
++        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="global-navigation">
++          <span class="sr-only">Navigation öffnen</span>
++          <span></span>
++        </button>
+       </div>
+-      <!-- 2 -->
+-      <div class="grid-2" style="align-items:center;margin:24px 0">
+-        <div>
+-          <h3>Individuelle Stilberatung</h3>
+-          <p class="sub">Wir empfehlen Kombinationen, die zu Licht, Raum und Nutzung passen – damit es wirklich wirkt.</p>
+-        </div>
+-        <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=1400&auto=format&fit=crop" alt="Stilberatung">
++      <div class="menu-panel" id="global-navigation" data-open="false">
++        <nav aria-label="Hauptnavigation">
++          <ul>
++            <li><a href="#start">Startseite</a></li>
++            <li><a href="#apartment">Wohnungs-Erlebnis</a></li>
++            <li><a href="#material-archiv">Materialarchiv</a></li>
++            <li><a href="#contact">Kontaktanfrage</a></li>
++            <li><a href="#impressum">Impressum</a></li>
++          </ul>
++        </nav>
+       </div>
+-      <!-- 3 -->
+-      <div class="grid-2" style="align-items:center;margin:24px 0">
+-        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop" alt="Vielfalt">
+-        <div>
+-          <h3>Vielfalt ohne Kompromisse</h3>
+-          <p class="sub">Matt, hochglanz, strukturiert – fühlbare Qualität, die hält und pflegeleicht ist.</p>
++    </header>
++    <main>
++      <section class="window-entry" id="start">
++        <h1>Willkommen in deiner fotorealistischen Zwei-Zimmer-Loft</h1>
++        <p>
++          Tippe oder klicke auf das Fenster, um die Aussicht zu öffnen. Hinter der Glasfront wartet
++          ein großformatiges Wohnzimmer mit offener Küche. Jede Oberfläche lässt sich live mit
++          exklusiven Hochleistungsfolien veredeln.
++        </p>
++        <div class="window-portal" role="button" tabindex="0" aria-describedby="portal-hint">
++          <span id="portal-hint" class="sr-only">Fenster öffnen und Wohnung betreten</span>
+         </div>
+-      </div>
+-      <!-- 4 -->
+-      <div class="grid-2" style="align-items:center;margin:24px 0">
+-        <div>
+-          <h3>Schutz & Beständigkeit</h3>
+-          <p class="sub">Kratzfest, hitzebeständig, wasserresistent – ideal für Küche, Bad & viel genutzte Oberflächen.</p>
++      </section>
++      <section class="apartment" id="apartment">
++        <div class="living-room-stage" aria-label="Visualisierung eines modernen Wohnzimmers mit Küche">
++          <button class="hotspot" data-item="kitchen" type="button">Küche</button>
++          <button class="hotspot" data-item="table" type="button">Esstisch</button>
++          <button class="hotspot" data-item="wall" type="button">Akzentwand</button>
++          <button class="hotspot" data-item="sofa" type="button">Sofa</button>
+         </div>
+-        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop" alt="Beständigkeit">
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- KOSTENLOSE VISUALISIERUNG -->
+-  <section id="visual">
+-    <div class="container">
+-      <h2>Einfache, funktionierende & exklusive Beratung</h2>
+-      <p class="sub">Laden Sie ein Foto des Raumes, der Küche oder des Möbels hoch. Wir verwandeln es in eine fotorealistische Vorschau. In 24–48 h erhalten Sie Ihre personalisierte Visualisierung.</p>
+-      <div class="card">
+-        <!-- TODO: Formspree Endpoint eintragen -->
+-        <form id="vizForm" action="https://formspree.io/f/XXXXXXXX" method="POST" enctype="multipart/form-data">
+-          <div class="grid-3">
+-            <label>Ihr Name<br><input name="name" required placeholder="Vor- und Nachname"></label>
+-            <label>E-Mail<br><input type="email" name="email" required placeholder="name@domain.at"></label>
+-            <label>Telefon (optional)<br><input name="phone" placeholder="+43 …"></label>
++        <div class="window-film-drawer" id="material-archiv">
++          <h2>Blick nach draußen: Glasfolien für jede Wetterlage</h2>
++          <p>
++            Am Panoramafenster kannst du zwischen Spezialfolien wechseln. Von maximalem Sonnenschutz
++            über Privacy-Lösungen bis hin zu verspiegelt, schaltbar oder farbveredelten Gläsern –
++            hier siehst du sofort, wie sich Lichtstimmung und Reflexion verändern.
++          </p>
++          <div class="film-options" role="group" aria-label="Glasfolien-Auswahl">
++            <button class="film-card" type="button" data-texture="https://images.unsplash.com/photo-1529429617124-aee0a35d21fe?auto=format&fit=crop&w=900&q=80" data-description="Maximaler Wärmeschutz dank metallisierter Mehrschichtfolie. Blockt bis zu 85&nbsp;% der Infrarotstrahlung." aria-pressed="true">
++              <strong>Hitzeschutz</strong>
++              <span>Hält Räume spürbar kühler und reduziert Blendeffekte.</span>
++              <div class="film-preview" aria-hidden="true"></div>
++            </button>
++            <button class="film-card" type="button" data-texture="https://images.unsplash.com/photo-1505692794403-34d4982c36d6?auto=format&fit=crop&w=900&q=80" data-description="Milchglas-Optik mit 70&nbsp;% Lichtdurchlass. Perfekt für Bad und Büro." aria-pressed="false">
++              <strong>Privatsphäre</strong>
++              <span>Sichtschutz bei Tageslicht, ohne auf Helligkeit zu verzichten.</span>
++              <div class="film-preview" aria-hidden="true"></div>
++            </button>
++            <button class="film-card" type="button" data-texture="https://images.unsplash.com/photo-1579546928687-0f9be64d0a33?auto=format&fit=crop&w=900&q=80" data-description="Spiegelnde Außenansicht, neutral von innen. Reflexion bis 68&nbsp;%.">
++              <strong>Spiegelglas</strong>
++              <span>Sorgt für futuristischen Look und schützt vor neugierigen Blicken.</span>
++              <div class="film-preview" aria-hidden="true"></div>
++            </button>
++            <button class="film-card" type="button" data-texture="https://images.unsplash.com/photo-1600585154340-0ef3c08dcdb6?auto=format&fit=crop&w=900&q=80" data-description="Schaltbar von transparent zu satiniert in 0,2&nbsp;s – inklusive Smart-Home-Integration.">
++              <strong>Smart Switch</strong>
++              <span>Elektrisch dimmbare Folie für Meetingräume und Schlafzimmer.</span>
++              <div class="film-preview" aria-hidden="true"></div>
++            </button>
+           </div>
+-          <label style="display:block;margin:12px 0">Bild hochladen (JPG/PNG, max. 15 MB)
+-            <input type="file" name="photo" accept="image/*" required>
+-          </label>
+-          <label>Wunsch-Stil (optional)
+-            <input name="style" placeholder="z. B. Schwarz-Gold Matt, Marmor hell …">
+-          </label>
+-          <button class="btn primary" type="submit">Anfrage senden</button>
+-          <span class="tag" id="vizStatus"></span>
+-        </form>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- MÖBELFOLIENFORSCHER -->
+-  <section id="forscher">
+-    <div class="container">
+-      <h2>Möbelfolien-Forscher</h2>
+-      <p class="sub">Wählen Sie Ihre Wunsch-Folien. Jede Folie: <b>130 €</b>.</p>
+-
+-      <div class="folio-grid" id="folioGrid">
+-        <!-- 6 Muster -->
+-        <div class="folio-item">
+-          <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?q=80&w=800&auto=format&fit=crop" alt="Stein">
+-          <label><input type="checkbox" value="Stein"> Stein</label>
+-        </div>
+-        <div class="folio-item">
+-          <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=800&auto=format&fit=crop" alt="Schwarzer Marmor">
+-          <label><input type="checkbox" value="Schwarzer Marmor"> Schwarzer Marmor</label>
++          <p class="film-details">
++            <strong class="film-selected">Hitzeschutz</strong> · <span class="film-description"
++              >Maximaler Wärmeschutz dank metallisierter Mehrschichtfolie. Blockt bis zu 85&nbsp;% der
++              Infrarotstrahlung.</span
++            >
++          </p>
+         </div>
+-        <div class="folio-item">
+-          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=800&auto=format&fit=crop" alt="Weißer Marmor">
+-          <label><input type="checkbox" value="Weißer Marmor"> Weißer Marmor</label>
+-        </div>
+-        <div class="folio-item">
+-          <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=800&auto=format&fit=crop" alt="Braunes Holz">
+-          <label><input type="checkbox" value="Braunes Holz"> Braunes Holz</label>
+-        </div>
+-        <div class="folio-item">
+-          <img src="https://images.unsplash.com/photo-1523419409543-63f6dbd49b97?q=80&w=800&auto=format&fit=crop" alt="Helles Holz">
+-          <label><input type="checkbox" value="Helles Holz"> Helles Holz</label>
++      </section>
++      <section id="contact">
++        <div class="contact-shell">
++          <div class="contact-intro">
++            <h2>Kontaktanfrage – inspiriert von der Perfektion von Apple</h2>
++            <p>
++              Erzähle uns, welche Flächen du veredeln möchtest, und unser Team meldet sich mit einem
++              360°-Rendering, Materialmustern und einer passgenauen Kalkulation. Wir koordinieren
++              Aufmaß, Produktion und Montage europaweit.
++            </p>
++            <p>
++              Telefon: <a href="tel:+49891234567">+49 89 123 45 67</a><br />
++              E-Mail: <a href="mailto:hello@loft-folienstudio.de">hello@loft-folienstudio.de</a>
++            </p>
++          </div>
++          <form aria-label="Kontaktformular">
++            <label>
++              Vor- und Nachname
++              <input type="text" name="name" autocomplete="name" required placeholder="Max Mustermann" />
++            </label>
++            <label>
++              E-Mail-Adresse
++              <input type="email" name="email" autocomplete="email" required placeholder="max@example.com" />
++            </label>
++            <label>
++              Projektstandort
++              <input type="text" name="location" placeholder="München, Deutschland" />
++            </label>
++            <label>
++              Nutzungsart
++              <select name="usage">
++                <option value="private">Private Wohnung</option>
++                <option value="office">Büro / Co-Working</option>
++                <option value="retail">Retail / Showroom</option>
++                <option value="hospitality">Hotel / Gastronomie</option>
++              </select>
++            </label>
++            <label>
++              Welche Flächen sollen foliert werden?
++              <textarea name="surfaces" placeholder="Fensterfront, Küche, Esstisch, Wandpaneele ..."></textarea>
++            </label>
++            <label>
++              Wunsch-Termin für die Umsetzung
++              <input type="date" name="date" />
++            </label>
++            <label>
++              Budgetrahmen (netto)
++              <select name="budget">
++                <option value="<5000">bis 5.000 €</option>
++                <option value="5000-15000">5.000 – 15.000 €</option>
++                <option value="15000-30000">15.000 – 30.000 €</option>
++                <option value=">30000">über 30.000 €</option>
++              </select>
++            </label>
++            <button class="submit" type="submit">Anfrage senden</button>
++          </form>
+         </div>
+-        <div class="folio-item">
+-          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=800&auto=format&fit=crop" alt="Luzengo Weiß">
+-          <label><input type="checkbox" value="Luzengo Weiß"> Luzengo Weiß</label>
++      </section>
++      <section id="impressum">
++        <h2>Impressum – inspiriert von der Klarheit von Apple</h2>
++        <div class="impressum-grid">
++          <div class="impressum-card">
++            <strong>Betreiber</strong>
++            <span>Loft Folienstudio GmbH</span>
++            <span>Maximilianstraße 25</span>
++            <span>80539 München</span>
++            <span>Geschäftsführer: Laura Stein, Jonas Keller</span>
++            <span>Registergericht: Amtsgericht München, HRB 123456</span>
++          </div>
++          <div class="impressum-card">
++            <strong>Kontakt</strong>
++            <span>Telefon: +49 89 123 45 67</span>
++            <span>E-Mail: hello@loft-folienstudio.de</span>
++            <span>USt-ID: DE 123 456 789</span>
++          </div>
++          <div class="impressum-card">
++            <strong>Rechtliches</strong>
++            <span>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Laura Stein</span>
++            <span>Streitschlichtung: Wir sind nicht verpflichtet, an Streitbeilegungsverfahren teilzunehmen.</span>
++            <span>Copyright: © 2024 Loft Folienstudio GmbH. Alle Rechte vorbehalten.</span>
++          </div>
+         </div>
+-      </div>
+-
+-      <div class="card" style="margin-top:16px">
+-        <div class="total">
+-          <div>Ausgewählt: <b><span id="count">0</span></b> • Summe: <b><span id="sum">€ 0</span></b></div>
+-          <a class="btn primary" href="#order">Weiter & bestellen</a>
++      </section>
++    </main>
++    <footer>© 2024 Loft Folienstudio – Visualisierungen dienen der Inspiration.</footer>
++    <div class="material-overlay" aria-hidden="true" role="dialog" aria-modal="true">
++      <div class="overlay-card">
++        <button class="overlay-close" type="button" aria-label="Materialübersicht schließen">×</button>
++        <div class="overlay-content">
++          <article data-item="kitchen" hidden>
++            <h3>Offene Küchenfront veredeln</h3>
++            <p>
++              Tausche das aktuelle Finish der Küchenschränke mit wenigen Klicks. Wähle aus zehn
++              High-End-Folien von Marmor bis Mikrozement.
++            </p>
++            <div class="preview-stage">
++              <div class="preview-panel" style="--base: url('https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=1400&q=80');">
++                <span>Vorher</span>
++              </div>
++              <div class="preview-panel" data-role="after" style="--base: url('https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=1400&q=80');">
++                <span>Nachher</span>
++              </div>
++            </div>
++            <div class="material-meta">
++              <strong data-role="material-name">Bianco Marmor</strong>
++              <p data-role="description">
++                Elegante Hochglanz-Marmorierung mit seidiger Oberfläche – stoßfest, hitzebeständig bis
++                110&nbsp;°C.
++              </p>
++            </div>
++            <ul class="material-swatches">
++              <li>
++                <button type="button" data-label="Bianco Marmor" data-description="Hochglanz-Marmorierung mit grauer Aderung – ideal für flächenbündige Küchen." data-texture="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80">
++                  <strong>Bianco Marmor</strong>
++                  <span>Luxus pur</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Walnuss" data-description="Tiefes Walnussholz mit offenporiger Haptik, perfekt für warme Kontraste." data-texture="https://images.unsplash.com/photo-1541976076758-347942db1978?auto=format&fit=crop&w=900&q=80">
++                  <strong>Walnuss</strong>
++                  <span>Offenporig</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Schwarzstahl" data-description="Gebürsteter Stahl in Graphit – kratzresistent und fingerabdruckarm." data-texture="https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=900&q=80">
++                  <strong>Schwarzstahl</strong>
++                  <span>Industrial</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Beton" data-description="Fein strukturierter Sichtbeton mit samtiger Haptik." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
++                  <strong>Beton</strong>
++                  <span>Urban</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Leder Caramel" data-description="Weiche Lederstruktur in warmem Cognac – ideal für Griffleisten." data-texture="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80">
++                  <strong>Leder</strong>
++                  <span>Cognac</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Messing satin" data-description="Satinierte Messingoptik mit sanftem Schimmer für Statement-Küchen." data-texture="https://images.unsplash.com/photo-1616627459435-1c78aa3d363b?auto=format&fit=crop&w=900&q=80">
++                  <strong>Messing</strong>
++                  <span>Satin</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Mikrozement" data-description="Handgespachtelte Mikrozement-Optik – wasserabweisend und robust." data-texture="https://images.unsplash.com/photo-1585792180666-1acbfc5d5b9f?auto=format&fit=crop&w=900&q=80">
++                  <strong>Mikrozement</strong>
++                  <span>Handcrafted</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Rauchglas" data-description="Tief getöntes Rauchglas mit dezentem Spiegel – perfekt für Oberschränke." data-texture="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80">
++                  <strong>Rauchglas</strong>
++                  <span>Reflexion</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Keramikweiß" data-description="Ultramattes Keramikweiß, kratzfest und leicht zu reinigen." data-texture="https://images.unsplash.com/photo-1523419427760-2fd20199b5a0?auto=format&fit=crop&w=900&q=80">
++                  <strong>Keramik</strong>
++                  <span>Mattweiß</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Strukturstoff" data-description="Textile Oberfläche mit Akustikwirkung – perfekt für Kücheninseln." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
++                  <strong>Strukturstoff</strong>
++                  <span>Akustik</span>
++                </button>
++              </li>
++            </ul>
++          </article>
++          <article data-item="table" hidden>
++            <h3>Esstisch neu inszenieren</h3>
++            <p>
++              Optimiere Tischplatte und Tischbeine mit strapazierfähigen Oberflächen, die sich wie
++              echtes Material anfühlen – inklusive Stoß- und Kratzschutz.
++            </p>
++            <div class="preview-stage">
++              <div class="preview-panel" style="--base: url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1400&q=80');">
++                <span>Vorher</span>
++              </div>
++              <div class="preview-panel" data-role="after" style="--base: url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1400&q=80');">
++                <span>Nachher</span>
++              </div>
++            </div>
++            <div class="material-meta">
++              <strong data-role="material-name">Walnuss</strong>
++              <p data-role="description">
++                Warme Maserung mit tiefem Glanz – perfekt für gesellige Dinner und High-End-Looks.
++              </p>
++            </div>
++            <ul class="material-swatches">
++              <li>
++                <button type="button" data-label="Nero Marmor" data-description="Tiefschwarzer Marmor mit weißen Einschlüssen – dramatischer Premium-Look." data-texture="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80">
++                  <strong>Nero Marmor</strong>
++                  <span>Statement</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Eiche geräuchert" data-description="Sanfte Holzstruktur, UV-stabilisiert für stark belichtete Essbereiche." data-texture="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80">
++                  <strong>Eiche</strong>
++                  <span>Geräuchert</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Beton Urban" data-description="Feinporiger Beton-Look mit Anti-Fingerprint-Beschichtung." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
++                  <strong>Beton</strong>
++                  <span>Urban</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Messing gebürstet" data-description="Messingfarbener Metall-Look, temperaturbeständig und formstabil." data-texture="https://images.unsplash.com/photo-1616627459435-1c78aa3d363b?auto=format&fit=crop&w=900&q=80">
++                  <strong>Messing</strong>
++                  <span>Gebürstet</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Samt Cashmere" data-description="Microfaser mit samtigem Griff – ideal für Tischbeine und Paneele." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
++                  <strong>Samt</strong>
++                  <span>Cashmere</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Carbon" data-description="Technische Carbonstruktur für einen progressiven High-Tech-Look." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
++                  <strong>Carbon</strong>
++                  <span>Performance</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Terrazzo" data-description="Frischer Terrazzo-Mix mit sanfter Haptik und antibakterieller Beschichtung." data-texture="https://images.unsplash.com/photo-1523419409543-0c1df022bdd1?auto=format&fit=crop&w=900&q=80">
++                  <strong>Terrazzo</strong>
++                  <span>Retro</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Glas klar" data-description="Glasklare, hochglänzende Oberfläche mit Anti-Scratch-Sealing." data-texture="https://images.unsplash.com/photo-1529429617124-aee0a35d21fe?auto=format&fit=crop&w=900&q=80">
++                  <strong>Glas</strong>
++                  <span>Klar</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Schwarzstahl" data-description="Graphitfarbener Stahl-Look – beständig gegen Abrieb und Hitze." data-texture="https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=900&q=80">
++                  <strong>Schwarzstahl</strong>
++                  <span>Industrial</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Perlweiß" data-description="Perlmuttschimmer mit mehrschichtigem Tiefenglanz – ideal für elegante Settings." data-texture="https://images.unsplash.com/photo-1600585154340-0ef3c08dcdb6?auto=format&fit=crop&w=900&q=80">
++                  <strong>Perlweiß</strong>
++                  <span>Signature</span>
++                </button>
++              </li>
++            </ul>
++          </article>
++          <article data-item="wall" hidden>
++            <h3>Akzentwand transformieren</h3>
++            <p>
++              Von mineralisch bis metallisch: gestalte deine Wandverkleidung so, dass sie mit Licht und
++              Raumtemperatur spielt – natürlich inklusive akustischer Optimierung.
++            </p>
++            <div class="preview-stage">
++              <div class="preview-panel" style="--base: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80');">
++                <span>Vorher</span>
++              </div>
++              <div class="preview-panel" data-role="after" style="--base: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80');">
++                <span>Nachher</span>
++              </div>
++            </div>
++            <div class="material-meta">
++              <strong data-role="material-name">Mikrozement</strong>
++              <p data-role="description">
++                Mineralische Spachteloptik mit tiefer Struktur – atmungsaktiv und abwaschbar.
++              </p>
++            </div>
++            <ul class="material-swatches">
++              <li>
++                <button type="button" data-label="Travertin" data-description="Grobe Kalksteintextur mit warmem Sandton – schafft mediterrane Leichtigkeit." data-texture="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80">
++                  <strong>Travertin</strong>
++                  <span>Kalkstein</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Schiefer" data-description="Dunkler Schiefer mit natürlicher Spaltung – perfekt für expressive Kontraste." data-texture="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80">
++                  <strong>Schiefer</strong>
++                  <span>Charakter</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Kupfer Patina" data-description="Metallische Oberfläche mit changierender Patina – reaktive Schutzschicht inklusive." data-texture="https://images.unsplash.com/photo-1616627459435-1c78aa3d363b?auto=format&fit=crop&w=900&q=80">
++                  <strong>Kupfer</strong>
++                  <span>Patina</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Linen Taupe" data-description="Feiner Textilstoff mit Akustikvlies – verbessert Nachhallzeiten." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
++                  <strong>Leinen</strong>
++                  <span>Taupe</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Beton Loft" data-description="Makelloser Sichtbeton mit weichem Mattfinish – urban und ruhig." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
++                  <strong>Beton</strong>
++                  <span>Loft</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Mikrozement" data-description="Mineralische Edelspachtelung in sanftem Grau – atmungsaktiv und wasserabweisend." data-texture="https://images.unsplash.com/photo-1585792180666-1acbfc5d5b9f?auto=format&fit=crop&w=900&q=80">
++                  <strong>Mikrozement</strong>
++                  <span>Grau</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Bronze Satin" data-description="Satinierte Bronze mit subtiler Lichtreflexion – ideal für Nischen." data-texture="https://images.unsplash.com/photo-1616627459435-1c78aa3d363b?auto=format&fit=crop&w=900&q=80">
++                  <strong>Bronze</strong>
++                  <span>Satin</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Mirror Lines" data-description="Vertikale Spiegelfolie mit feinen Linien – erweitert optisch den Raum." data-texture="https://images.unsplash.com/photo-1579546928687-0f9be64d0a33?auto=format&fit=crop&w=900&q=80">
++                  <strong>Mirror</strong>
++                  <span>Lines</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Quartz" data-description="Fein gesprenkelte Quarzstruktur mit leichtem Glitzereffekt." data-texture="https://images.unsplash.com/photo-1523419409543-0c1df022bdd1?auto=format&fit=crop&w=900&q=80">
++                  <strong>Quarz</strong>
++                  <span>Glanz</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Soft White" data-description="Seidiges Offwhite mit perligem Finish – reflektiert Licht besonders weich." data-texture="https://images.unsplash.com/photo-1600585154340-0ef3c08dcdb6?auto=format&fit=crop&w=900&q=80">
++                  <strong>Soft White</strong>
++                  <span>Seidenmatt</span>
++                </button>
++              </li>
++            </ul>
++          </article>
++          <article data-item="sofa" hidden>
++            <h3>Sofa und Polsterflächen upgraden</h3>
++            <p>
++              Ersetze Stoffe und Bespannungen ohne neue Möbel zu kaufen. Unsere Polsterfolien liefern
++              perfekte Spannung, Atmungsaktivität und haptische Highlights.
++            </p>
++            <div class="preview-stage">
++              <div class="preview-panel" style="--base: url('https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1400&q=80');">
++                <span>Vorher</span>
++              </div>
++              <div class="preview-panel" data-role="after" style="--base: url('https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1400&q=80');">
++                <span>Nachher</span>
++              </div>
++            </div>
++            <div class="material-meta">
++              <strong data-role="material-name">Samt Royal</strong>
++              <p data-role="description">
++                Dicht gewebter Samt mit tiefem Farbton – flammhemmend und pflegeleicht.
++              </p>
++            </div>
++            <ul class="material-swatches">
++              <li>
++                <button type="button" data-label="Samt Royal" data-description="Intensives Königsblau mit eleganter Lichtbrechung." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
++                  <strong>Samt</strong>
++                  <span>Royal</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Leder Espresso" data-description="Veganes Premium-Leder mit feiner Narbung und Softtouch." data-texture="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80">
++                  <strong>Leder</strong>
++                  <span>Espresso</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Bouclé Creme" data-description="Trendig strukturierter Bouclé mit hoher Abriebfestigkeit." data-texture="https://images.unsplash.com/photo-1600585154340-0ef3c08dcdb6?auto=format&fit=crop&w=900&q=80">
++                  <strong>Bouclé</strong>
++                  <span>Creme</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Cord Terracotta" data-description="Breite Cordstruktur für gemütliche Retro-Vibes." data-texture="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?auto=format&fit=crop&w=900&q=80">
++                  <strong>Cord</strong>
++                  <span>Terracotta</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Leinen Nebel" data-description="Natürliches Leinen mit leichtem Melange-Effekt, atmungsaktiv und kühl." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
++                  <strong>Leinen</strong>
++                  <span>Nebel</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Strukturgraphit" data-description="3D-Gewebe in Graphit – enorm formstabil und schmutzabweisend." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
++                  <strong>Struktur</strong>
++                  <span>Graphit</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Leder Powder" data-description="Weiches Puderrosa mit seidenmattem Finish – flammhemmend zertifiziert." data-texture="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80">
++                  <strong>Leder</strong>
++                  <span>Puder</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Velours Dusk" data-description="Veloursleder-Optik in Rauchgrau – inklusive Anti-Schmutz-Schutz." data-texture="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80">
++                  <strong>Velours</strong>
++                  <span>Dusk</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Gewebe Slate" data-description="Hybrid-Gewebe aus Performancefasern – atmungsaktiv und robust." data-texture="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80">
++                  <strong>Gewebe</strong>
++                  <span>Slate</span>
++                </button>
++              </li>
++              <li>
++                <button type="button" data-label="Moosgrün" data-description="Tiefe Moosfarbe mit weichem Flor – bringt Natur ins Wohnzimmer." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
++                  <strong>Samt</strong>
++                  <span>Moos</span>
++                </button>
++              </li>
++            </ul>
++          </article>
+         </div>
+       </div>
+     </div>
+-  </section>
+-
+-  <!-- BESTELLUNG -->
+-  <section id="order">
+-    <div class="container">
+-      <h2>Bestellung abschließen</h2>
+-      <div class="card">
+-        <!-- TODO: Formspree Endpoint eintragen -->
+-        <form id="orderForm" action="https://formspree.io/f/YYYYYYYY" method="POST">
+-          <input type="hidden" name="selection" id="selField">
+-          <input type="hidden" name="sum" id="sumField">
+-          <div class="grid-3">
+-            <label>Name<br><input name="name" required></label>
+-            <label>E-Mail<br><input type="email" name="email" required></label>
+-            <label>Adresse<br><input name="address" required placeholder="Straße, PLZ Ort"></label>
+-          </div>
+-          <label>Nachricht (optional)
+-            <input name="msg" placeholder="Maße, Frontenanzahl, Wunschtermin …">
+-          </label>
+-          <button class="btn primary" type="submit">Verbindlich anfragen</button>
+-          <span class="tag" id="orderStatus"></span>
+-        </form>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- UNSERE FOLIEN -->
+-  <section id="unsere-folien">
+-    <div class="container">
+-      <h2>Unsere Folien</h2>
+-      <p class="sub">Hochwertige Markenfolien – optisch stark, technisch zuverlässig.</p>
+-      <div class="grid-3">
+-        <article class="card">
+-          <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1200&auto=format&fit=crop" alt="Hitzeschutz">
+-          <h3>Hitzeschutzfolien</h3>
+-          <p class="sub">Spürbar kühler & UV-Reduktion für Fensterfronten.</p>
+-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Verbessert Raumklima, reduziert Blendung, schont Möbel. Ideal für Süd/West-Lagen.</p></details>
+-        </article>
+-        <article class="card">
+-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Werbe- und Designfolien">
+-          <h3>Werbe- & Designfolien</h3>
+-          <p class="sub">Schaufenster, Logos, Beschriftungen – stark und rückstandsfrei.</p>
+-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Feine Konturschnitte, Matt/Glanz, transluzent oder deckend. Perfekt für Markenauftritte.</p></details>
+-        </article>
+-        <article class="card">
+-          <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1200&auto=format&fit=crop" alt="Sicherheitsfolien">
+-          <h3>Sicherheitsfolien</h3>
+-          <p class="sub">Splitterschutz & Einbruchhemmung für Glasflächen.</p>
+-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Erhöht Bruchfestigkeit, hält Splitter zusammen, optional Opaque-Sichtschutz.</p></details>
+-        </article>
+-        <article class="card">
+-          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1200&auto=format&fit=crop" alt="UV-Schutz">
+-          <h3>UV-Schutzfolien</h3>
+-          <p class="sub">Schützt Möbel & Stoffe vor Ausbleichen.</p>
+-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Bis zu 99% UV-Filter, transparent. Ideal für Auslagen & Wohnräume.</p></details>
+-        </article>
+-        <article class="card">
+-          <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?q=80&w=1200&auto=format&fit=crop" alt="Sichtschutz">
+-          <h3>Sichtschutzfolien</h3>
+-          <p class="sub">Privatsphäre ohne Lichtverlust – Milchglas & Muster.</p>
+-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Individuelle Designs, logos & Linien. Bäder, Büros, Eingänge.</p></details>
+-        </article>
+-        <article class="card">
+-          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1200&auto=format&fit=crop" alt="Smart-Switch">
+-          <h3>Smart-Switch-Folie</h3>
+-          <p class="sub">Per Knopfdruck von klar zu blickdicht.</p>
+-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Elektrisch schaltbar, Meetingräume & Bäder. Integration durch Fachpartner.</p></details>
+-        </article>
+-        <article class="card">
+-          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200&auto=format&fit=crop" alt="Insektenschutz">
+-          <h3>Insektenschutz</h3>
+-          <p class="sub">Feinmaschig, stabil, maßgefertigt – Türen & Fenster.</p>
+-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Rahmenlösungen, Schiebe-Elemente, magnetisch. Unauffällig & effektiv.</p></details>
+-        </article>
+-        <article class="card">
+-          <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?q=80&w=1200&auto=format&fit=crop" alt="Anti-Graffiti">
+-          <h3>Anti-Graffiti-Folie</h3>
+-          <p class="sub">Schützt Oberflächen, lässt sich einfach erneuern.</p>
+-          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Transparenter Opferschutz für Glas & Metall – spart Reinigungskosten.</p></details>
+-        </article>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- ERSTGESPRÄCH -->
+-  <section id="erstgespraech">
+-    <div class="container">
+-      <h2>Kostenlose Erstberatung</h2>
+-      <p class="sub">Wählen Sie einen Slot – unser Design-Team meldet sich.</p>
+-      <div class="grid-3">
+-        <a class="card btn" style="justify-content:center" href="mailto:kontakt@foilvengers.at?subject=Erstgespr%C3%A4ch&body=Hallo%20FoilVengers%2C%20ich%20m%C3%B6chte%20eine%20kostenlose%20Erstberatung.">📧 1h Erstberatung (Online)</a>
+-        <a class="card btn" style="justify-content:center" href="https://wa.me/430394930590?text=Kostenloser%20QuickCheck%20bitte">⚡ QuickCheck (1h, WhatsApp)</a>
+-        <!-- TODO: Wenn du Calendly hast, hier Link einsetzen -->
+-        <a class="card btn" style="justify-content:center" href="#visual">🏠 Interieur-Beratung vor Ort (Anfrage)</a>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- FAQ -->
+-  <section id="faq">
+-    <div class="container">
+-      <h2>Häufig gestellte Fragen</h2>
+-      <div class="grid-2">
+-        <details class="card"><summary>Wie lange dauert eine Küche?</summary><p class="sub">Meist 2–5 Tage – abhängig von Größe, Material & Vorbereitung.</p></details>
+-        <details class="card"><summary>Halten die Folien in der Küche?</summary><p class="sub">Ja. Wir nutzen hitzebeständige, wasserresistente Markenfolien mit starker Haftung.</p></details>
+-        <details class="card"><summary>Kann ich Muster sehen?</summary><p class="sub">Klar – im Gespräch oder per Post. Der Möbelfolien-Forscher hilft bei der Vorauswahl.</p></details>
+-        <details class="card"><summary>Macht ihr auch Fenster/Schaufenster?</summary><p class="sub">Ja: Hitzeschutz, UV, Sichtschutz, Werbung & Sicherheit.</p></details>
+-      </div>
+-    </div>
+-  </section>
++    <script>
++      const body = document.body;
++      const portal = document.querySelector('.window-portal');
++      const apartmentSection = document.getElementById('apartment');
++      const menuToggle = document.querySelector('.menu-toggle');
++      const menuPanel = document.getElementById('global-navigation');
++      const materialOverlay = document.querySelector('.material-overlay');
++      const overlayClose = document.querySelector('.overlay-close');
++      const overlayArticles = [...materialOverlay.querySelectorAll('article')];
++      const filmCards = document.querySelectorAll('.film-card');
++      const filmDetailsName = document.querySelector('.film-selected');
++      const filmDetailsDescription = document.querySelector('.film-description');
+ 
+-  <!-- FOOTER -->
+-  <footer style="border-top:1px solid rgba(255,255,255,.08);padding:34px 0">
+-    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+-      <small>© <span id="year"></span> FoilVengers – Leunam Bratkovic, Schlossstraße, 1090 Wien · <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a></small>
+-    </div>
+-  </footer>
+-
+-  <!-- IMPRESSUM -->
+-  <section id="impressum">
+-    <div class="container">
+-      <h2>Impressum</h2>
+-      <div class="card">
+-        <p><strong>FoilVengers – Einzelunternehmen</strong><br>
+-        Inhaber: Leunam Bratkovic<br>
+-        Schlossstraße, 1090 Wien, Österreich<br>
+-        Tel: +43 0394 930 590 · E-Mail: kontakt@foilvengers.at</p>
+-        <p>Mitglied der WKÖ (falls zutreffend). UID-Nr. & Firmenbuch-Nr. werden nachgereicht.</p>
+-        <p>Verbraucherstreitbeilegung: Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren teilzunehmen.</p>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- DATENSCHUTZ -->
+-  <section id="datenschutz">
+-    <div class="container">
+-      <h2>Datenschutz</h2>
+-      <div class="card">
+-        <p>Wir verarbeiten personenbezogene Daten nur zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO).</p>
+-        <p>Hosting: GitHub Pages. Beim Seitenaufruf werden technische Daten verarbeitet. Keine Tracking-Cookies.</p>
+-        <p>Kontakt: kontakt@foilvengers.at – Rechte auf Auskunft, Berichtigung, Löschung und Beschwerde bestehen.</p>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <script>
+-    // Footer-Jahr
+-    document.getElementById('year').textContent = new Date().getFullYear();
+-
+-    // Drawer
+-    const hamb=document.getElementById('hamb'); const drawer=document.getElementById('drawer');
+-    function toggle(){drawer.classList.toggle('open'); drawer.setAttribute('aria-hidden', !drawer.classList.contains('open'))}
+-    hamb.addEventListener('click',toggle); hamb.addEventListener('keyup',e=>{if(e.key==='Enter') toggle()}); drawer.addEventListener('click',e=>{if(e.target===drawer) toggle()});
+-    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',toggle));
+-
+-    // Folienforscher: Preisberechnung
+-    const PRICE = 130;
+-    const countEl = document.getElementById('count');
+-    const sumEl = document.getElementById('sum');
+-    const selField = document.getElementById('selField');
+-    const sumField = document.getElementById('sumField');
+-    function recalc(){
+-      const boxes = [...document.querySelectorAll('#folioGrid input[type=checkbox]')];
+-      const picked = boxes.filter(b=>b.checked).map(b=>b.value);
+-      const total = picked.length * PRICE;
+-      countEl.textContent = picked.length;
+-      sumEl.textContent = `€ ${total.toLocaleString('de-AT')}`;
+-      selField.value = picked.join(', ');
+-      sumField.value = total;
+-    }
+-    document.querySelectorAll('#folioGrid input[type=checkbox]').forEach(cb=>cb.addEventListener('change',recalc));
+-    recalc();
+-
+-    // Formspree Status (Visualisierung)
+-    const vizForm = document.getElementById('vizForm');
+-    const vizStatus = document.getElementById('vizStatus');
+-    vizForm.addEventListener('submit', async (e)=>{
+-      vizStatus.textContent = 'Senden …';
+-    });
+-
+-    // Formspree Status (Bestellung)
+-    const orderForm = document.getElementById('orderForm');
+-    const orderStatus = document.getElementById('orderStatus');
+-    orderForm.addEventListener('submit', async (e)=>{
+-      orderStatus.textContent = 'Senden …';
+-    });
+-  </script>
+-</body>
++      function openMenu() {
++        menuToggle.setAttribute('aria-expanded', 'true');
++        menuPanel.dataset.open = 'true';
++      }
++
++      function closeMenu() {
++        menuToggle.setAttribute('aria-expanded', 'false');
++        menuPanel.dataset.open = 'false';
++      }
++
++      menuToggle.addEventListener('click', () => {
++        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
++        if (expanded) {
++          closeMenu();
++        } else {
++          openMenu();
++        }
++      });
++
++      menuPanel.addEventListener('click', (event) => {
++        if (event.target.tagName === 'A') {
++          closeMenu();
++        }
++      });
++
++      function revealApartment() {
++        if (body.classList.contains('state-apartment')) return;
++        body.classList.replace('state-window', 'state-apartment');
++        setTimeout(() => {
++          apartmentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
++        }, 120);
++      }
++
++      portal.addEventListener('click', revealApartment);
++      portal.addEventListener('keydown', (event) => {
++        if (event.key === 'Enter' || event.key === ' ') {
++          event.preventDefault();
++          revealApartment();
++        }
++      });
++
++      function openOverlay(item) {
++        overlayArticles.forEach((article) => {
++          article.hidden = article.dataset.item !== item;
++        });
++        materialOverlay.setAttribute('aria-hidden', 'false');
++        const firstButton = materialOverlay.querySelector('article:not([hidden]) button');
++        if (firstButton) {
++          firstButton.focus();
++        }
++        document.addEventListener('keydown', escCloseOverlay);
++      }
++
++      function closeOverlay() {
++        materialOverlay.setAttribute('aria-hidden', 'true');
++        document.removeEventListener('keydown', escCloseOverlay);
++      }
++
++      function escCloseOverlay(event) {
++        if (event.key === 'Escape') {
++          closeOverlay();
++        }
++      }
++
++      overlayClose.addEventListener('click', closeOverlay);
++      materialOverlay.addEventListener('click', (event) => {
++        if (event.target === materialOverlay) {
++          closeOverlay();
++        }
++      });
++
++      document.querySelectorAll('.hotspot').forEach((hotspot) => {
++        hotspot.addEventListener('click', () => openOverlay(hotspot.dataset.item));
++        hotspot.addEventListener('keydown', (event) => {
++          if (event.key === 'Enter' || event.key === ' ') {
++            event.preventDefault();
++            openOverlay(hotspot.dataset.item);
++          }
++        });
++      });
++
++      function updateMaterial(button) {
++        const article = button.closest('article');
++        const afterPanel = article.querySelector('[data-role="after"]');
++        const label = button.dataset.label;
++        const description = button.dataset.description;
++        const texture = button.dataset.texture;
++
++        article.querySelectorAll('.material-swatches button').forEach((btn) => {
++          btn.setAttribute('aria-pressed', btn === button ? 'true' : 'false');
++        });
++
++        if (afterPanel && texture) {
++          afterPanel.style.setProperty('--texture', `url('${texture}')`);
++        }
++
++        const nameField = article.querySelector('[data-role="material-name"]');
++        const descriptionField = article.querySelector('[data-role="description"]');
++        if (nameField) {
++          nameField.textContent = label;
++        }
++        if (descriptionField) {
++          descriptionField.innerHTML = description;
++        }
++      }
++
++      overlayArticles.forEach((article) => {
++        const buttons = article.querySelectorAll('.material-swatches button');
++        buttons.forEach((button, index) => {
++          button.style.setProperty('--swatch', `url('${button.dataset.texture}')`);
++          if (index === 0) {
++            updateMaterial(button);
++          }
++          button.addEventListener('click', () => updateMaterial(button));
++        });
++      });
++
++      filmCards.forEach((card) => {
++        const preview = card.querySelector('.film-preview');
++        const texture = card.dataset.texture;
++        if (preview && texture) {
++          preview.style.setProperty('--texture', `url('${texture}')`);
++        }
++        card.addEventListener('click', () => {
++          filmCards.forEach((c) => c.setAttribute('aria-pressed', c === card ? 'true' : 'false'));
++          if (filmDetailsName) {
++            filmDetailsName.textContent = card.querySelector('strong').textContent;
++          }
++          if (filmDetailsDescription) {
++            filmDetailsDescription.innerHTML = card.dataset.description;
++          }
++        });
++      });
++    </script>
++  </body>
+ </html>
+ 
+EOF
+)
