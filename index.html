@@ -3,211 +3,331 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FoilVengers – Küchen- & Möbelfolierung in Wien | Premium Schwarz-Gold</title>
-  <meta name="description" content="FoilVengers – Premium Küchen- & Möbelfolierung in Wien. Sichtschutz- & Sonnenschutzfolien für Fenster. Werbefolien für Schaufenster. Schnell, sauber, beeindruckend – ohne Renovierung." />
+  <title>FoilVengers – Zukunft der Folien, Technik & Möbel | Wien</title>
+  <meta name="description" content="FoilVengers – Premium Möbelfolierungen & Glasfolien in Wien. Zukunft der Folien, Technik & Möbel. Kostenlose Visualisierung, schnelle Montage, edles Schwarz-Gold Design." />
   <meta name="theme-color" content="#0b0c10" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="FoilVengers – Küchen- & Möbelfolierung in Wien" />
-  <meta property="og:description" content="Schwarz-Gold Design, Küchen- & Möbelfolierungen in Wien. Modern. Schnell. Premium." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1600&auto=format&fit=crop" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#0b0c10; --panel:#10131a; --panel-2:#0f1117; --muted:#9aa3b2; --txt:#eaf0f6; --acc:#d4af37; --acc-2:#f5d76e; --danger:#ff6b6b; --radius:18px;
-      --shadow:0 12px 32px rgba(0,0,0,.35);
+      --bg:#0b0c10; --panel:#10131a; --panel2:#0f1117;
+      --txt:#eef2f7; --muted:#9aa3b2;
+      --gold:#d4af37; --gold2:#f5d76e; --green:#27c93f;
+      --radius:18px; --shadow:0 12px 32px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--txt);background:linear-gradient(180deg,#0b0c10,#0f1117 40%,#0b0c10 100%);} 
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--txt);background:linear-gradient(180deg,#0b0c10,#0f1117 40%,#0b0c10 100%);}
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block;border-radius:var(--radius)}
-    .container{width:min(1140px, 92%); margin-inline:auto}
-
-    /* NAV */
-    .nav{position:sticky;top:0;z-index:50;background:rgba(15,17,23,.6);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    img{max-width:100%;display:block;border-radius:16px}
+    .container{width:min(1180px,92%);margin-inline:auto}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);
+         background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:var(--shadow);transition:.2s}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0b0f;border:none;font-weight:700}
+    .pill{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
+    h1{font-size:clamp(34px,5.5vw,60px);letter-spacing:-.02em;margin:0 0 10px}
+    h2{font-size:clamp(26px,3.2vw,38px);margin:0 0 8px}
+    .sub{color:var(--muted);margin:0 0 26px}
+    section{padding:80px 0}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px}
+    .row{display:flex;gap:10px;color:var(--muted)}
+    .price{font-weight:800;font-size:26px}
+    .tag{display:inline-block;padding:6px 10px;border:1px dashed rgba(255,255,255,.18);border-radius:10px;font-size:12px;color:var(--muted)}
+    /* NAV / HAMBURGER */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(15,17,23,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:flex;align-items:center;gap:10px}
-    .brand-logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--acc),var(--acc-2));display:grid;place-items:center;font-weight:800;color:#000;font-size:20px}
-    .nav-links{display:flex;gap:18px;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-      box-shadow:var(--shadow); transition:transform .15s ease,box-shadow .2s ease}
-    .btn:hover{transform:translateY(-1px)}
-    .btn.primary{background:linear-gradient(135deg,var(--acc) 0%, var(--acc-2) 100%); color:#0a0b0f;border:none}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.18)}
-
+    .logo{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#000;background:linear-gradient(135deg,var(--gold),var(--gold2))}
+    .hamb{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:1px solid rgba(255,255,255,.12);cursor:pointer}
+    .hamb span{display:block;width:20px;height:2px;background:#fff;margin:3px 0;border-radius:2px}
+    .drawer{position:fixed;inset:0 0 0 auto;transform:translateX(100%);transition:.25s;background:rgba(0,0,0,.5)}
+    .drawer.open{transform:translateX(0)}
+    .panel{position:absolute;right:0;top:0;height:100%;width:min(320px,86%);background:#0f1117;padding:18px;border-left:1px solid rgba(255,255,255,.08)}
+    .panel a{display:block;padding:14px;border-radius:10px}
+    .panel a:hover{background:rgba(255,255,255,.06)}
     /* HERO */
-    .hero{padding:88px 0 64px; position:relative; overflow:hidden}
-    .hero h1{font-size:clamp(36px,5.5vw,60px); line-height:1.04; letter-spacing:-.02em; margin:0 0 12px}
-    .hero p{color:var(--muted); font-size:clamp(16px,1.7vw,18px)}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:13px;color:var(--muted); margin-bottom:14px}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
-    .mock{position:relative; border-radius:22px; padding:8px; background:linear-gradient(180deg,#0f1320,#0a0c12); border:1px solid rgba(255,255,255,.06); box-shadow:var(--shadow)}
-    .mock .bar{height:36px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px;padding:0 10px}
+    .hero{padding:90px 0 64px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .mock{border-radius:22px;padding:8px;background:linear-gradient(180deg,#0f1320,#0a0c12);border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow)}
+    .mock .bar{height:36px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);display:flex;gap:8px;align-items:center;padding:0 10px}
     .dot{width:10px;height:10px;border-radius:999px;background:#ff6b6b}.dot:nth-child(2){background:#ffd166}.dot:nth-child(3){background:#06d6a0}
     .screen{padding:14px}
-    .screen img{aspect-ratio:16/10; object-fit:cover}
-
-    /* SECTIONS */
-    section{padding:80px 0}
-    h2{font-size:clamp(26px,3.2vw,38px);margin:0 0 12px}
-    .sub{color:var(--muted);margin:0 0 26px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02)); padding:22px;border:1px solid rgba(255,255,255,.08); border-radius:var(--radius)}
-    .card h3{margin:0 0 8px;font-size:20px}
-    .row{display:flex;gap:10px;align-items:flex-start;color:var(--muted)}
-    .badge{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border:1px dashed rgba(255,255,255,.15); border-radius:12px; font-size:13px;color:var(--muted)}
-
-    /* GALLERY */
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .gallery a{position:relative;display:block;overflow:hidden;border-radius:16px}
-    .gallery img{transition:transform .25s ease}
-    .gallery a:hover img{transform:scale(1.06)}
-
-    /* FAQ */
-    .faq{display:flex;flex-direction:column;gap:12px}
-    .faq details{border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 16px;background:rgba(255,255,255,.03)}
-    .faq summary{cursor:pointer;font-weight:600}
-
-    /* CONTACT */
-    form{display:grid;gap:12px}
-    input, textarea{width:100%;background:#0f1218;border:1px solid rgba(255,255,255,.14);color:var(--txt);padding:12px 14px;border-radius:12px;outline:none}
-    textarea{min-height:130px;resize:vertical}
-    .ok{border-color:rgba(212,175,55,.6)!important}
-    .err{border-color:rgba(255,107,107,.7)!important}
-    .notice{font-size:13px;color:var(--muted)}
-
-    /* FOOTER */
-    footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted)}
-
+    /* ALWAYS-ON CALL/WHATSAPP */
+    .floatbar{position:fixed;left:14px;bottom:14px;display:flex;gap:10px;z-index:60}
+    .floatbar a{background:#1f9040;border:1px solid rgba(0,0,0,.2);padding:10px 14px;border-radius:999px;font-weight:700;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+    .floatbar a.wa{background:#25D366}
+    /* FOLIENFORSCHER */
+    .folio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .folio-item{border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03)}
+    .folio-item label{display:block;padding:10px}
+    .total{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+    /* ACCORDION */
+    details.card summary{cursor:pointer;font-weight:600}
     /* RESPONSIVE */
-    @media (max-width: 1024px){.hero-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}}
-    @media (max-width: 640px){.nav-links{display:none}.grid-3,.grid-2,.gallery{grid-template-columns:1fr}}
+    @media (max-width: 1024px){.hero-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.folio-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.grid-2,.grid-3{grid-template-columns:1fr}.folio-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
+
+  <!-- Always visible call + WhatsApp -->
+  <div class="floatbar" aria-label="Schnellkontakt">
+    <a href="tel:+430394930590" class="call">📞 Rufen Sie uns jetzt an</a>
+    <a class="wa" target="_blank" rel="noopener" href="https://wa.me/430394930590?text=Hallo%20FoilVengers%2C%20ich%20habe%20eine%20Frage%20zur%20Folierung.">🟢 WhatsApp</a>
+  </div>
+
   <!-- NAV -->
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <div class="brand-logo">FV</div>
+        <div class="logo">FV</div>
         <strong>FoilVengers</strong>
       </div>
-      <div class="nav-links">
-        <a href="#leistungen">Leistungen</a>
-        <a href="#projekte">Projekte</a>
-        <a href="#preise">Preise</a>
-        <a href="#faq">FAQ</a>
-        <a href="#kontakt" class="btn">Kontakt</a>
+      <div class="hamb" id="hamb" aria-label="Menü öffnen" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="panel">
+        <a href="#start">Startseite</a>
+        <a href="#moebelfolien">Möbelfolien</a>
+        <a href="#forscher">Möbelfolienforscher</a>
+        <a href="#unsere-folien">Unsere Folien</a>
+        <a href="#erstgespraech">Kostenloses Erstgespräch</a>
+        <a href="#faq">Häufig gestellte Fragen</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="hero">
+  <!-- STARTSEITE -->
+  <header id="start" class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="pill">FoilVengers • Küchen- & Möbelfolierung • Wien</span>
-        <h1>Wir verwandeln deine Küche in Premium-Design – ohne Baustelle, ohne Stress.</h1>
-        <p>Edle Oberflächen in Schwarz-Gold, Stein, Holz oder Marmor-Optik. In wenigen Tagen fertig – statt teurer Renovierung.</p>
-        <div style="display:flex; gap:12px; margin-top:18px; flex-wrap:wrap">
-          <a class="btn primary" href="#kontakt">Kostenloses Erstgespräch</a>
-          <a class="btn ghost" href="#leistungen">Unsere Leistungen</a>
+        <span class="pill">Die Zukunft der <b>Folien</b>, <b>Technik</b> & <b>Möbel</b></span>
+        <h1>Premium-Folierungen für Küche, Möbel & Glas – schneller als jede Renovierung.</h1>
+        <p class="sub">Schwarz-Gold Look, edle Materialien, präzise Verarbeitung. FoilVengers macht Räume stark – ohne Baustelle.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn primary" href="#erstgespraech">Kostenloses Erstgespräch</a>
+          <a class="btn" href="#moebelfolien">Möbelfolien entdecken</a>
         </div>
-        <div style="margin-top:14px" class="badge">🦸‍♂️ Küchen & Möbel • 🛡️ Glas-/Sichtschutz • 🎯 Werbefolien • 📍 Wien & Umgebung</div>
+        <div style="margin-top:12px" class="tag">📍 Wien & Umgebung · 🛡️ Schutz | ✨ Design | ⚡ Tempo</div>
       </div>
       <div class="mock">
         <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
         <div class="screen">
-          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop" alt="Mockup"/>
+          <img src="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1600&auto=format&fit=crop" alt="Modernisierte Küche in Schwarz">
         </div>
       </div>
     </div>
   </header>
 
-  <!-- LEISTUNGEN -->
-  <section id="leistungen">
+  <!-- MÖBELFOLIEN -->
+  <section id="moebelfolien">
     <div class="container">
-      <h2>Leistungen</h2>
-      <p class="sub">A > B > C > D – Fokus auf Küchen & Möbel, plus Glas-, Werbe- und Designfolien.</p>
+      <h2>Möbelfolien in Perfektion</h2>
+      <p class="sub"><a class="btn primary" href="#visual">Kostenlose Visualisierung</a></p>
+
+      <!-- 1 -->
+      <div class="grid-2" style="align-items:center;margin:24px 0">
+        <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1400&auto=format&fit=crop" alt="Marmoroptik">
+        <div>
+          <h3>Eleganz ohne Baustelle</h3>
+          <p class="sub">Marmor-, Stein-, Holz- und Metall-Optiken – sauber verklebt, in Tagen statt Wochen.</p>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="grid-2" style="align-items:center;margin:24px 0">
+        <div>
+          <h3>Individuelle Stilberatung</h3>
+          <p class="sub">Wir empfehlen Kombinationen, die zu Licht, Raum und Nutzung passen – damit es wirklich wirkt.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=1400&auto=format&fit=crop" alt="Stilberatung">
+      </div>
+      <!-- 3 -->
+      <div class="grid-2" style="align-items:center;margin:24px 0">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop" alt="Vielfalt">
+        <div>
+          <h3>Vielfalt ohne Kompromisse</h3>
+          <p class="sub">Matt, hochglanz, strukturiert – fühlbare Qualität, die hält und pflegeleicht ist.</p>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="grid-2" style="align-items:center;margin:24px 0">
+        <div>
+          <h3>Schutz & Beständigkeit</h3>
+          <p class="sub">Kratzfest, hitzebeständig, wasserresistent – ideal für Küche, Bad & viel genutzte Oberflächen.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop" alt="Beständigkeit">
+      </div>
+    </div>
+  </section>
+
+  <!-- KOSTENLOSE VISUALISIERUNG -->
+  <section id="visual">
+    <div class="container">
+      <h2>Einfache, funktionierende & exklusive Beratung</h2>
+      <p class="sub">Laden Sie ein Foto des Raumes, der Küche oder des Möbels hoch. Wir verwandeln es in eine fotorealistische Vorschau. In 24–48 h erhalten Sie Ihre personalisierte Visualisierung.</p>
+      <div class="card">
+        <!-- TODO: Formspree Endpoint eintragen -->
+        <form id="vizForm" action="https://formspree.io/f/XXXXXXXX" method="POST" enctype="multipart/form-data">
+          <div class="grid-3">
+            <label>Ihr Name<br><input name="name" required placeholder="Vor- und Nachname"></label>
+            <label>E-Mail<br><input type="email" name="email" required placeholder="name@domain.at"></label>
+            <label>Telefon (optional)<br><input name="phone" placeholder="+43 …"></label>
+          </div>
+          <label style="display:block;margin:12px 0">Bild hochladen (JPG/PNG, max. 15 MB)
+            <input type="file" name="photo" accept="image/*" required>
+          </label>
+          <label>Wunsch-Stil (optional)
+            <input name="style" placeholder="z. B. Schwarz-Gold Matt, Marmor hell …">
+          </label>
+          <button class="btn primary" type="submit">Anfrage senden</button>
+          <span class="tag" id="vizStatus"></span>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÖBELFOLIENFORSCHER -->
+  <section id="forscher">
+    <div class="container">
+      <h2>Möbelfolien-Forscher</h2>
+      <p class="sub">Wählen Sie Ihre Wunsch-Folien. Jede Folie: <b>130 €</b>.</p>
+
+      <div class="folio-grid" id="folioGrid">
+        <!-- 6 Muster -->
+        <div class="folio-item">
+          <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?q=80&w=800&auto=format&fit=crop" alt="Stein">
+          <label><input type="checkbox" value="Stein"> Stein</label>
+        </div>
+        <div class="folio-item">
+          <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=800&auto=format&fit=crop" alt="Schwarzer Marmor">
+          <label><input type="checkbox" value="Schwarzer Marmor"> Schwarzer Marmor</label>
+        </div>
+        <div class="folio-item">
+          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=800&auto=format&fit=crop" alt="Weißer Marmor">
+          <label><input type="checkbox" value="Weißer Marmor"> Weißer Marmor</label>
+        </div>
+        <div class="folio-item">
+          <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=800&auto=format&fit=crop" alt="Braunes Holz">
+          <label><input type="checkbox" value="Braunes Holz"> Braunes Holz</label>
+        </div>
+        <div class="folio-item">
+          <img src="https://images.unsplash.com/photo-1523419409543-63f6dbd49b97?q=80&w=800&auto=format&fit=crop" alt="Helles Holz">
+          <label><input type="checkbox" value="Helles Holz"> Helles Holz</label>
+        </div>
+        <div class="folio-item">
+          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=800&auto=format&fit=crop" alt="Luzengo Weiß">
+          <label><input type="checkbox" value="Luzengo Weiß"> Luzengo Weiß</label>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="total">
+          <div>Ausgewählt: <b><span id="count">0</span></b> • Summe: <b><span id="sum">€ 0</span></b></div>
+          <a class="btn primary" href="#order">Weiter & bestellen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTELLUNG -->
+  <section id="order">
+    <div class="container">
+      <h2>Bestellung abschließen</h2>
+      <div class="card">
+        <!-- TODO: Formspree Endpoint eintragen -->
+        <form id="orderForm" action="https://formspree.io/f/YYYYYYYY" method="POST">
+          <input type="hidden" name="selection" id="selField">
+          <input type="hidden" name="sum" id="sumField">
+          <div class="grid-3">
+            <label>Name<br><input name="name" required></label>
+            <label>E-Mail<br><input type="email" name="email" required></label>
+            <label>Adresse<br><input name="address" required placeholder="Straße, PLZ Ort"></label>
+          </div>
+          <label>Nachricht (optional)
+            <input name="msg" placeholder="Maße, Frontenanzahl, Wunschtermin …">
+          </label>
+          <button class="btn primary" type="submit">Verbindlich anfragen</button>
+          <span class="tag" id="orderStatus"></span>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNSERE FOLIEN -->
+  <section id="unsere-folien">
+    <div class="container">
+      <h2>Unsere Folien</h2>
+      <p class="sub">Hochwertige Markenfolien – optisch stark, technisch zuverlässig.</p>
       <div class="grid-3">
         <article class="card">
-          <h3>Kitchen Makeover</h3>
-          <p class="row">🦾 Küchenfronten, Arbeitsplatten, Inseln</p>
-          <p class="row">🪵 Holz, Stein, Marmor, Matt/Glanz</p>
-          <p class="row">⚡ In 2–5 Tagen fertig – ohne Ausbau</p>
+          <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1200&auto=format&fit=crop" alt="Hitzeschutz">
+          <h3>Hitzeschutzfolien</h3>
+          <p class="sub">Spürbar kühler & UV-Reduktion für Fensterfronten.</p>
+          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Verbessert Raumklima, reduziert Blendung, schont Möbel. Ideal für Süd/West-Lagen.</p></details>
         </article>
         <article class="card">
-          <h3>Glas & Sichtschutz</h3>
-          <p class="row">🛡️ Sichtschutz, Sonnenschutz, UV</p>
-          <p class="row">🏢 Fenster, Türen, Duschwände</p>
-          <p class="row">🌞 Spürbar kühler & privater</p>
-        </article>
-        <article class="card">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Werbe- und Designfolien">
           <h3>Werbe- & Designfolien</h3>
-          <p class="row">🎯 Schaufenster, Logos, Beschriftung</p>
-          <p class="row">🎨 Wand- & Möbeldesigns, Akzente</p>
-          <p class="row">🧼 Rückstandsfrei entfernbar</p>
+          <p class="sub">Schaufenster, Logos, Beschriftungen – stark und rückstandsfrei.</p>
+          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Feine Konturschnitte, Matt/Glanz, transluzent oder deckend. Perfekt für Markenauftritte.</p></details>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1200&auto=format&fit=crop" alt="Sicherheitsfolien">
+          <h3>Sicherheitsfolien</h3>
+          <p class="sub">Splitterschutz & Einbruchhemmung für Glasflächen.</p>
+          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Erhöht Bruchfestigkeit, hält Splitter zusammen, optional Opaque-Sichtschutz.</p></details>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1200&auto=format&fit=crop" alt="UV-Schutz">
+          <h3>UV-Schutzfolien</h3>
+          <p class="sub">Schützt Möbel & Stoffe vor Ausbleichen.</p>
+          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Bis zu 99% UV-Filter, transparent. Ideal für Auslagen & Wohnräume.</p></details>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?q=80&w=1200&auto=format&fit=crop" alt="Sichtschutz">
+          <h3>Sichtschutzfolien</h3>
+          <p class="sub">Privatsphäre ohne Lichtverlust – Milchglas & Muster.</p>
+          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Individuelle Designs, logos & Linien. Bäder, Büros, Eingänge.</p></details>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1200&auto=format&fit=crop" alt="Smart-Switch">
+          <h3>Smart-Switch-Folie</h3>
+          <p class="sub">Per Knopfdruck von klar zu blickdicht.</p>
+          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Elektrisch schaltbar, Meetingräume & Bäder. Integration durch Fachpartner.</p></details>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200&auto=format&fit=crop" alt="Insektenschutz">
+          <h3>Insektenschutz</h3>
+          <p class="sub">Feinmaschig, stabil, maßgefertigt – Türen & Fenster.</p>
+          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Rahmenlösungen, Schiebe-Elemente, magnetisch. Unauffällig & effektiv.</p></details>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?q=80&w=1200&auto=format&fit=crop" alt="Anti-Graffiti">
+          <h3>Anti-Graffiti-Folie</h3>
+          <p class="sub">Schützt Oberflächen, lässt sich einfach erneuern.</p>
+          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Transparenter Opferschutz für Glas & Metall – spart Reinigungskosten.</p></details>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- PROJEKTE -->
-  <section id="projekte">
+  <!-- ERSTGESPRÄCH -->
+  <section id="erstgespraech">
     <div class="container">
-      <h2>Ausgewählte Projekte</h2>
-      <p class="sub">Ein schneller Eindruck. Mehr Cases auf Anfrage.</p>
-      <div class="gallery">
-        <a href="#" data-img="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1600&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=800&auto=format&fit=crop" alt="Küchenfolierung Marmoroptik"></a>
-        <a href="#" data-img="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1600&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=800&auto=format&fit=crop" alt="Matt-schwarze Fronten – Makeover"></a>
-        <a href="#" data-img="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1600&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=800&auto=format&fit=crop" alt="Sichtschutzfolie am Fenster"></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PREISE -->
-  <section id="preise">
-    <div class="container">
-      <h2>Pakete & Preise</h2>
-      <p class="sub">Jede Küche ist anders – hier ein Gefühl für Budgets. Fixpreise nach Besichtigung.</p>
+      <h2>Kostenlose Erstberatung</h2>
+      <p class="sub">Wählen Sie einen Slot – unser Design-Team meldet sich.</p>
       <div class="grid-3">
-        <div class="card">
-          <h3>Starter</h3>
-          <div class="price">ab € 690</div>
-          <p class="row">Kleine Küche / einzelne Elemente</p>
-          <p class="row">Material inkl., 1 Korrektur</p>
-          <a class="btn" href="#kontakt">Anfragen</a>
-        </div>
-        <div class="card" style="outline:2px solid rgba(212,175,55,.35)">
-          <h3>FoilVengers</h3>
-          <div class="price">€ 1.290 – 2.490</div>
-          <p class="row">Komplette Küche (Fronten + Akzente)</p>
-          <p class="row">Premium-Folie, Schutz, Montage</p>
-          <a class="btn primary" href="#kontakt">Beliebteste Wahl</a>
-        </div>
-        <div class="card">
-          <h3>Pro</h3>
-          <div class="price">ab € 2.900</div>
-          <p class="row">Große Küche / Spezialoptiken</p>
-          <p class="row">Vor-Ort-Service & Feinschliff</p>
-          <a class="btn" href="#kontakt">Projekt besprechen</a>
-        </div>
-      </div>
-      <p class="sub" style="margin-top:14px">*Alle Preise inkl. Montage, exkl. Anfahrt. Finale Angebote nach Besichtigung.</p>
-    </div>
-  </section>
-
-  <!-- KUNDENSTIMMEN -->
-  <section>
-    <div class="container">
-      <h2>FoilVengers – Kundenstimmen</h2>
-      <div class="grid-2">
-        <blockquote class="card">„In wenigen Tagen von alt auf wow! Perfekt umgesetzt.“<footer class="sub">— Nina H., Wien</footer></blockquote>
-        <blockquote class="card">„Sehr freundlich, sehr präzise, top Ergebnis.“<footer class="sub">— Marco K., Wien</footer></blockquote>
+        <a class="card btn" style="justify-content:center" href="mailto:kontakt@foilvengers.at?subject=Erstgespr%C3%A4ch&body=Hallo%20FoilVengers%2C%20ich%20m%C3%B6chte%20eine%20kostenlose%20Erstberatung.">📧 1h Erstberatung (Online)</a>
+        <a class="card btn" style="justify-content:center" href="https://wa.me/430394930590?text=Kostenloser%20QuickCheck%20bitte">⚡ QuickCheck (1h, WhatsApp)</a>
+        <!-- TODO: Wenn du Calendly hast, hier Link einsetzen -->
+        <a class="card btn" style="justify-content:center" href="#visual">🏠 Interieur-Beratung vor Ort (Anfrage)</a>
       </div>
     </div>
   </section>
@@ -215,54 +335,20 @@
   <!-- FAQ -->
   <section id="faq">
     <div class="container">
-      <h2>FAQ – Häufige Fragen</h2>
-      <div class="faq">
-        <details class="card"><summary>Wie schnell könnt ihr liefern?</summary><p class="sub">Meist 2–5 Tage pro Küche. Abhängig von Größe, Material & Feedback.</p></details>
-        <details class="card"><summary>Welche Folien verwendet ihr?</summary><p class="sub">Nur hochwertige Markenfolien, hitzebeständig & wasserresistent.</p></details>
-        <details class="card"><summary>Was kostet eine Küche?</summary><p class="sub">Typischerweise € 690 bis € 2.490 – Fixpreise nach Besichtigung.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- KONTAKT -->
-  <section id="kontakt">
-    <div class="container">
-      <h2>Kontakt aufnehmen – Einsatzgebiet Wien</h2>
-      <p class="sub">Schick uns ein paar Infos – wir melden uns fix mit einem Vorschlag.</p>
+      <h2>Häufig gestellte Fragen</h2>
       <div class="grid-2">
-        <div class="card">
-          <form id="contactForm" novalidate>
-            <label>
-              <span>Dein Name</span>
-              <input name="name" id="f-name" required placeholder="Vor- und Nachname" />
-            </label>
-            <label>
-              <span>E-Mail</span>
-              <input type="email" name="email" id="f-email" required placeholder="name@domain.at" />
-            </label>
-            <label>
-              <span>Nachricht</span>
-              <textarea name="message" id="f-msg" placeholder="Worum geht’s? Küche, Material, Timing …"></textarea>
-            </label>
-            <button class="btn primary" type="submit">Absenden</button>
-            <div class="notice" id="f-status" role="status" aria-live="polite"></div>
-          </form>
-        </div>
-        <div class="card">
-          <h3>Direkt</h3>
-          <p class="row">📧 kontakt@foilvengers.at</p>
-          <p class="row">📞 +43 0394 930 590</p>
-          <p class="row">📍 Schlossstraße, 1090 Wien</p>
-        </div>
+        <details class="card"><summary>Wie lange dauert eine Küche?</summary><p class="sub">Meist 2–5 Tage – abhängig von Größe, Material & Vorbereitung.</p></details>
+        <details class="card"><summary>Halten die Folien in der Küche?</summary><p class="sub">Ja. Wir nutzen hitzebeständige, wasserresistente Markenfolien mit starker Haftung.</p></details>
+        <details class="card"><summary>Kann ich Muster sehen?</summary><p class="sub">Klar – im Gespräch oder per Post. Der Möbelfolien-Forscher hilft bei der Vorauswahl.</p></details>
+        <details class="card"><summary>Macht ihr auch Fenster/Schaufenster?</summary><p class="sub">Ja: Hitzeschutz, UV, Sichtschutz, Werbung & Sicherheit.</p></details>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  <footer style="border-top:1px solid rgba(255,255,255,.08);padding:34px 0">
     <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <small>© <span id="year"></span> FoilVengers. Alle Rechte vorbehalten.</small>
-      <div><a href="#impressum" class="sub">Impressum</a> · <a href="#datenschutz" class="sub">Datenschutz</a></div>
+      <small>© <span id="year"></span> FoilVengers – Leunam Bratkovic, Schlossstraße, 1090 Wien · <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a></small>
     </div>
   </footer>
 
@@ -286,54 +372,54 @@
     <div class="container">
       <h2>Datenschutz</h2>
       <div class="card">
-        <p>Wir verarbeiten personenbezogene Daten nur zur Bearbeitung Ihrer Anfrage.</p>
-        <p>Hosting: GitHub Pages. Beim Seitenaufruf werden technische Daten verarbeitet.</p>
-        <p>Kontakt: kontakt@foilvengers.at – Rechte auf Auskunft & Löschung vorhanden.</p>
+        <p>Wir verarbeiten personenbezogene Daten nur zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO).</p>
+        <p>Hosting: GitHub Pages. Beim Seitenaufruf werden technische Daten verarbeitet. Keine Tracking-Cookies.</p>
+        <p>Kontakt: kontakt@foilvengers.at – Rechte auf Auskunft, Berichtigung, Löschung und Beschwerde bestehen.</p>
       </div>
     </div>
   </section>
 
   <script>
-    // Jahr im Footer
+    // Footer-Jahr
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Demo Kontakt
-    const f = document.getElementById('contactForm');
-    const status = document.getElementById('f-status');
-    f.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      status.textContent = 'Danke! Wir melden uns innerhalb von 24 Stunden.';
-      f.reset();
+    // Drawer
+    const hamb=document.getElementById('hamb'); const drawer=document.getElementById('drawer');
+    function toggle(){drawer.classList.toggle('open'); drawer.setAttribute('aria-hidden', !drawer.classList.contains('open'))}
+    hamb.addEventListener('click',toggle); hamb.addEventListener('keyup',e=>{if(e.key==='Enter') toggle()}); drawer.addEventListener('click',e=>{if(e.target===drawer) toggle()});
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',toggle));
+
+    // Folienforscher: Preisberechnung
+    const PRICE = 130;
+    const countEl = document.getElementById('count');
+    const sumEl = document.getElementById('sum');
+    const selField = document.getElementById('selField');
+    const sumField = document.getElementById('sumField');
+    function recalc(){
+      const boxes = [...document.querySelectorAll('#folioGrid input[type=checkbox]')];
+      const picked = boxes.filter(b=>b.checked).map(b=>b.value);
+      const total = picked.length * PRICE;
+      countEl.textContent = picked.length;
+      sumEl.textContent = `€ ${total.toLocaleString('de-AT')}`;
+      selField.value = picked.join(', ');
+      sumField.value = total;
+    }
+    document.querySelectorAll('#folioGrid input[type=checkbox]').forEach(cb=>cb.addEventListener('change',recalc));
+    recalc();
+
+    // Formspree Status (Visualisierung)
+    const vizForm = document.getElementById('vizForm');
+    const vizStatus = document.getElementById('vizStatus');
+    vizForm.addEventListener('submit', async (e)=>{
+      vizStatus.textContent = 'Senden …';
     });
 
-    // Lightbox (Simple)
-    document.querySelectorAll('.gallery a').forEach(a=>{
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        window.open(a.dataset.img);
-      })
+    // Formspree Status (Bestellung)
+    const orderForm = document.getElementById('orderForm');
+    const orderStatus = document.getElementById('orderStatus');
+    orderForm.addEventListener('submit', async (e)=>{
+      orderStatus.textContent = 'Senden …';
     });
   </script>
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "FoilVengers",
-    "url": "https://foilvengers.at",
-    "telephone": "+43 0394 930 590",
-    "email": "kontakt@foilvengers.at",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Schlossstraße",
-      "postalCode": "1090",
-      "addressLocality": "Wien",
-      "addressCountry": "AT"
-    },
-    "areaServed": "Wien"
-  }
-  </script>
-
 </body>
 </html>
