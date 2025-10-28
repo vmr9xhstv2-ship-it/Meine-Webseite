@@ -3,42 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="dark light" />
-  <title>Meine Firma – Wir bauen Webseiten, die verkaufen</title>
-  <meta name="description" content="Moderne Business‑Website mit Fokus auf Conversion: Leistungen, Referenzen, Preise, FAQs und Kontakt. Schnell, SEO‑ready und DSGVO‑freundlich." />
+  <title>FoilVengers – Küchen- & Möbelfolierung in Wien | Premium Schwarz-Gold</title>
+  <meta name="description" content="FoilVengers – Premium Küchen- & Möbelfolierung in Wien. Sichtschutz- & Sonnenschutzfolien für Fenster. Werbefolien für Schaufenster. Schnell, sauber, beeindruckend – ohne Renovierung." />
   <meta name="theme-color" content="#0b0c10" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%237aa2ff'/><text x='50' y='62' font-size='60' text-anchor='middle' fill='black' font-family='Arial, Helvetica, sans-serif'>M</text></svg>">
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Meine Firma – Wir bauen Webseiten, die verkaufen" />
-  <meta property="og:description" content="Konzept, Design, Entwicklung und Betrieb – alles aus einer Hand. In 7–14 Tagen live." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop" />
+  <meta property="og:title" content="FoilVengers – Küchen- & Möbelfolierung in Wien" />
+  <meta property="og:description" content="Schwarz-Gold Design, Küchen- & Möbelfolierungen in Wien. Modern. Schnell. Premium." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1600&auto=format&fit=crop" />
   <style>
-    :root{ --bg:#0b0c10; --panel:#10131a; --panel-2:#0f1117; --muted:#9aa3b2; --txt:#eaf0f6; --acc:#3ddc97; --acc-2:#7aa2ff; --danger:#ff6b6b; --radius:18px; --shadow:0 12px 32px rgba(0,0,0,.35); }
+    :root{
+      --bg:#0b0c10; --panel:#10131a; --panel-2:#0f1117; --muted:#9aa3b2; --txt:#eaf0f6; --acc:#d4af37; --acc-2:#f5d76e; --danger:#ff6b6b; --radius:18px;
+      --shadow:0 12px 32px rgba(0,0,0,.35);
+    }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--txt);background:linear-gradient(180deg,#0b0c10,#0f1117 40%,#0b0c10 100%);} 
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block;border-radius:var(--radius)}
     .container{width:min(1140px, 92%); margin-inline:auto}
-    /* ACCESSIBILITY */
-    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:12px;top:12px;width:auto;height:auto;background:#fff;color:#000;padding:10px 14px;border-radius:10px}
-    :focus-visible{outline:2px solid var(--acc-2);outline-offset:2px}
-    @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
     /* NAV */
     .nav{position:sticky;top:0;z-index:50;background:rgba(15,17,23,.6);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:flex;align-items:center;gap:10px}
-    .brand-logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--acc),var(--acc-2));display:grid;place-items:center;font-weight:800;color:#000}
+    .brand-logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--acc),var(--acc-2));display:grid;place-items:center;font-weight:800;color:#000;font-size:20px}
     .nav-links{display:flex;gap:18px;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)); box-shadow:var(--shadow); transition:transform .15s ease,box-shadow .2s ease}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      box-shadow:var(--shadow); transition:transform .15s ease,box-shadow .2s ease}
     .btn:hover{transform:translateY(-1px)}
     .btn.primary{background:linear-gradient(135deg,var(--acc) 0%, var(--acc-2) 100%); color:#0a0b0f;border:none}
     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.18)}
+
     /* HERO */
     .hero{padding:88px 0 64px; position:relative; overflow:hidden}
     .hero h1{font-size:clamp(36px,5.5vw,60px); line-height:1.04; letter-spacing:-.02em; margin:0 0 12px}
@@ -50,6 +49,7 @@
     .dot{width:10px;height:10px;border-radius:999px;background:#ff6b6b}.dot:nth-child(2){background:#ffd166}.dot:nth-child(3){background:#06d6a0}
     .screen{padding:14px}
     .screen img{aspect-ratio:16/10; object-fit:cover}
+
     /* SECTIONS */
     section{padding:80px 0}
     h2{font-size:clamp(26px,3.2vw,38px);margin:0 0 12px}
@@ -60,50 +60,48 @@
     .card h3{margin:0 0 8px;font-size:20px}
     .row{display:flex;gap:10px;align-items:flex-start;color:var(--muted)}
     .badge{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border:1px dashed rgba(255,255,255,.15); border-radius:12px; font-size:13px;color:var(--muted)}
-    .price{font-weight:800;font-size:30px}
+
     /* GALLERY */
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .gallery a{position:relative;display:block;overflow:hidden;border-radius:16px}
     .gallery img{transition:transform .25s ease}
     .gallery a:hover img{transform:scale(1.06)}
-    /* MODAL */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.66);display:none;align-items:center;justify-content:center;padding:24px}
-    .lightbox.open{display:flex}
-    .lightbox img{max-height:88vh; width:auto}
+
     /* FAQ */
     .faq{display:flex;flex-direction:column;gap:12px}
     .faq details{border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 16px;background:rgba(255,255,255,.03)}
     .faq summary{cursor:pointer;font-weight:600}
+
     /* CONTACT */
     form{display:grid;gap:12px}
-    label{display:grid;gap:6px}
     input, textarea{width:100%;background:#0f1218;border:1px solid rgba(255,255,255,.14);color:var(--txt);padding:12px 14px;border-radius:12px;outline:none}
     textarea{min-height:130px;resize:vertical}
-    .ok{border-color:rgba(61,220,151,.6)!important}
+    .ok{border-color:rgba(212,175,55,.6)!important}
     .err{border-color:rgba(255,107,107,.7)!important}
     .notice{font-size:13px;color:var(--muted)}
+
     /* FOOTER */
     footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted)}
+
     /* RESPONSIVE */
     @media (max-width: 1024px){.hero-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}}
     @media (max-width: 640px){.nav-links{display:none}.grid-3,.grid-2,.gallery{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <a href="#leistungen" class="skip-link">Zum Inhalt springen</a>
   <!-- NAV -->
-  <nav class="nav" aria-label="Hauptnavigation">
+  <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <div class="brand-logo" aria-hidden="true">M</div>
-        <strong aria-label="Marke">Meine Firma</strong>
+        <div class="brand-logo">FV</div>
+        <strong>FoilVengers</strong>
       </div>
       <div class="nav-links">
         <a href="#leistungen">Leistungen</a>
         <a href="#projekte">Projekte</a>
         <a href="#preise">Preise</a>
         <a href="#faq">FAQ</a>
-        <a href="#kontakt" class="btn" role="button">Kontakt</a>
+        <a href="#kontakt" class="btn">Kontakt</a>
       </div>
     </div>
   </nav>
@@ -112,144 +110,139 @@
   <header class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="pill">Premium Business‑Website • SEO‑ready • DSGVO‑freundlich</span>
-        <h1>Wir verwandeln Interessenten in Kund:innen – mit einer Website, die verkauft.</h1>
-        <p>Klare Struktur. Schnelle Ladezeiten. Starkes Design. Ideal für KMU – von Dienstleistung bis E‑Commerce. In 7–14 Tagen live.</p>
+        <span class="pill">FoilVengers • Küchen- & Möbelfolierung • Wien</span>
+        <h1>Wir verwandeln deine Küche in Premium-Design – ohne Baustelle, ohne Stress.</h1>
+        <p>Edle Oberflächen in Schwarz-Gold, Stein, Holz oder Marmor-Optik. In wenigen Tagen fertig – statt teurer Renovierung.</p>
         <div style="display:flex; gap:12px; margin-top:18px; flex-wrap:wrap">
-          <a class="btn primary" href="#kontakt" role="button">Kostenloses Erstgespräch</a>
-          <a class="btn ghost" href="#leistungen" role="button">Unsere Leistungen</a>
+          <a class="btn primary" href="#kontakt">Kostenloses Erstgespräch</a>
+          <a class="btn ghost" href="#leistungen">Unsere Leistungen</a>
         </div>
-        <div style="margin-top:14px" class="badge">⏱️ Schnelle Umsetzung • 🔒 SSL & Cookies • ⚡ Performance • 🧾 Rechnung & Impressum</div>
+        <div style="margin-top:14px" class="badge">🦸‍♂️ Küchen & Möbel • 🛡️ Glas-/Sichtschutz • 🎯 Werbefolien • 📍 Wien & Umgebung</div>
       </div>
-      <div class="mock" aria-hidden="true">
+      <div class="mock">
         <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
         <div class="screen">
-          <img loading="eager" fetchpriority="high" decoding="async" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop" alt="Design‑Mockup"/>
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop" alt="Mockup"/>
         </div>
       </div>
     </div>
   </header>
 
   <!-- LEISTUNGEN -->
-  <section id="leistungen" aria-labelledby="sec-leistungen">
+  <section id="leistungen">
     <div class="container">
-      <h2 id="sec-leistungen">Leistungen</h2>
-      <p class="sub">Alles, was eine moderne Business‑Seite braucht – fokussiert auf Leads & Umsatz.</p>
+      <h2>Leistungen</h2>
+      <p class="sub">A > B > C > D – Fokus auf Küchen & Möbel, plus Glas-, Werbe- und Designfolien.</p>
       <div class="grid-3">
         <article class="card">
-          <h3>Konzept & Branding</h3>
-          <p class="row">🎯 Positionierung, Zielgruppen‑Story, Text & Tonalität</p>
-          <p class="row">🧩 Logo‑Feinschliff, Farbwelt, UI‑Komponenten</p>
-          <p class="row">🗺️ Seitenstruktur & Conversion‑Journey</p>
+          <h3>Kitchen Makeover</h3>
+          <p class="row">🦾 Küchenfronten, Arbeitsplatten, Inseln</p>
+          <p class="row">🪵 Holz, Stein, Marmor, Matt/Glanz</p>
+          <p class="row">⚡ In 2–5 Tagen fertig – ohne Ausbau</p>
         </article>
         <article class="card">
-          <h3>Design & Entwicklung</h3>
-          <p class="row">⚡ Schnelles, responsives Frontend (HTML/CSS/JS)</p>
-          <p class="row">🖼️ Vorher/Nachher‑Galerien, Referenzen, Blog</p>
-          <p class="row">🔍 SEO‑Basics, Performance‑Optimierung</p>
+          <h3>Glas & Sichtschutz</h3>
+          <p class="row">🛡️ Sichtschutz, Sonnenschutz, UV</p>
+          <p class="row">🏢 Fenster, Türen, Duschwände</p>
+          <p class="row">🌞 Spürbar kühler & privater</p>
         </article>
         <article class="card">
-          <h3>Setup & Betrieb</h3>
-          <p class="row">🌐 Domain, Hosting, SSL, E‑Mail</p>
-          <p class="row">📈 Analytics, Consent‑Banner, DSGVO‑Hinweise</p>
-          <p class="row">🛠️ Wartung & kleine Updates inklusive</p>
+          <h3>Werbe- & Designfolien</h3>
+          <p class="row">🎯 Schaufenster, Logos, Beschriftung</p>
+          <p class="row">🎨 Wand- & Möbeldesigns, Akzente</p>
+          <p class="row">🧼 Rückstandsfrei entfernbar</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- PROJEKTE / GALLERY -->
-  <section id="projekte" aria-labelledby="sec-projekte">
+  <!-- PROJEKTE -->
+  <section id="projekte">
     <div class="container">
-      <h2 id="sec-projekte">Ausgewählte Projekte</h2>
+      <h2>Ausgewählte Projekte</h2>
       <p class="sub">Ein schneller Eindruck. Mehr Cases auf Anfrage.</p>
       <div class="gallery">
-        <a href="#" data-img="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop" alt="Projekt 1 – Dienstleister Lead‑Seite"></a>
-        <a href="#" data-img="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop" alt="Projekt 2 – KMU Produktpräsentation"></a>
-        <a href="#" data-img="https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2?q=80&w=1600&auto=format&fit=crop"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2?q=80&w=800&auto=format&fit=crop" alt="Projekt 3 – E‑Commerce Landingpage"></a>
+        <a href="#" data-img="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1600&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=800&auto=format&fit=crop" alt="Küchenfolierung Marmoroptik"></a>
+        <a href="#" data-img="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1600&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=800&auto=format&fit=crop" alt="Matt-schwarze Fronten – Makeover"></a>
+        <a href="#" data-img="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1600&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=800&auto=format&fit=crop" alt="Sichtschutzfolie am Fenster"></a>
       </div>
     </div>
   </section>
 
   <!-- PREISE -->
-  <section id="preise" aria-labelledby="sec-preise">
+  <section id="preise">
     <div class="container">
-      <h2 id="sec-preise">Pakete & Preise</h2>
-      <p class="sub">Transparent und modular. Bezahle nur, was du brauchst.</p>
+      <h2>Pakete & Preise</h2>
+      <p class="sub">Jede Küche ist anders – hier ein Gefühl für Budgets. Fixpreise nach Besichtigung.</p>
       <div class="grid-3">
         <div class="card">
           <h3>Starter</h3>
-          <div class="price">€ 950</div>
-          <p class="row">1‑Pager, SEO‑Basis, Kontaktformular</p>
-          <p class="row">2 Korrekturschleifen</p>
-          <a class="btn" href="#kontakt" role="button">Anfragen</a>
+          <div class="price">ab € 690</div>
+          <p class="row">Kleine Küche / einzelne Elemente</p>
+          <p class="row">Material inkl., 1 Korrektur</p>
+          <a class="btn" href="#kontakt">Anfragen</a>
         </div>
-        <div class="card" style="outline:2px solid rgba(61,220,151,.35)">
-          <h3>Business</h3>
-          <div class="price">€ 1.900</div>
-          <p class="row">5–7 Seiten, Vorher/Nachher, Referenzen</p>
-          <p class="row">SEO‑Setup, Analytics, Cookie‑Banner</p>
-          <a class="btn primary" href="#kontakt" role="button">Beliebteste Wahl</a>
+        <div class="card" style="outline:2px solid rgba(212,175,55,.35)">
+          <h3>FoilVengers</h3>
+          <div class="price">€ 1.290 – 2.490</div>
+          <p class="row">Komplette Küche (Fronten + Akzente)</p>
+          <p class="row">Premium-Folie, Schutz, Montage</p>
+          <a class="btn primary" href="#kontakt">Beliebteste Wahl</a>
         </div>
         <div class="card">
           <h3>Pro</h3>
-          <div class="price">ab € 3.500</div>
-          <p class="row">Individuelles Design, Blog/Shop‑Anbindung</p>
-          <p class="row">Performance‑Audit, Betreuung 6 Monate</p>
-          <a class="btn" href="#kontakt" role="button">Projekt besprechen</a>
+          <div class="price">ab € 2.900</div>
+          <p class="row">Große Küche / Spezialoptiken</p>
+          <p class="row">Vor-Ort-Service & Feinschliff</p>
+          <a class="btn" href="#kontakt">Projekt besprechen</a>
         </div>
       </div>
-      <p class="sub" style="margin-top:14px">*Alle Preise netto, exkl. Hosting/Domains. Fixpreise nach Briefing möglich.</p>
+      <p class="sub" style="margin-top:14px">*Alle Preise inkl. Montage, exkl. Anfahrt. Finale Angebote nach Besichtigung.</p>
     </div>
   </section>
 
-  <!-- QUOTES -->
-  <section aria-labelledby="sec-quotes">
+  <!-- KUNDENSTIMMEN -->
+  <section>
     <div class="container">
-      <h2 id="sec-quotes">Was Kund:innen sagen</h2>
+      <h2>FoilVengers – Kundenstimmen</h2>
       <div class="grid-2">
-        <blockquote class="card">„In zwei Wochen von null zur fertigen Seite. Leads haben sich im ersten Monat verdoppelt.“<footer class="sub">— Nina H., Beratung</footer></blockquote>
-        <blockquote class="card">„Top Performance, schneller Support und super strukturiert. Absolute Empfehlung.“<footer class="sub">— Marco K., Handwerk</footer></blockquote>
+        <blockquote class="card">„In wenigen Tagen von alt auf wow! Perfekt umgesetzt.“<footer class="sub">— Nina H., Wien</footer></blockquote>
+        <blockquote class="card">„Sehr freundlich, sehr präzise, top Ergebnis.“<footer class="sub">— Marco K., Wien</footer></blockquote>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" aria-labelledby="sec-faq">
+  <section id="faq">
     <div class="container">
-      <h2 id="sec-faq">FAQ – Häufige Fragen</h2>
+      <h2>FAQ – Häufige Fragen</h2>
       <div class="faq">
-        <details class="card"><summary>Wie schnell könnt ihr liefern?</summary><p class="sub">Meist 7–14 Tage vom Kick‑off bis zur Live‑Schaltung. Abhängig von Umfang & Feedbackrunden.</p></details>
-        <details class="card"><summary>Übernehmt ihr Domain & Hosting?</summary><p class="sub">Ja. Wir richten Domain, SSL, E‑Mail und ein Hosting nach Bedarf ein. Alternativ: Deployment auf GitHub Pages/Netlify/Vercel.</p></details>
-        <details class="card"><summary>Wie läuft die Zusammenarbeit?</summary><p class="sub">1) Briefing & Ziele, 2) Wireframe & Texte, 3) Design & Dev, 4) Testing, 5) Go‑Live, 6) Nachbetreuung. Klare Meilensteine, fixe Timelines.</p></details>
+        <details class="card"><summary>Wie schnell könnt ihr liefern?</summary><p class="sub">Meist 2–5 Tage pro Küche. Abhängig von Größe, Material & Feedback.</p></details>
+        <details class="card"><summary>Welche Folien verwendet ihr?</summary><p class="sub">Nur hochwertige Markenfolien, hitzebeständig & wasserresistent.</p></details>
+        <details class="card"><summary>Was kostet eine Küche?</summary><p class="sub">Typischerweise € 690 bis € 2.490 – Fixpreise nach Besichtigung.</p></details>
       </div>
     </div>
   </section>
 
   <!-- KONTAKT -->
-  <section id="kontakt" aria-labelledby="sec-kontakt">
+  <section id="kontakt">
     <div class="container">
-      <h2 id="sec-kontakt">Kontakt aufnehmen</h2>
-      <p class="sub">Schick uns ein paar Eckdaten – wir melden uns fix mit Vorschlag & Angebot.</p>
+      <h2>Kontakt aufnehmen – Einsatzgebiet Wien</h2>
+      <p class="sub">Schick uns ein paar Infos – wir melden uns fix mit einem Vorschlag.</p>
       <div class="grid-2">
         <div class="card">
-          <form id="contactForm" action="#" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="Neue Anfrage über die Website" />
+          <form id="contactForm" novalidate>
             <label>
               <span>Dein Name</span>
-              <input name="name" id="f-name" required placeholder="Vor- und Nachname" autocomplete="name" />
+              <input name="name" id="f-name" required placeholder="Vor- und Nachname" />
             </label>
             <label>
-              <span>E‑Mail</span>
-              <input type="email" name="email" id="f-email" required placeholder="name@firma.at" autocomplete="email" />
-            </label>
-            <label>
-              <span>Firma (optional)</span>
-              <input name="company" id="f-company" placeholder="Firmenname" autocomplete="organization" />
+              <span>E-Mail</span>
+              <input type="email" name="email" id="f-email" required placeholder="name@domain.at" />
             </label>
             <label>
               <span>Nachricht</span>
-              <textarea name="message" id="f-msg" placeholder="Worum geht’s? Ziel, Timing, Budgetrahmen …"></textarea>
+              <textarea name="message" id="f-msg" placeholder="Worum geht’s? Küche, Material, Timing …"></textarea>
             </label>
             <button class="btn primary" type="submit">Absenden</button>
             <div class="notice" id="f-status" role="status" aria-live="polite"></div>
@@ -257,14 +250,9 @@
         </div>
         <div class="card">
           <h3>Direkt</h3>
-          <p class="row">📧 hello@meine‑firma.at</p>
-          <p class="row">📞 +43 660 000000</p>
-          <p class="row">📍 Wien & Remote</p>
-          <hr style="border:0;border-top:1px solid rgba(255,255,255,.1);margin:16px 0">
-          <h3>Warum wir?</h3>
-          <p class="row">• Fokus auf Conversions statt Deko</p>
-          <p class="row">• Sauberes, schnelles Frontend</p>
-          <p class="row">• Klare Prozesse, fixe Timelines</p>
+          <p class="row">📧 kontakt@foilvengers.at</p>
+          <p class="row">📞 +43 0394 930 590</p>
+          <p class="row">📍 Schlossstraße, 1090 Wien</p>
         </div>
       </div>
     </div>
@@ -273,70 +261,79 @@
   <!-- FOOTER -->
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <small>© <span id="year"></span> Meine Firma. Alle Rechte vorbehalten.</small>
-      <div><a href="#" class="sub">Impressum</a> · <a href="#" class="sub">Datenschutz</a></div>
+      <small>© <span id="year"></span> FoilVengers. Alle Rechte vorbehalten.</small>
+      <div><a href="#impressum" class="sub">Impressum</a> · <a href="#datenschutz" class="sub">Datenschutz</a></div>
     </div>
   </footer>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Bildanzeige"><img id="lb-img" alt="Bildvorschau"></div>
+  <!-- IMPRESSUM -->
+  <section id="impressum">
+    <div class="container">
+      <h2>Impressum</h2>
+      <div class="card">
+        <p><strong>FoilVengers – Einzelunternehmen</strong><br>
+        Inhaber: Leunam Bratkovic<br>
+        Schlossstraße, 1090 Wien, Österreich<br>
+        Tel: +43 0394 930 590 · E-Mail: kontakt@foilvengers.at</p>
+        <p>Mitglied der WKÖ (falls zutreffend). UID-Nr. & Firmenbuch-Nr. werden nachgereicht.</p>
+        <p>Verbraucherstreitbeilegung: Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren teilzunehmen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATENSCHUTZ -->
+  <section id="datenschutz">
+    <div class="container">
+      <h2>Datenschutz</h2>
+      <div class="card">
+        <p>Wir verarbeiten personenbezogene Daten nur zur Bearbeitung Ihrer Anfrage.</p>
+        <p>Hosting: GitHub Pages. Beim Seitenaufruf werden technische Daten verarbeitet.</p>
+        <p>Kontakt: kontakt@foilvengers.at – Rechte auf Auskunft & Löschung vorhanden.</p>
+      </div>
+    </div>
+  </section>
 
   <script>
-    // Jahr
+    // Jahr im Footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Lightbox
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
-    document.querySelectorAll('.gallery a').forEach(a=>{
-      a.addEventListener('click',e=>{e.preventDefault(); lbImg.src=a.dataset.img; lb.classList.add('open'); a.focus();})
-    });
-    lb.addEventListener('click',()=> lb.classList.remove('open'));
-    window.addEventListener('keydown',(e)=>{ if(e.key==='Escape') lb.classList.remove('open') });
-
-    // Kontakt – Mini‑Validierung + Demo‑Senden (ohne komplizierte Regex)
+    // Demo Kontakt
     const f = document.getElementById('contactForm');
     const status = document.getElementById('f-status');
-    const nameI = document.getElementById('f-name');
-    const mailI = document.getElementById('f-email');
-
-    function ok(el){el.classList.remove('err'); el.classList.add('ok')}
-    function err(el){el.classList.remove('ok'); el.classList.add('err')}
-
     f.addEventListener('submit', async (e)=>{
       e.preventDefault();
-      let valid = true;
-      if(!nameI.value.trim()){err(nameI); valid=false}else ok(nameI);
-      const mail = mailI.value.trim();
-      if(!(mail.includes('@') && mail.includes('.'))){err(mailI); valid=false}else ok(mailI);
-      if(!valid){status.textContent = 'Bitte prüfe die markierten Felder.'; return;}
-
-      status.textContent = 'Sende …';
-      await new Promise(r=>setTimeout(r,800));
       status.textContent = 'Danke! Wir melden uns innerhalb von 24 Stunden.';
       f.reset();
-      document.querySelectorAll('input, textarea').forEach(el=>el.classList.remove('ok'));
     });
 
-    // Smooth scroll fallback
-    document.querySelectorAll('a[href^="#"]').forEach(link=>{
-      link.addEventListener('click', function(e){
-        const id = this.getAttribute('href');
-        if(id.length>1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'}) }
-      });
+    // Lightbox (Simple)
+    document.querySelectorAll('.gallery a').forEach(a=>{
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        window.open(a.dataset.img);
+      })
     });
   </script>
 
-  <!-- JSON‑LD: Organisation (für SEO) -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Meine Firma",
-    "url":"https://example.com",
-    "logo":"https://example.com/logo.png",
-    "contactPoint":[{"@type":"ContactPoint","telephone":"+43-660-000000","contactType":"Customer Service","areaServed":"AT"}]
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "FoilVengers",
+    "url": "https://foilvengers.at",
+    "telephone": "+43 0394 930 590",
+    "email": "kontakt@foilvengers.at",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Schlossstraße",
+      "postalCode": "1090",
+      "addressLocality": "Wien",
+      "addressCountry": "AT"
+    },
+    "areaServed": "Wien"
   }
   </script>
+
 </body>
 </html>
