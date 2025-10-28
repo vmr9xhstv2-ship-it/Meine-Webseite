@@ -1,8 +1,9 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
 diff --git a/index.html b/index.html
-index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da3bbeaa62 100644
+index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..03a5cb3fa0bf8c9b9fd5d3159403d36cdffb92a7 100644
 --- a/index.html
 +++ b/index.html
-@@ -1,425 +1,1426 @@
+@@ -1,425 +1,1457 @@
  <!DOCTYPE html>
  <html lang="de">
 -<head>
@@ -144,6 +145,30 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 -          <h3>Eleganz ohne Baustelle</h3>
 -          <p class="sub">Marmor-, Stein-, Holz- und Metall-Optiken – sauber verklebt, in Tagen statt Wochen.</p>
 -        </div>
+-      </div>
+-      <!-- 2 -->
+-      <div class="grid-2" style="align-items:center;margin:24px 0">
+-        <div>
+-          <h3>Individuelle Stilberatung</h3>
+-          <p class="sub">Wir empfehlen Kombinationen, die zu Licht, Raum und Nutzung passen – damit es wirklich wirkt.</p>
+-        </div>
+-        <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=1400&auto=format&fit=crop" alt="Stilberatung">
+-      </div>
+-      <!-- 3 -->
+-      <div class="grid-2" style="align-items:center;margin:24px 0">
+-        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop" alt="Vielfalt">
+-        <div>
+-          <h3>Vielfalt ohne Kompromisse</h3>
+-          <p class="sub">Matt, hochglanz, strukturiert – fühlbare Qualität, die hält und pflegeleicht ist.</p>
+-        </div>
+-      </div>
+-      <!-- 4 -->
+-      <div class="grid-2" style="align-items:center;margin:24px 0">
+-        <div>
+-          <h3>Schutz & Beständigkeit</h3>
+-          <p class="sub">Kratzfest, hitzebeständig, wasserresistent – ideal für Küche, Bad & viel genutzte Oberflächen.</p>
+-        </div>
+-        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop" alt="Beständigkeit">
 +  <head>
 +    <meta charset="utf-8" />
 +    <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -151,14 +176,15 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +    <style>
 +      :root {
 +        color-scheme: dark;
-+        --surface: #04060a;
-+        --surface-strong: rgba(10, 15, 23, 0.9);
-+        --text: #f2f5fb;
-+        --muted: #aab3c7;
-+        --accent: #7bb7ff;
-+        --highlight: #d4af37;
-+        --card: rgba(17, 23, 36, 0.82);
-+        --line: rgba(255, 255, 255, 0.08);
++        --surface: #05070d;
++        --surface-soft: rgba(10, 15, 24, 0.78);
++        --surface-strong: rgba(8, 12, 20, 0.92);
++        --text: #f5f7fb;
++        --muted: #9aa6be;
++        --accent: #7ab8ff;
++        --gold: #d4af37;
++        --blur: blur(28px);
++        font-family: "Poppins", "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
 +      }
 +
 +      *,
@@ -169,9 +195,7 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +
 +      body {
 +        margin: 0;
-+        font-family: "Poppins", "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont,
-+          sans-serif;
-+        background: radial-gradient(circle at top, #0b101d, var(--surface));
++        background: radial-gradient(circle at top, #0b1221 0%, #05070d 60%);
 +        color: var(--text);
 +        min-height: 100vh;
 +        overflow-x: hidden;
@@ -182,14 +206,14 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +        text-decoration: none;
 +      }
 +
++      img {
++        display: block;
++        max-width: 100%;
++      }
++
 +      button {
 +        font: inherit;
 +        cursor: pointer;
-+      }
-+
-+      img {
-+        max-width: 100%;
-+        display: block;
 +      }
 +
 +      .sr-only {
@@ -207,16 +231,16 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +      header {
 +        position: fixed;
 +        inset: 0 0 auto 0;
-+        z-index: 20;
-+        backdrop-filter: blur(16px);
-+        background: linear-gradient(180deg, rgba(5, 7, 12, 0.9), rgba(5, 7, 12, 0.3));
-+        border-bottom: 1px solid var(--line);
++        z-index: 40;
++        backdrop-filter: blur(18px);
++        background: linear-gradient(180deg, rgba(5, 8, 13, 0.92), rgba(5, 8, 13, 0.45));
++        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 +      }
 +
 +      .top-bar {
 +        max-width: 1280px;
 +        margin: 0 auto;
-+        padding: 18px 24px;
++        padding: 18px 26px;
 +        display: flex;
 +        align-items: center;
 +        justify-content: space-between;
@@ -226,20 +250,20 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +      .brand {
 +        display: inline-flex;
 +        align-items: center;
-+        gap: 12px;
-+        font-weight: 700;
++        gap: 14px;
 +        letter-spacing: 0.18em;
 +        text-transform: uppercase;
++        font-weight: 700;
 +      }
 +
 +      .brand span {
 +        display: grid;
 +        place-items: center;
-+        width: 40px;
-+        height: 40px;
-+        border-radius: 14px;
-+        background: linear-gradient(135deg, #ffffff, #b7c2d6);
-+        color: #101624;
++        width: 44px;
++        height: 44px;
++        border-radius: 16px;
++        background: linear-gradient(135deg, #ffffff, #bfc8d8);
++        color: #121a2b;
 +        font-weight: 800;
 +      }
 +
@@ -248,8 +272,8 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +        width: 48px;
 +        height: 48px;
 +        border-radius: 16px;
-+        border: 1px solid var(--line);
-+        background: rgba(17, 23, 36, 0.7);
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        background: rgba(14, 19, 30, 0.78);
 +        display: grid;
 +        place-items: center;
 +        transition: border-color 0.2s ease, background 0.2s ease;
@@ -258,7 +282,7 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +      .menu-toggle:hover,
 +      .menu-toggle:focus-visible {
 +        border-color: var(--accent);
-+        background: rgba(30, 40, 60, 0.85);
++        background: rgba(22, 32, 48, 0.82);
 +      }
 +
 +      .menu-toggle span,
@@ -266,7 +290,7 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +      .menu-toggle::after {
 +        content: "";
 +        display: block;
-+        width: 22px;
++        width: 24px;
 +        height: 2px;
 +        border-radius: 999px;
 +        background: var(--text);
@@ -278,11 +302,11 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +      }
 +
 +      .menu-toggle::before {
-+        transform: translateY(-6px);
++        transform: translateY(-7px);
 +      }
 +
 +      .menu-toggle::after {
-+        transform: translateY(6px);
++        transform: translateY(7px);
 +      }
 +
 +      .menu-toggle[aria-expanded="true"] span {
@@ -299,686 +323,640 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 +
 +      .menu-panel {
 +        position: fixed;
-+        inset: 80px 24px auto;
++        inset: 78px 24px auto;
 +        right: 24px;
-+        width: min(320px, calc(100% - 48px));
-+        padding: 24px;
-+        border-radius: 20px;
-+        background: var(--card);
-+        border: 1px solid var(--line);
-+        box-shadow: 0 28px 64px rgba(0, 0, 0, 0.35);
++        width: min(340px, calc(100% - 48px));
++        background: var(--surface-strong);
++        border-radius: 24px;
++        padding: 28px;
++        display: grid;
++        gap: 18px;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 +        opacity: 0;
 +        pointer-events: none;
-+        transform: translateY(-8px);
-+        transition: opacity 0.25s ease, transform 0.25s ease;
++        transform: translateY(-16px);
++        transition: opacity 0.3s ease, transform 0.3s ease;
++        z-index: 30;
 +      }
 +
-+      .menu-panel nav ul {
-+        margin: 0;
-+        padding: 0;
-+        list-style: none;
-+        display: grid;
-+        gap: 16px;
-+        font-weight: 600;
-+      }
-+
-+      .menu-panel nav a {
-+        display: flex;
-+        justify-content: space-between;
-+        align-items: center;
-+        padding: 12px 16px;
-+        border-radius: 14px;
-+        background: rgba(255, 255, 255, 0.02);
-+        border: 1px solid rgba(255, 255, 255, 0.06);
-+        letter-spacing: 0.06em;
-+        text-transform: uppercase;
-+        font-size: 12px;
-+        transition: border-color 0.2s ease, transform 0.2s ease;
-+      }
-+
-+      .menu-panel nav a:hover,
-+      .menu-panel nav a:focus-visible {
-+        border-color: var(--accent);
-+        transform: translateX(4px);
-+      }
-+
-+      .menu-panel[data-open="true"] {
++      .menu-panel[aria-hidden="false"] {
 +        opacity: 1;
 +        pointer-events: auto;
 +        transform: translateY(0);
++      }
++
++      .menu-link {
++        display: flex;
++        align-items: center;
++        justify-content: space-between;
++        padding: 14px 18px;
++        background: rgba(255, 255, 255, 0.04);
++        border-radius: 18px;
++        font-size: 0.96rem;
++        letter-spacing: 0.04em;
++        transition: background 0.2s ease, transform 0.2s ease;
++      }
++
++      .menu-link:hover,
++      .menu-link:focus-visible {
++        background: rgba(122, 184, 255, 0.14);
++        transform: translateY(-1px);
 +      }
 +
 +      main {
-+        padding-top: 120px;
-+      }
-+
-+      section {
-+        padding: clamp(60px, 8vw, 120px) 24px;
-+      }
-+
-+      .window-entry {
-+        min-height: 100vh;
-+        display: grid;
-+        place-items: center;
 +        position: relative;
++        padding-top: 96px;
 +        overflow: hidden;
 +      }
 +
-+      .window-portal {
++      .hero-portal {
 +        position: relative;
-+        width: min(720px, 86vw);
-+        aspect-ratio: 3 / 4;
-+        border-radius: 36px;
-+        padding: 42px;
-+        border: 1px solid rgba(255, 255, 255, 0.2);
-+        background:
-+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 50%),
-+          radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.6), transparent 60%),
-+          linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02));
-+        backdrop-filter: blur(8px);
-+        box-shadow: 0 34px 60px rgba(0, 0, 0, 0.45);
-+        cursor: pointer;
-+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
++        min-height: 100vh;
++        display: grid;
++        place-items: center;
++        padding: 120px 24px 80px;
++        background: radial-gradient(circle at top, rgba(30, 50, 70, 0.3), rgba(5, 7, 12, 0.92)),
++          url("https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=1600&q=80")
++            center/cover no-repeat;
 +      }
 +
-+      .window-portal:hover {
-+        transform: translateY(-4px) scale(1.01);
-+        box-shadow: 0 40px 68px rgba(0, 0, 0, 0.55);
-+      }
-+
-+      .window-portal::before {
++      .hero-portal::after {
 +        content: "";
 +        position: absolute;
-+        inset: 24px;
-+        border-radius: 24px;
-+        background:
-+          linear-gradient(180deg, rgba(4, 7, 16, 0.2), rgba(4, 7, 16, 0.85)),
-+          url("https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1400&q=80")
-+            center / cover;
-+        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-+          opacity 0.4s ease;
++        inset: 0;
++        background: linear-gradient(0deg, rgba(5, 8, 13, 0.75), rgba(5, 8, 13, 0.15));
 +      }
 +
-+      .window-portal::after {
-+        content: "Trete ein";
-+        position: absolute;
-+        inset: auto 25% 32px 25%;
-+        padding: 14px 18px;
-+        text-align: center;
-+        border-radius: 999px;
-+        background: rgba(4, 8, 16, 0.7);
-+        border: 1px solid rgba(255, 255, 255, 0.16);
-+        letter-spacing: 0.18em;
-+        text-transform: uppercase;
-+        font-size: 13px;
-+        font-weight: 600;
-+      }
-+
-+      body.state-apartment .window-portal {
-+        cursor: default;
-+        pointer-events: none;
-+      }
-+
-+      body.state-apartment .window-portal::before {
-+        transform: rotateY(68deg) translateX(28%);
-+        opacity: 0;
-+      }
-+
-+      .window-entry h1 {
-+        position: absolute;
-+        top: clamp(80px, 10vw, 160px);
-+        width: min(600px, 90vw);
-+        text-align: center;
-+        font-size: clamp(36px, 6vw, 72px);
-+        letter-spacing: -0.02em;
-+        color: var(--text);
-+        text-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
-+      }
-+
-+      .window-entry p {
-+        position: absolute;
-+        bottom: clamp(80px, 8vw, 140px);
-+        width: min(520px, 80vw);
-+        text-align: center;
-+        margin: 0 auto;
-+        color: var(--muted);
-+        line-height: 1.6;
-+      }
-+
-+      .apartment {
++      .portal-frame {
 +        position: relative;
-+        background: linear-gradient(180deg, rgba(5, 7, 12, 0.1), rgba(5, 7, 12, 0.8));
-+        transition: opacity 0.6s ease, transform 0.6s ease;
++        z-index: 1;
++        width: min(520px, 84vw);
++        aspect-ratio: 3 / 4;
++        border-radius: 28px;
++        overflow: hidden;
++        border: 12px solid rgba(255, 255, 255, 0.85);
++        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
++        cursor: pointer;
++        transition: transform 0.5s ease, box-shadow 0.5s ease;
 +      }
 +
-+      body.state-window .apartment {
++      .portal-frame:hover {
++        transform: translateY(-6px) scale(1.01);
++        box-shadow: 0 42px 100px rgba(0, 0, 0, 0.68);
++      }
++
++      .portal-frame img {
++        width: 100%;
++        height: 100%;
++        object-fit: cover;
++        transition: transform 0.8s ease;
++      }
++
++      .portal-frame:hover img {
++        transform: scale(1.08);
++      }
++
++      .portal-caption {
++        position: absolute;
++        inset: auto 12% 8% 12%;
++        padding: 18px 22px;
++        border-radius: 20px;
++        backdrop-filter: blur(18px);
++        background: rgba(5, 7, 12, 0.72);
++        display: grid;
++        gap: 10px;
++        text-align: center;
++      }
++
++      .portal-caption strong {
++        font-size: 1.1rem;
++        letter-spacing: 0.12em;
++      }
++
++      .portal-caption span {
++        font-size: 0.92rem;
++        color: var(--muted);
++      }
++
++      .enter-hint {
++        margin-top: 16px;
++        display: inline-flex;
++        align-items: center;
++        justify-content: center;
++        gap: 10px;
++        padding: 12px 22px;
++        border-radius: 999px;
++        background: rgba(122, 184, 255, 0.15);
++        color: var(--accent);
++        font-size: 0.88rem;
++        letter-spacing: 0.2em;
++      }
++
++      .loft-scene {
++        position: relative;
++        min-height: 100vh;
++        padding: 120px 24px 160px;
++        background: radial-gradient(circle at top, rgba(22, 30, 42, 0.5), rgba(5, 7, 12, 0.95));
 +        opacity: 0;
 +        pointer-events: none;
-+        transform: translateY(40px);
++        transform: translateY(80px);
++        transition: opacity 0.8s ease, transform 0.8s ease;
 +      }
 +
-+      body.state-apartment .apartment {
++      .loft-scene.is-visible {
 +        opacity: 1;
 +        pointer-events: auto;
 +        transform: translateY(0);
 +      }
 +
-+      .living-room-stage {
++      .scene-stage {
 +        position: relative;
-+        border-radius: 36px;
++        margin: 0 auto;
++        width: min(1180px, 100%);
++        aspect-ratio: 16 / 9;
++        border-radius: 28px;
 +        overflow: hidden;
-+        border: 1px solid rgba(255, 255, 255, 0.08);
-+        background: url("https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=1800&q=80")
-+            center / cover;
-+        min-height: clamp(540px, 80vw, 880px);
-+        box-shadow: 0 48px 96px rgba(0, 0, 0, 0.45);
++        border: 1px solid rgba(255, 255, 255, 0.06);
++        box-shadow: 0 38px 120px rgba(0, 0, 0, 0.55);
++        background: #111621;
 +      }
 +
-+      .living-room-stage::after {
++      .scene-stage::before {
 +        content: "";
 +        position: absolute;
 +        inset: 0;
-+        background: linear-gradient(120deg, rgba(5, 9, 18, 0.35), rgba(5, 7, 12, 0.65));
++        background: url("https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=2000&q=80")
++            center/cover no-repeat;
++        filter: saturate(1.05) brightness(1.05);
++        transform: scale(1.02);
++      }
++
++      .scene-overlay {
++        position: absolute;
++        inset: 0;
++        background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.6));
++        pointer-events: none;
 +      }
 +
 +      .hotspot {
 +        position: absolute;
 +        z-index: 2;
-+        display: inline-flex;
-+        align-items: center;
-+        gap: 12px;
-+        padding: 12px 18px;
-+        border-radius: 999px;
-+        border: 1px solid rgba(255, 255, 255, 0.16);
-+        background: rgba(8, 12, 20, 0.72);
++        width: 58px;
++        height: 58px;
++        border-radius: 20px;
++        border: 1px solid rgba(255, 255, 255, 0.3);
++        background: rgba(12, 18, 28, 0.8);
++        display: grid;
++        place-items: center;
++        color: var(--accent);
 +        font-weight: 600;
 +        letter-spacing: 0.08em;
 +        text-transform: uppercase;
-+        font-size: 11px;
-+        transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-+      }
-+
-+      .hotspot::before {
-+        content: "";
-+        width: 10px;
-+        height: 10px;
-+        border-radius: 50%;
-+        background: var(--highlight);
-+        box-shadow: 0 0 12px var(--highlight);
++        font-size: 0.68rem;
++        transition: transform 0.3s ease, background 0.3s ease;
 +      }
 +
 +      .hotspot:hover,
 +      .hotspot:focus-visible {
-+        transform: translateY(-3px) scale(1.02);
-+        border-color: var(--accent);
-+        background: rgba(14, 20, 32, 0.82);
-+      }
-+
-+      .hotspot[data-item="kitchen"] {
-+        top: 32%;
-+        left: 18%;
-+      }
-+
-+      .hotspot[data-item="table"] {
-+        top: 58%;
-+        left: 46%;
-+      }
-+
-+      .hotspot[data-item="wall"] {
-+        top: 20%;
-+        right: 12%;
-+      }
-+
-+      .hotspot[data-item="sofa"] {
-+        bottom: 18%;
-+        left: 12%;
-+      }
-+
-+      .window-film-drawer {
-+        margin-top: clamp(32px, 5vw, 64px);
-+        padding: clamp(24px, 4vw, 48px);
-+        border-radius: 32px;
-+        border: 1px solid rgba(255, 255, 255, 0.12);
-+        background: linear-gradient(135deg, rgba(10, 15, 25, 0.94), rgba(10, 18, 34, 0.7));
-+        display: grid;
-+        gap: 24px;
-+      }
-+
-+      .window-film-drawer h2 {
-+        margin: 0;
-+        font-size: clamp(28px, 3.6vw, 44px);
-+        letter-spacing: -0.01em;
-+      }
-+
-+      .window-film-drawer p {
-+        margin: 0;
-+        color: var(--muted);
-+        max-width: 720px;
-+        line-height: 1.6;
-+      }
-+
-+      .film-options {
-+        display: grid;
-+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-+        gap: 18px;
-+      }
-+
-+      .film-card {
-+        position: relative;
-+        padding: 18px 18px 28px;
-+        border-radius: 22px;
-+        border: 1px solid rgba(255, 255, 255, 0.08);
-+        background: rgba(16, 22, 34, 0.72);
-+        text-align: left;
-+        transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
-+      }
-+
-+      .film-card[aria-pressed="true"] {
-+        border-color: var(--highlight);
-+        background: rgba(24, 32, 48, 0.82);
 +        transform: translateY(-4px);
++        background: rgba(122, 184, 255, 0.22);
 +      }
 +
-+      .film-card strong {
-+        display: block;
-+        font-size: 16px;
-+        letter-spacing: 0.08em;
-+        text-transform: uppercase;
-+        margin-bottom: 8px;
-+      }
-+
-+      .film-card span {
-+        font-size: 13px;
-+        color: var(--muted);
-+        line-height: 1.5;
-+      }
-+
-+      .film-preview {
-+        margin-top: 16px;
-+        height: 120px;
-+        border-radius: 18px;
-+        background:
-+          linear-gradient(180deg, rgba(8, 12, 20, 0.4), rgba(8, 12, 20, 0.7)),
-+          var(--texture, url("https://images.unsplash.com/photo-1529429617124-aee0a35d21fe?auto=format&fit=crop&w=800&q=80"))
-+            center / cover;
-+        border: 1px solid rgba(255, 255, 255, 0.08);
-+        transition: opacity 0.25s ease;
-+      }
-+
-+      .film-details {
-+        font-size: 14px;
-+        color: var(--muted);
-+        line-height: 1.6;
-+      }
-+
-+      .material-overlay {
-+        position: fixed;
-+        inset: 0;
-+        z-index: 40;
-+        background: rgba(3, 6, 12, 0.82);
-+        backdrop-filter: blur(12px);
-+        display: grid;
-+        place-items: center;
-+        padding: 32px;
-+        opacity: 0;
-+        pointer-events: none;
-+        transition: opacity 0.3s ease;
-+      }
-+
-+      .material-overlay[aria-hidden="false"] {
-+        opacity: 1;
-+        pointer-events: auto;
-+      }
-+
-+      .overlay-card {
-+        position: relative;
-+        width: min(960px, 96vw);
-+        max-height: min(720px, 90vh);
-+        overflow: hidden;
-+        border-radius: 32px;
-+        border: 1px solid rgba(255, 255, 255, 0.12);
-+        background: rgba(9, 14, 24, 0.92);
-+        box-shadow: 0 48px 128px rgba(0, 0, 0, 0.55);
-+        display: grid;
-+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-+      }
-+
-+      .overlay-close {
++      .hotspot::after {
++        content: attr(data-label);
 +        position: absolute;
-+        top: 18px;
-+        right: 18px;
-+        width: 44px;
-+        height: 44px;
-+        border-radius: 16px;
-+        border: 1px solid rgba(255, 255, 255, 0.12);
-+        background: rgba(15, 20, 32, 0.8);
-+        color: var(--text);
-+        display: grid;
-+        place-items: center;
-+        font-size: 20px;
-+      }
-+
-+      .overlay-content {
-+        overflow-y: auto;
-+        padding: clamp(28px, 4vw, 48px);
-+        display: grid;
-+        gap: 28px;
-+      }
-+
-+      .overlay-content h3 {
-+        margin: 0;
-+        font-size: clamp(26px, 3vw, 38px);
-+      }
-+
-+      .overlay-content p {
-+        margin: 0;
-+        color: var(--muted);
-+      }
-+
-+      .preview-stage {
-+        position: relative;
-+        border-radius: 26px;
-+        overflow: hidden;
-+        border: 1px solid rgba(255, 255, 255, 0.08);
-+        display: grid;
-+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-+      }
-+
-+      .preview-panel {
-+        position: relative;
-+        min-height: 260px;
-+        display: grid;
-+        place-items: end;
-+        padding: 18px;
-+        background: var(--base) center / cover;
-+      }
-+
-+      .preview-panel span {
-+        background: rgba(8, 12, 20, 0.78);
-+        border-radius: 12px;
++        inset: auto auto -42px 50%;
++        transform: translateX(-50%);
 +        padding: 8px 14px;
-+        font-size: 12px;
-+        letter-spacing: 0.12em;
-+        text-transform: uppercase;
-+        border: 1px solid rgba(255, 255, 255, 0.12);
++        border-radius: 14px;
++        background: rgba(6, 10, 16, 0.82);
++        color: var(--text);
++        font-size: 0.72rem;
++        letter-spacing: 0.08em;
++        white-space: nowrap;
++        opacity: 0;
++        transition: opacity 0.2s ease, transform 0.2s ease;
 +      }
 +
-+      .preview-panel[data-role="after"]::after {
-+        content: "";
-+        position: absolute;
-+        inset: 0;
-+        border-radius: inherit;
-+        background:
-+          linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)),
-+          var(--texture, none);
-+        mix-blend-mode: lighten;
-+        opacity: 0.8;
-+        transition: background 0.35s ease, opacity 0.35s ease;
++      .hotspot:hover::after,
++      .hotspot:focus-visible::after {
++        opacity: 1;
++        transform: translate(-50%, -6px);
 +      }
 +
-+      .material-meta {
++      .glass-grid {
++        margin-top: 42px;
 +        display: grid;
 +        gap: 16px;
 +      }
 +
-+      .material-meta strong {
-+        letter-spacing: 0.18em;
-+        text-transform: uppercase;
-+        font-size: 13px;
-+        color: var(--highlight);
-+      }
-+
-+      .material-swatches {
-+        display: grid;
-+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-+        gap: 14px;
-+        margin: 0;
-+        padding: 0;
-+        list-style: none;
-+      }
-+
-+      .material-swatches button {
-+        position: relative;
-+        display: flex;
-+        flex-direction: column;
-+        align-items: flex-start;
-+        gap: 10px;
-+        width: 100%;
-+        min-height: 120px;
-+        border-radius: 18px;
-+        padding: 14px;
-+        border: 1px solid rgba(255, 255, 255, 0.08);
-+        background: rgba(16, 22, 34, 0.68);
-+        text-align: left;
-+        color: inherit;
-+        transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
-+      }
-+
-+      .material-swatches button::before {
-+        content: "";
-+        display: block;
-+        width: 100%;
-+        height: 56px;
-+        border-radius: 14px;
-+        background: var(--swatch) center / cover;
-+        border: 1px solid rgba(255, 255, 255, 0.1);
-+      }
-+
-+      .material-swatches button strong {
-+        font-size: 14px;
-+        letter-spacing: 0.08em;
-+        text-transform: uppercase;
-+      }
-+
-+      .material-swatches button span {
-+        font-size: 12px;
-+        color: var(--muted);
-+      }
-+
-+      .material-swatches button[aria-pressed="true"] {
-+        border-color: var(--accent);
-+        background: rgba(24, 34, 52, 0.82);
-+        transform: translateY(-3px);
-+      }
-+
-+      #contact {
-+        background: linear-gradient(180deg, rgba(6, 9, 16, 0.8), rgba(6, 9, 16, 0.95));
-+      }
-+
-+      #contact h2 {
-+        font-size: clamp(34px, 4vw, 48px);
-+        margin-bottom: 24px;
-+      }
-+
-+      .contact-shell {
-+        max-width: 960px;
-+        margin: 0 auto;
-+        display: grid;
-+        gap: 36px;
-+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-+      }
-+
-+      .contact-intro p {
-+        color: var(--muted);
-+        line-height: 1.7;
-+      }
-+
-+      form {
-+        display: grid;
-+        gap: 18px;
-+        background: rgba(10, 16, 26, 0.82);
-+        padding: clamp(24px, 4vw, 48px);
-+        border-radius: 28px;
-+        border: 1px solid rgba(255, 255, 255, 0.08);
-+      }
-+
-+      label {
++      .glass-option {
++        padding: 18px 20px;
++        border-radius: 20px;
++        background: rgba(255, 255, 255, 0.05);
++        border: 1px solid transparent;
 +        display: grid;
 +        gap: 8px;
-+        font-size: 13px;
++        letter-spacing: 0.06em;
++      }
++
++      .glass-option strong {
++        text-transform: uppercase;
++      }
++
++      .glass-option span {
++        color: var(--muted);
++        font-size: 0.82rem;
++      }
++
++      .glass-option.is-active {
++        border-color: rgba(122, 184, 255, 0.45);
++        background: rgba(122, 184, 255, 0.14);
++      }
++      .section {
++        padding: 140px 24px;
++        background: rgba(5, 7, 12, 0.92);
++      }
++
++      .section:nth-of-type(even) {
++        background: rgba(7, 9, 14, 0.96);
++      }
++
++      .section-inner {
++        max-width: 1080px;
++        margin: 0 auto;
++        display: grid;
++        gap: 32px;
++      }
++
++      .section h2 {
++        margin: 0;
++        font-size: 2.2rem;
 +        letter-spacing: 0.12em;
 +        text-transform: uppercase;
 +      }
 +
-+      input,
-+      textarea,
-+      select {
++      .section p {
++        margin: 0;
++        color: var(--muted);
++        line-height: 1.8;
++      }
++
++      .contact-form {
++        display: grid;
++        gap: 18px;
++        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
++      }
++
++      .form-field {
++        display: grid;
++        gap: 8px;
++      }
++
++      .form-field label {
++        font-size: 0.86rem;
++        letter-spacing: 0.12em;
++      }
++
++      .form-field input,
++      .form-field select,
++      .form-field textarea {
 +        width: 100%;
-+        padding: 14px 16px;
-+        border-radius: 14px;
-+        border: 1px solid rgba(255, 255, 255, 0.12);
-+        background: rgba(8, 12, 20, 0.78);
++        padding: 16px 18px;
++        border-radius: 18px;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        background: rgba(9, 13, 21, 0.8);
 +        color: var(--text);
 +        font: inherit;
-+      }
-+
-+      textarea {
-+        min-height: 140px;
 +        resize: vertical;
++        min-height: 54px;
 +      }
 +
-+      .submit {
-+        margin-top: 12px;
-+        padding: 16px 22px;
++      .form-field textarea {
++        min-height: 160px;
++      }
++
++      .form-field select {
++        appearance: none;
++        background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
++          linear-gradient(135deg, var(--muted) 50%, transparent 50%),
++          linear-gradient(to right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08));
++        background-position: calc(100% - 24px) calc(50% - 3px), calc(100% - 19px) calc(50% - 3px),
++          calc(100% - 50px) 50%;
++        background-size: 10px 10px, 10px 10px, 1px 28px;
++        background-repeat: no-repeat;
++      }
++
++      .form-submit {
++        margin-top: 10px;
++        justify-self: start;
++        padding: 16px 36px;
 +        border-radius: 999px;
 +        border: none;
-+        background: linear-gradient(135deg, var(--accent), #94c7ff);
-+        color: #04060a;
++        background: linear-gradient(135deg, #88c0ff, #4d8dff);
++        color: #05070d;
 +        font-weight: 700;
 +        letter-spacing: 0.18em;
 +        text-transform: uppercase;
++        transition: transform 0.2s ease, box-shadow 0.2s ease;
 +      }
 +
-+      #impressum {
-+        background: rgba(4, 6, 10, 0.9);
-+      }
-+
-+      #impressum h2 {
-+        font-size: clamp(30px, 3.4vw, 42px);
-+      }
-+
-+      .impressum-grid {
-+        display: grid;
-+        gap: 24px;
-+        max-width: 960px;
-+        margin: 0 auto;
-+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-+      }
-+
-+      .impressum-card {
-+        padding: 22px;
-+        border-radius: 22px;
-+        border: 1px solid rgba(255, 255, 255, 0.08);
-+        background: rgba(10, 16, 26, 0.78);
-+        display: grid;
-+        gap: 8px;
-+      }
-+
-+      .impressum-card strong {
-+        letter-spacing: 0.16em;
-+        text-transform: uppercase;
-+        font-size: 12px;
-+        color: var(--highlight);
++      .form-submit:hover,
++      .form-submit:focus-visible {
++        transform: translateY(-2px);
++        box-shadow: 0 16px 32px rgba(77, 141, 255, 0.35);
 +      }
 +
 +      footer {
-+        padding: 32px 24px 80px;
-+        text-align: center;
-+        color: var(--muted);
-+        font-size: 13px;
++        padding: 60px 24px 90px;
++        background: rgba(4, 6, 11, 0.96);
++        border-top: 1px solid rgba(255, 255, 255, 0.06);
++      }
++
++      footer .footer-inner {
++        max-width: 1080px;
++        margin: 0 auto;
++        display: grid;
++        gap: 24px;
++      }
++
++      footer h3 {
++        margin: 0;
++        font-size: 1rem;
 +        letter-spacing: 0.12em;
 +        text-transform: uppercase;
 +      }
 +
-+      @media (max-width: 720px) {
-+        .overlay-card {
++      footer p {
++        margin: 0;
++        color: var(--muted);
++        line-height: 1.8;
++      }
++
++      .material-modal {
++        position: fixed;
++        inset: 0;
++        display: grid;
++        place-items: center;
++        padding: 32px;
++        background: rgba(4, 7, 12, 0.88);
++        backdrop-filter: blur(16px);
++        z-index: 80;
++        opacity: 0;
++        pointer-events: none;
++        transition: opacity 0.4s ease;
++      }
++
++      .material-modal.is-open {
++        opacity: 1;
++        pointer-events: auto;
++      }
++
++      .modal-content {
++        position: relative;
++        width: min(1020px, 100%);
++        background: linear-gradient(135deg, rgba(9, 14, 22, 0.92), rgba(12, 20, 34, 0.92));
++        border-radius: 32px;
++        padding: 42px;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++        display: grid;
++        grid-template-columns: minmax(260px, 320px) minmax(320px, 1fr);
++        gap: 32px;
++        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
++      }
++
++      .modal-close {
++        position: absolute;
++        inset: 24px 24px auto auto;
++        width: 44px;
++        height: 44px;
++        border-radius: 16px;
++        background: rgba(255, 255, 255, 0.06);
++        border: 1px solid rgba(255, 255, 255, 0.12);
++        display: grid;
++        place-items: center;
++        color: var(--muted);
++      }
++
++      .modal-close:hover,
++      .modal-close:focus-visible {
++        color: var(--accent);
++        border-color: var(--accent);
++      }
++
++      .modal-header h2 {
++        margin: 0;
++        font-size: 1.4rem;
++        letter-spacing: 0.12em;
++        text-transform: uppercase;
++      }
++
++      .modal-header p {
++        margin: 12px 0 0;
++        color: var(--muted);
++        line-height: 1.6;
++      }
++
++      .material-list {
++        margin-top: 26px;
++        display: grid;
++        gap: 12px;
++        max-height: 420px;
++        overflow: hidden auto;
++        padding-right: 6px;
++      }
++
++      .material-option {
++        display: grid;
++        grid-template-columns: 64px 1fr;
++        align-items: center;
++        gap: 16px;
++        padding: 14px;
++        border-radius: 18px;
++        background: rgba(255, 255, 255, 0.04);
++        border: 1px solid transparent;
++        text-align: left;
++        color: inherit;
++        transition: border-color 0.2s ease, background 0.2s ease;
++      }
++
++      .material-option:hover,
++      .material-option:focus-visible {
++        border-color: rgba(122, 184, 255, 0.4);
++        background: rgba(122, 184, 255, 0.14);
++      }
++
++      .material-option.is-active {
++        border-color: var(--accent);
++        background: rgba(122, 184, 255, 0.2);
++      }
++
++      .material-thumb {
++        width: 64px;
++        height: 64px;
++        border-radius: 16px;
++        background-size: cover;
++        background-position: center;
++        border: 1px solid rgba(255, 255, 255, 0.12);
++      }
++
++      .material-info strong {
++        display: block;
++        font-size: 0.92rem;
++        letter-spacing: 0.08em;
++      }
++
++      .material-info span {
++        display: block;
++        margin-top: 4px;
++        color: var(--muted);
++        font-size: 0.8rem;
++      }
++
++      .preview-area {
++        display: grid;
++        gap: 24px;
++      }
++
++      .preview-label {
++        display: flex;
++        align-items: center;
++        justify-content: space-between;
++        letter-spacing: 0.08em;
++        text-transform: uppercase;
++        font-size: 0.82rem;
++      }
++
++      .before-after {
++        position: relative;
++        border-radius: 26px;
++        overflow: hidden;
++        aspect-ratio: 4 / 3;
++        border: 1px solid rgba(255, 255, 255, 0.08);
++      }
++
++      .preview-before,
++      .preview-after {
++        position: absolute;
++        inset: 0;
++        background-position: center;
++        background-size: cover;
++      }
++
++      .preview-after {
++        width: 50%;
++        border-right: 1px solid rgba(255, 255, 255, 0.2);
++      }
++
++      .preview-after::after {
++        content: "";
++        position: absolute;
++        inset: 0;
++        background: rgba(0, 0, 0, 0.15);
++      }
++
++      .preview-texture {
++        position: absolute;
++        inset: 0;
++        mix-blend-mode: soft-light;
++        opacity: 0.92;
++        background-size: cover;
++        background-position: center;
++        filter: saturate(1.2);
++      }
++
++      .preview-slider {
++        position: absolute;
++        inset: 0;
++        width: 100%;
++        margin: 0;
++        appearance: none;
++        background: transparent;
++        pointer-events: none;
++      }
++
++      .preview-slider::-webkit-slider-thumb {
++        -webkit-appearance: none;
++        pointer-events: auto;
++        width: 28px;
++        height: 28px;
++        border-radius: 50%;
++        border: 2px solid rgba(12, 18, 28, 0.82);
++        background: rgba(255, 255, 255, 0.9);
++        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
++      }
++
++      .preview-slider::-moz-range-thumb {
++        pointer-events: auto;
++        width: 28px;
++        height: 28px;
++        border-radius: 50%;
++        border: 2px solid rgba(12, 18, 28, 0.82);
++        background: rgba(255, 255, 255, 0.9);
++        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
++      }
++
++      .preview-meta {
++        display: grid;
++        gap: 6px;
++        font-size: 0.82rem;
++        color: var(--muted);
++      }
++
++      @media (max-width: 960px) {
++        .modal-content {
 +          grid-template-columns: 1fr;
++          padding: 32px;
 +        }
 +
-+        .window-portal {
-+          padding: 28px;
-+        }
-+
-+        .window-portal::after {
-+          inset: auto 18% 24px 18%;
-+        }
-+
-+        .hotspot {
-+          transform: scale(0.88);
++        .portal-caption {
++          inset: auto 6% 6% 6%;
 +        }
 +      }
 +
-+      @media (prefers-reduced-motion: reduce) {
-+        *,
-+        *::before,
-+        *::after {
-+          transition-duration: 0.01ms !important;
-+          animation-duration: 0.01ms !important;
++      @media (max-width: 720px) {
++        header {
++          background: rgba(5, 8, 13, 0.9);
++        }
++
++        .top-bar {
++          padding: 14px 20px;
++        }
++
++        .portal-frame {
++          border-width: 8px;
++          border-radius: 22px;
++        }
++
++        .modal-content {
++          border-radius: 24px;
++        }
++
++        .before-after {
++          aspect-ratio: 3 / 4;
 +        }
 +      }
 +    </style>
 +  </head>
-+  <body class="state-window">
++  <body>
 +    <header>
 +      <div class="top-bar">
-+        <a class="brand" href="#start"><span>LF</span> Loft Folienstudio</a>
-+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="global-navigation">
-+          <span class="sr-only">Navigation öffnen</span>
++        <a class="brand" href="#start">
++          <span>LF</span>
++          Loft Folienstudio
++        </a>
++        <button class="menu-toggle" aria-expanded="false" aria-controls="menu-panel">
++          <span class="sr-only">Menü öffnen</span>
 +          <span></span>
 +        </button>
-       </div>
--      <!-- 2 -->
--      <div class="grid-2" style="align-items:center;margin:24px 0">
--        <div>
--          <h3>Individuelle Stilberatung</h3>
--          <p class="sub">Wir empfehlen Kombinationen, die zu Licht, Raum und Nutzung passen – damit es wirklich wirkt.</p>
--        </div>
--        <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=1400&auto=format&fit=crop" alt="Stilberatung">
-+      <div class="menu-panel" id="global-navigation" data-open="false">
-+        <nav aria-label="Hauptnavigation">
-+          <ul>
-+            <li><a href="#start">Startseite</a></li>
-+            <li><a href="#apartment">Wohnungs-Erlebnis</a></li>
-+            <li><a href="#material-archiv">Materialarchiv</a></li>
-+            <li><a href="#contact">Kontaktanfrage</a></li>
-+            <li><a href="#impressum">Impressum</a></li>
-+          </ul>
++        <nav id="menu-panel" class="menu-panel" aria-hidden="true">
++          <a class="menu-link" href="#start">Startseite</a>
++          <a class="menu-link" href="#wohnloft">Virtuelle Wohnung</a>
++          <a class="menu-link" href="#kontakt">Kontaktanfrage</a>
++          <a class="menu-link" href="#impressum">Impressum</a>
 +        </nav>
        </div>
--      <!-- 3 -->
--      <div class="grid-2" style="align-items:center;margin:24px 0">
--        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop" alt="Vielfalt">
--        <div>
--          <h3>Vielfalt ohne Kompromisse</h3>
--          <p class="sub">Matt, hochglanz, strukturiert – fühlbare Qualität, die hält und pflegeleicht ist.</p>
-+    </header>
-+    <main>
-+      <section class="window-entry" id="start">
-+        <h1>Willkommen in deiner fotorealistischen Zwei-Zimmer-Loft</h1>
-+        <p>
-+          Tippe oder klicke auf das Fenster, um die Aussicht zu öffnen. Hinter der Glasfront wartet
-+          ein großformatiges Wohnzimmer mit offener Küche. Jede Oberfläche lässt sich live mit
-+          exklusiven Hochleistungsfolien veredeln.
-+        </p>
-+        <div class="window-portal" role="button" tabindex="0" aria-describedby="portal-hint">
-+          <span id="portal-hint" class="sr-only">Fenster öffnen und Wohnung betreten</span>
-         </div>
--      </div>
--      <!-- 4 -->
--      <div class="grid-2" style="align-items:center;margin:24px 0">
--        <div>
--          <h3>Schutz & Beständigkeit</h3>
--          <p class="sub">Kratzfest, hitzebeständig, wasserresistent – ideal für Küche, Bad & viel genutzte Oberflächen.</p>
-+      </section>
-+      <section class="apartment" id="apartment">
-+        <div class="living-room-stage" aria-label="Visualisierung eines modernen Wohnzimmers mit Küche">
-+          <button class="hotspot" data-item="kitchen" type="button">Küche</button>
-+          <button class="hotspot" data-item="table" type="button">Esstisch</button>
-+          <button class="hotspot" data-item="wall" type="button">Akzentwand</button>
-+          <button class="hotspot" data-item="sofa" type="button">Sofa</button>
-         </div>
--        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop" alt="Beständigkeit">
--      </div>
 -    </div>
 -  </section>
 -
@@ -994,34 +972,21 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 -            <label>Ihr Name<br><input name="name" required placeholder="Vor- und Nachname"></label>
 -            <label>E-Mail<br><input type="email" name="email" required placeholder="name@domain.at"></label>
 -            <label>Telefon (optional)<br><input name="phone" placeholder="+43 …"></label>
-+        <div class="window-film-drawer" id="material-archiv">
-+          <h2>Blick nach draußen: Glasfolien für jede Wetterlage</h2>
-+          <p>
-+            Am Panoramafenster kannst du zwischen Spezialfolien wechseln. Von maximalem Sonnenschutz
-+            über Privacy-Lösungen bis hin zu verspiegelt, schaltbar oder farbveredelten Gläsern –
-+            hier siehst du sofort, wie sich Lichtstimmung und Reflexion verändern.
-+          </p>
-+          <div class="film-options" role="group" aria-label="Glasfolien-Auswahl">
-+            <button class="film-card" type="button" data-texture="https://images.unsplash.com/photo-1529429617124-aee0a35d21fe?auto=format&fit=crop&w=900&q=80" data-description="Maximaler Wärmeschutz dank metallisierter Mehrschichtfolie. Blockt bis zu 85&nbsp;% der Infrarotstrahlung." aria-pressed="true">
-+              <strong>Hitzeschutz</strong>
-+              <span>Hält Räume spürbar kühler und reduziert Blendeffekte.</span>
-+              <div class="film-preview" aria-hidden="true"></div>
-+            </button>
-+            <button class="film-card" type="button" data-texture="https://images.unsplash.com/photo-1505692794403-34d4982c36d6?auto=format&fit=crop&w=900&q=80" data-description="Milchglas-Optik mit 70&nbsp;% Lichtdurchlass. Perfekt für Bad und Büro." aria-pressed="false">
-+              <strong>Privatsphäre</strong>
-+              <span>Sichtschutz bei Tageslicht, ohne auf Helligkeit zu verzichten.</span>
-+              <div class="film-preview" aria-hidden="true"></div>
-+            </button>
-+            <button class="film-card" type="button" data-texture="https://images.unsplash.com/photo-1579546928687-0f9be64d0a33?auto=format&fit=crop&w=900&q=80" data-description="Spiegelnde Außenansicht, neutral von innen. Reflexion bis 68&nbsp;%.">
-+              <strong>Spiegelglas</strong>
-+              <span>Sorgt für futuristischen Look und schützt vor neugierigen Blicken.</span>
-+              <div class="film-preview" aria-hidden="true"></div>
-+            </button>
-+            <button class="film-card" type="button" data-texture="https://images.unsplash.com/photo-1600585154340-0ef3c08dcdb6?auto=format&fit=crop&w=900&q=80" data-description="Schaltbar von transparent zu satiniert in 0,2&nbsp;s – inklusive Smart-Home-Integration.">
-+              <strong>Smart Switch</strong>
-+              <span>Elektrisch dimmbare Folie für Meetingräume und Schlafzimmer.</span>
-+              <div class="film-preview" aria-hidden="true"></div>
-+            </button>
++    </header>
++    <main>
++      <section class="hero-portal" id="start">
++        <button class="portal-frame" type="button" aria-controls="wohnloft">
++          <img
++            src="https://images.unsplash.com/photo-1478118330274-ff72cf1161a7?auto=format&fit=crop&w=1400&q=80"
++            alt="Lichtdurchflutetes Fenster mit Blick auf die Stadt"
++          />
++          <div class="portal-caption">
++            <strong>Betreten Sie das Loft</strong>
++            <span>
++              Tippen Sie auf das Fenster, lassen Sie die Flügel aufschwingen und erleben Sie sofort,
++              wie unsere Folien Ihr Zuhause verwandeln.
++            </span>
++            <span class="enter-hint">Fenster öffnen</span>
            </div>
 -          <label style="display:block;margin:12px 0">Bild hochladen (JPG/PNG, max. 15 MB)
 -            <input type="file" name="photo" accept="image/*" required>
@@ -1051,13 +1016,7 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 -        <div class="folio-item">
 -          <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=800&auto=format&fit=crop" alt="Schwarzer Marmor">
 -          <label><input type="checkbox" value="Schwarzer Marmor"> Schwarzer Marmor</label>
-+          <p class="film-details">
-+            <strong class="film-selected">Hitzeschutz</strong> · <span class="film-description"
-+              >Maximaler Wärmeschutz dank metallisierter Mehrschichtfolie. Blockt bis zu 85&nbsp;% der
-+              Infrarotstrahlung.</span
-+            >
-+          </p>
-         </div>
+-        </div>
 -        <div class="folio-item">
 -          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=800&auto=format&fit=crop" alt="Weißer Marmor">
 -          <label><input type="checkbox" value="Weißer Marmor"> Weißer Marmor</label>
@@ -1065,444 +1024,157 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 -        <div class="folio-item">
 -          <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=800&auto=format&fit=crop" alt="Braunes Holz">
 -          <label><input type="checkbox" value="Braunes Holz"> Braunes Holz</label>
--        </div>
++        </button>
++      </section>
++
++      <section class="loft-scene" id="wohnloft" aria-live="polite">
++        <div class="scene-stage">
++          <div class="scene-overlay"></div>
++          <button class="hotspot" style="top: 60%; left: 32%;" data-target="sofa" data-label="Sofa">
++            Sofa
++          </button>
++          <button class="hotspot" style="top: 70%; left: 52%;" data-target="tisch" data-label="Esstisch">
++            Tisch
++          </button>
++          <button class="hotspot" style="top: 56%; left: 72%;" data-target="kueche" data-label="Küche">
++            Küche
++          </button>
++          <button class="hotspot" style="top: 40%; left: 22%;" data-target="wand" data-label="Akzentwand">
++            Wand
++          </button>
++          <button class="hotspot" style="top: 32%; left: 58%;" data-target="fenster" data-label="Glasfolien">
++            Glas
++          </button>
+         </div>
 -        <div class="folio-item">
 -          <img src="https://images.unsplash.com/photo-1523419409543-63f6dbd49b97?q=80&w=800&auto=format&fit=crop" alt="Helles Holz">
 -          <label><input type="checkbox" value="Helles Holz"> Helles Holz</label>
-+      </section>
-+      <section id="contact">
-+        <div class="contact-shell">
-+          <div class="contact-intro">
-+            <h2>Kontaktanfrage – inspiriert von der Perfektion von Apple</h2>
-+            <p>
-+              Erzähle uns, welche Flächen du veredeln möchtest, und unser Team meldet sich mit einem
-+              360°-Rendering, Materialmustern und einer passgenauen Kalkulation. Wir koordinieren
-+              Aufmaß, Produktion und Montage europaweit.
-+            </p>
-+            <p>
-+              Telefon: <a href="tel:+49891234567">+49 89 123 45 67</a><br />
-+              E-Mail: <a href="mailto:hello@loft-folienstudio.de">hello@loft-folienstudio.de</a>
-+            </p>
-+          </div>
-+          <form aria-label="Kontaktformular">
-+            <label>
-+              Vor- und Nachname
-+              <input type="text" name="name" autocomplete="name" required placeholder="Max Mustermann" />
-+            </label>
-+            <label>
-+              E-Mail-Adresse
-+              <input type="email" name="email" autocomplete="email" required placeholder="max@example.com" />
-+            </label>
-+            <label>
-+              Projektstandort
-+              <input type="text" name="location" placeholder="München, Deutschland" />
-+            </label>
-+            <label>
-+              Nutzungsart
-+              <select name="usage">
-+                <option value="private">Private Wohnung</option>
-+                <option value="office">Büro / Co-Working</option>
-+                <option value="retail">Retail / Showroom</option>
-+                <option value="hospitality">Hotel / Gastronomie</option>
-+              </select>
-+            </label>
-+            <label>
-+              Welche Flächen sollen foliert werden?
-+              <textarea name="surfaces" placeholder="Fensterfront, Küche, Esstisch, Wandpaneele ..."></textarea>
-+            </label>
-+            <label>
-+              Wunsch-Termin für die Umsetzung
-+              <input type="date" name="date" />
-+            </label>
-+            <label>
-+              Budgetrahmen (netto)
-+              <select name="budget">
-+                <option value="<5000">bis 5.000 €</option>
-+                <option value="5000-15000">5.000 – 15.000 €</option>
-+                <option value="15000-30000">15.000 – 30.000 €</option>
-+                <option value=">30000">über 30.000 €</option>
-+              </select>
-+            </label>
-+            <button class="submit" type="submit">Anfrage senden</button>
-+          </form>
++        <div class="glass-grid" aria-live="polite">
++          <article class="glass-option is-active" data-glass="hitzeschutz">
++            <strong>Hitzeschutz</strong>
++            <span>Reduziert bis zu 70% Wärmeeinstrahlung, filtert UV-Strahlung und hält den Blick frei.</span>
++          </article>
++          <article class="glass-option" data-glass="spiegelfolie">
++            <strong>Spiegelfolie</strong>
++            <span>Von außen verspiegelt, innen kristallklar – für maximale Privatsphäre bei Tageslicht.</span>
++          </article>
++          <article class="glass-option" data-glass="sicherheitsfolie">
++            <strong>Sicherheitsfolie</strong>
++            <span>Mehrlagige Folie verstärkt Scheiben gegen Bruch, Splitterschutz inklusive.</span>
++          </article>
++          <article class="glass-option" data-glass="uvblocker">
++            <strong>UV-Blocker</strong>
++            <span>Ideal für Showrooms – blockiert 99% UV-Strahlung, verhindert Ausbleichen.</span>
++          </article>
          </div>
 -        <div class="folio-item">
 -          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=800&auto=format&fit=crop" alt="Luzengo Weiß">
 -          <label><input type="checkbox" value="Luzengo Weiß"> Luzengo Weiß</label>
 +      </section>
-+      <section id="impressum">
-+        <h2>Impressum – inspiriert von der Klarheit von Apple</h2>
-+        <div class="impressum-grid">
-+          <div class="impressum-card">
-+            <strong>Betreiber</strong>
-+            <span>Loft Folienstudio GmbH</span>
-+            <span>Maximilianstraße 25</span>
-+            <span>80539 München</span>
-+            <span>Geschäftsführer: Laura Stein, Jonas Keller</span>
-+            <span>Registergericht: Amtsgericht München, HRB 123456</span>
-+          </div>
-+          <div class="impressum-card">
-+            <strong>Kontakt</strong>
-+            <span>Telefon: +49 89 123 45 67</span>
-+            <span>E-Mail: hello@loft-folienstudio.de</span>
-+            <span>USt-ID: DE 123 456 789</span>
-+          </div>
-+          <div class="impressum-card">
-+            <strong>Rechtliches</strong>
-+            <span>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Laura Stein</span>
-+            <span>Streitschlichtung: Wir sind nicht verpflichtet, an Streitbeilegungsverfahren teilzunehmen.</span>
-+            <span>Copyright: © 2024 Loft Folienstudio GmbH. Alle Rechte vorbehalten.</span>
-+          </div>
++
++      <section class="section" id="kontakt">
++        <div class="section-inner">
++          <header>
++            <h2>Kontaktanfrage</h2>
++            <p>
++              Inspiriert von der Apple Experience: ein klares Formular, das alle Details Ihrer
++              Wunsch-Folierung erfasst – Material, Räume, gewünschtes Finish und Ihren bevorzugten
++              Beratungszeitraum.
++            </p>
++          </header>
++          <form class="contact-form">
++            <div class="form-field">
++              <label for="anrede">Anrede</label>
++              <select id="anrede" name="anrede">
++                <option>Frau</option>
++                <option>Herr</option>
++                <option>Divers</option>
++                <option>Keine Angabe</option>
++              </select>
++            </div>
++            <div class="form-field">
++              <label for="vorname">Vorname</label>
++              <input id="vorname" name="vorname" type="text" placeholder="Vorname" />
++            </div>
++            <div class="form-field">
++              <label for="nachname">Nachname</label>
++              <input id="nachname" name="nachname" type="text" placeholder="Nachname" />
++            </div>
++            <div class="form-field">
++              <label for="unternehmen">Unternehmen</label>
++              <input id="unternehmen" name="unternehmen" type="text" placeholder="Optional" />
++            </div>
++            <div class="form-field">
++              <label for="email">E-Mail</label>
++              <input id="email" name="email" type="email" placeholder="name@email.de" />
++            </div>
++            <div class="form-field">
++              <label for="telefon">Telefon</label>
++              <input id="telefon" name="telefon" type="tel" placeholder="Mobil oder Festnetz" />
++            </div>
++            <div class="form-field">
++              <label for="projekt">Projektumfang</label>
++              <select id="projekt" name="projekt">
++                <option>Wohnung – Komplett (2 Zimmer)</option>
++                <option>Nur Wohnraum</option>
++                <option>Nur Küche</option>
++                <option>Showroom/Büro</option>
++              </select>
++            </div>
++            <div class="form-field">
++              <label for="materialwunsch">Materialwunsch</label>
++              <select id="materialwunsch" name="materialwunsch">
++                <option>Premium Leder</option>
++                <option>Marmor Hochglanz</option>
++                <option>Beton Matt</option>
++                <option>Holz Nussbaum</option>
++                <option>Spiegelglas</option>
++                <option>Metall gebürstet</option>
++              </select>
++            </div>
++            <div class="form-field">
++              <label for="termin">Bevorzugter Beratungstermin</label>
++              <input id="termin" name="termin" type="date" />
++            </div>
++            <div class="form-field" style="grid-column: 1 / -1;">
++              <label for="details">Projektbeschreibung</label>
++              <textarea id="details" name="details" placeholder="Beschreiben Sie Ihr Wunschambiente und vorhandene Oberflächen"></textarea>
++            </div>
++            <button class="form-submit" type="submit">Anfrage senden</button>
++          </form>
          </div>
 -      </div>
--
++      </section>
+ 
 -      <div class="card" style="margin-top:16px">
 -        <div class="total">
 -          <div>Ausgewählt: <b><span id="count">0</span></b> • Summe: <b><span id="sum">€ 0</span></b></div>
 -          <a class="btn primary" href="#order">Weiter & bestellen</a>
-+      </section>
-+    </main>
-+    <footer>© 2024 Loft Folienstudio – Visualisierungen dienen der Inspiration.</footer>
-+    <div class="material-overlay" aria-hidden="true" role="dialog" aria-modal="true">
-+      <div class="overlay-card">
-+        <button class="overlay-close" type="button" aria-label="Materialübersicht schließen">×</button>
-+        <div class="overlay-content">
-+          <article data-item="kitchen" hidden>
-+            <h3>Offene Küchenfront veredeln</h3>
++      <section class="section" id="impressum">
++        <div class="section-inner">
++          <header>
++            <h2>Impressum</h2>
 +            <p>
-+              Tausche das aktuelle Finish der Küchenschränke mit wenigen Klicks. Wähle aus zehn
-+              High-End-Folien von Marmor bis Mikrozement.
++              Beispielhafte Angaben nach Vorbild von Apple.com – ersetzen Sie diese Platzhalter durch
++              Ihre tatsächlichen Unternehmensdaten, Handelsregister-Einträge und Verantwortlichen.
 +            </p>
-+            <div class="preview-stage">
-+              <div class="preview-panel" style="--base: url('https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=1400&q=80');">
-+                <span>Vorher</span>
-+              </div>
-+              <div class="preview-panel" data-role="after" style="--base: url('https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=1400&q=80');">
-+                <span>Nachher</span>
-+              </div>
-+            </div>
-+            <div class="material-meta">
-+              <strong data-role="material-name">Bianco Marmor</strong>
-+              <p data-role="description">
-+                Elegante Hochglanz-Marmorierung mit seidiger Oberfläche – stoßfest, hitzebeständig bis
-+                110&nbsp;°C.
-+              </p>
-+            </div>
-+            <ul class="material-swatches">
-+              <li>
-+                <button type="button" data-label="Bianco Marmor" data-description="Hochglanz-Marmorierung mit grauer Aderung – ideal für flächenbündige Küchen." data-texture="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Bianco Marmor</strong>
-+                  <span>Luxus pur</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Walnuss" data-description="Tiefes Walnussholz mit offenporiger Haptik, perfekt für warme Kontraste." data-texture="https://images.unsplash.com/photo-1541976076758-347942db1978?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Walnuss</strong>
-+                  <span>Offenporig</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Schwarzstahl" data-description="Gebürsteter Stahl in Graphit – kratzresistent und fingerabdruckarm." data-texture="https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Schwarzstahl</strong>
-+                  <span>Industrial</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Beton" data-description="Fein strukturierter Sichtbeton mit samtiger Haptik." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Beton</strong>
-+                  <span>Urban</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Leder Caramel" data-description="Weiche Lederstruktur in warmem Cognac – ideal für Griffleisten." data-texture="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Leder</strong>
-+                  <span>Cognac</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Messing satin" data-description="Satinierte Messingoptik mit sanftem Schimmer für Statement-Küchen." data-texture="https://images.unsplash.com/photo-1616627459435-1c78aa3d363b?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Messing</strong>
-+                  <span>Satin</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Mikrozement" data-description="Handgespachtelte Mikrozement-Optik – wasserabweisend und robust." data-texture="https://images.unsplash.com/photo-1585792180666-1acbfc5d5b9f?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Mikrozement</strong>
-+                  <span>Handcrafted</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Rauchglas" data-description="Tief getöntes Rauchglas mit dezentem Spiegel – perfekt für Oberschränke." data-texture="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Rauchglas</strong>
-+                  <span>Reflexion</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Keramikweiß" data-description="Ultramattes Keramikweiß, kratzfest und leicht zu reinigen." data-texture="https://images.unsplash.com/photo-1523419427760-2fd20199b5a0?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Keramik</strong>
-+                  <span>Mattweiß</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Strukturstoff" data-description="Textile Oberfläche mit Akustikwirkung – perfekt für Kücheninseln." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Strukturstoff</strong>
-+                  <span>Akustik</span>
-+                </button>
-+              </li>
-+            </ul>
-+          </article>
-+          <article data-item="table" hidden>
-+            <h3>Esstisch neu inszenieren</h3>
++          </header>
++          <article>
++            <p>Loft Folienstudio GmbH · Beispielstraße 12 · 80331 München</p>
++            <p>Geschäftsführer: Max Beispiel · Amtsgericht München · HRB 123456</p>
++            <p>USt-ID: DE999999999 · Telefon: +49 89 123 456 0 · E-Mail: service@loftfolien.de</p>
 +            <p>
-+              Optimiere Tischplatte und Tischbeine mit strapazierfähigen Oberflächen, die sich wie
-+              echtes Material anfühlen – inklusive Stoß- und Kratzschutz.
++              Verantwortlich für den Inhalt gemäß § 55 Abs. 2 RStV: Anna Beispiel, Adresse wie oben.
 +            </p>
-+            <div class="preview-stage">
-+              <div class="preview-panel" style="--base: url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1400&q=80');">
-+                <span>Vorher</span>
-+              </div>
-+              <div class="preview-panel" data-role="after" style="--base: url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1400&q=80');">
-+                <span>Nachher</span>
-+              </div>
-+            </div>
-+            <div class="material-meta">
-+              <strong data-role="material-name">Walnuss</strong>
-+              <p data-role="description">
-+                Warme Maserung mit tiefem Glanz – perfekt für gesellige Dinner und High-End-Looks.
-+              </p>
-+            </div>
-+            <ul class="material-swatches">
-+              <li>
-+                <button type="button" data-label="Nero Marmor" data-description="Tiefschwarzer Marmor mit weißen Einschlüssen – dramatischer Premium-Look." data-texture="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Nero Marmor</strong>
-+                  <span>Statement</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Eiche geräuchert" data-description="Sanfte Holzstruktur, UV-stabilisiert für stark belichtete Essbereiche." data-texture="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Eiche</strong>
-+                  <span>Geräuchert</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Beton Urban" data-description="Feinporiger Beton-Look mit Anti-Fingerprint-Beschichtung." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Beton</strong>
-+                  <span>Urban</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Messing gebürstet" data-description="Messingfarbener Metall-Look, temperaturbeständig und formstabil." data-texture="https://images.unsplash.com/photo-1616627459435-1c78aa3d363b?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Messing</strong>
-+                  <span>Gebürstet</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Samt Cashmere" data-description="Microfaser mit samtigem Griff – ideal für Tischbeine und Paneele." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Samt</strong>
-+                  <span>Cashmere</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Carbon" data-description="Technische Carbonstruktur für einen progressiven High-Tech-Look." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Carbon</strong>
-+                  <span>Performance</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Terrazzo" data-description="Frischer Terrazzo-Mix mit sanfter Haptik und antibakterieller Beschichtung." data-texture="https://images.unsplash.com/photo-1523419409543-0c1df022bdd1?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Terrazzo</strong>
-+                  <span>Retro</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Glas klar" data-description="Glasklare, hochglänzende Oberfläche mit Anti-Scratch-Sealing." data-texture="https://images.unsplash.com/photo-1529429617124-aee0a35d21fe?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Glas</strong>
-+                  <span>Klar</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Schwarzstahl" data-description="Graphitfarbener Stahl-Look – beständig gegen Abrieb und Hitze." data-texture="https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Schwarzstahl</strong>
-+                  <span>Industrial</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Perlweiß" data-description="Perlmuttschimmer mit mehrschichtigem Tiefenglanz – ideal für elegante Settings." data-texture="https://images.unsplash.com/photo-1600585154340-0ef3c08dcdb6?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Perlweiß</strong>
-+                  <span>Signature</span>
-+                </button>
-+              </li>
-+            </ul>
-+          </article>
-+          <article data-item="wall" hidden>
-+            <h3>Akzentwand transformieren</h3>
 +            <p>
-+              Von mineralisch bis metallisch: gestalte deine Wandverkleidung so, dass sie mit Licht und
-+              Raumtemperatur spielt – natürlich inklusive akustischer Optimierung.
++              Plattform der EU-Kommission zur Online-Streitbeilegung (OS):
++              https://ec.europa.eu/consumers/odr/ – wir sind zur Teilnahme an einem
++              Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle nicht verpflichtet.
 +            </p>
-+            <div class="preview-stage">
-+              <div class="preview-panel" style="--base: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80');">
-+                <span>Vorher</span>
-+              </div>
-+              <div class="preview-panel" data-role="after" style="--base: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80');">
-+                <span>Nachher</span>
-+              </div>
-+            </div>
-+            <div class="material-meta">
-+              <strong data-role="material-name">Mikrozement</strong>
-+              <p data-role="description">
-+                Mineralische Spachteloptik mit tiefer Struktur – atmungsaktiv und abwaschbar.
-+              </p>
-+            </div>
-+            <ul class="material-swatches">
-+              <li>
-+                <button type="button" data-label="Travertin" data-description="Grobe Kalksteintextur mit warmem Sandton – schafft mediterrane Leichtigkeit." data-texture="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Travertin</strong>
-+                  <span>Kalkstein</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Schiefer" data-description="Dunkler Schiefer mit natürlicher Spaltung – perfekt für expressive Kontraste." data-texture="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Schiefer</strong>
-+                  <span>Charakter</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Kupfer Patina" data-description="Metallische Oberfläche mit changierender Patina – reaktive Schutzschicht inklusive." data-texture="https://images.unsplash.com/photo-1616627459435-1c78aa3d363b?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Kupfer</strong>
-+                  <span>Patina</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Linen Taupe" data-description="Feiner Textilstoff mit Akustikvlies – verbessert Nachhallzeiten." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Leinen</strong>
-+                  <span>Taupe</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Beton Loft" data-description="Makelloser Sichtbeton mit weichem Mattfinish – urban und ruhig." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Beton</strong>
-+                  <span>Loft</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Mikrozement" data-description="Mineralische Edelspachtelung in sanftem Grau – atmungsaktiv und wasserabweisend." data-texture="https://images.unsplash.com/photo-1585792180666-1acbfc5d5b9f?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Mikrozement</strong>
-+                  <span>Grau</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Bronze Satin" data-description="Satinierte Bronze mit subtiler Lichtreflexion – ideal für Nischen." data-texture="https://images.unsplash.com/photo-1616627459435-1c78aa3d363b?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Bronze</strong>
-+                  <span>Satin</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Mirror Lines" data-description="Vertikale Spiegelfolie mit feinen Linien – erweitert optisch den Raum." data-texture="https://images.unsplash.com/photo-1579546928687-0f9be64d0a33?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Mirror</strong>
-+                  <span>Lines</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Quartz" data-description="Fein gesprenkelte Quarzstruktur mit leichtem Glitzereffekt." data-texture="https://images.unsplash.com/photo-1523419409543-0c1df022bdd1?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Quarz</strong>
-+                  <span>Glanz</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Soft White" data-description="Seidiges Offwhite mit perligem Finish – reflektiert Licht besonders weich." data-texture="https://images.unsplash.com/photo-1600585154340-0ef3c08dcdb6?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Soft White</strong>
-+                  <span>Seidenmatt</span>
-+                </button>
-+              </li>
-+            </ul>
-+          </article>
-+          <article data-item="sofa" hidden>
-+            <h3>Sofa und Polsterflächen upgraden</h3>
-+            <p>
-+              Ersetze Stoffe und Bespannungen ohne neue Möbel zu kaufen. Unsere Polsterfolien liefern
-+              perfekte Spannung, Atmungsaktivität und haptische Highlights.
-+            </p>
-+            <div class="preview-stage">
-+              <div class="preview-panel" style="--base: url('https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1400&q=80');">
-+                <span>Vorher</span>
-+              </div>
-+              <div class="preview-panel" data-role="after" style="--base: url('https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1400&q=80');">
-+                <span>Nachher</span>
-+              </div>
-+            </div>
-+            <div class="material-meta">
-+              <strong data-role="material-name">Samt Royal</strong>
-+              <p data-role="description">
-+                Dicht gewebter Samt mit tiefem Farbton – flammhemmend und pflegeleicht.
-+              </p>
-+            </div>
-+            <ul class="material-swatches">
-+              <li>
-+                <button type="button" data-label="Samt Royal" data-description="Intensives Königsblau mit eleganter Lichtbrechung." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Samt</strong>
-+                  <span>Royal</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Leder Espresso" data-description="Veganes Premium-Leder mit feiner Narbung und Softtouch." data-texture="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Leder</strong>
-+                  <span>Espresso</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Bouclé Creme" data-description="Trendig strukturierter Bouclé mit hoher Abriebfestigkeit." data-texture="https://images.unsplash.com/photo-1600585154340-0ef3c08dcdb6?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Bouclé</strong>
-+                  <span>Creme</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Cord Terracotta" data-description="Breite Cordstruktur für gemütliche Retro-Vibes." data-texture="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Cord</strong>
-+                  <span>Terracotta</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Leinen Nebel" data-description="Natürliches Leinen mit leichtem Melange-Effekt, atmungsaktiv und kühl." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Leinen</strong>
-+                  <span>Nebel</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Strukturgraphit" data-description="3D-Gewebe in Graphit – enorm formstabil und schmutzabweisend." data-texture="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Struktur</strong>
-+                  <span>Graphit</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Leder Powder" data-description="Weiches Puderrosa mit seidenmattem Finish – flammhemmend zertifiziert." data-texture="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Leder</strong>
-+                  <span>Puder</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Velours Dusk" data-description="Veloursleder-Optik in Rauchgrau – inklusive Anti-Schmutz-Schutz." data-texture="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Velours</strong>
-+                  <span>Dusk</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Gewebe Slate" data-description="Hybrid-Gewebe aus Performancefasern – atmungsaktiv und robust." data-texture="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Gewebe</strong>
-+                  <span>Slate</span>
-+                </button>
-+              </li>
-+              <li>
-+                <button type="button" data-label="Moosgrün" data-description="Tiefe Moosfarbe mit weichem Flor – bringt Natur ins Wohnzimmer." data-texture="https://images.unsplash.com/photo-1616627562265-45e0bfa94c10?auto=format&fit=crop&w=900&q=80">
-+                  <strong>Samt</strong>
-+                  <span>Moos</span>
-+                </button>
-+              </li>
-+            </ul>
 +          </article>
          </div>
-       </div>
-     </div>
+-      </div>
+-    </div>
 -  </section>
 -
 -  <!-- BESTELLUNG -->
@@ -1518,7 +1190,21 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 -            <label>Name<br><input name="name" required></label>
 -            <label>E-Mail<br><input type="email" name="email" required></label>
 -            <label>Adresse<br><input name="address" required placeholder="Straße, PLZ Ort"></label>
--          </div>
++      </section>
++    </main>
++    <div class="material-modal" aria-hidden="true" role="dialog" aria-modal="true">
++      <div class="modal-content">
++        <button class="modal-close" type="button" aria-label="Schließen">×</button>
++        <div class="modal-header">
++          <h2 id="modal-title">Material auswählen</h2>
++          <p id="modal-description"></p>
++          <div class="material-list" role="listbox" aria-labelledby="modal-title"></div>
++        </div>
++        <div class="preview-area">
++          <div class="preview-label">
++            <span>Vorher</span>
++            <span>Nachher</span>
+           </div>
 -          <label>Nachricht (optional)
 -            <input name="msg" placeholder="Maße, Frontenanzahl, Wunschtermin …">
 -          </label>
@@ -1610,21 +1296,29 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 -        <details class="card"><summary>Halten die Folien in der Küche?</summary><p class="sub">Ja. Wir nutzen hitzebeständige, wasserresistente Markenfolien mit starker Haftung.</p></details>
 -        <details class="card"><summary>Kann ich Muster sehen?</summary><p class="sub">Klar – im Gespräch oder per Post. Der Möbelfolien-Forscher hilft bei der Vorauswahl.</p></details>
 -        <details class="card"><summary>Macht ihr auch Fenster/Schaufenster?</summary><p class="sub">Ja: Hitzeschutz, UV, Sichtschutz, Werbung & Sicherheit.</p></details>
--      </div>
--    </div>
++          <div class="before-after">
++            <div class="preview-before"></div>
++            <div class="preview-after">
++              <div class="preview-texture"></div>
++            </div>
++            <input class="preview-slider" type="range" min="0" max="100" value="50" aria-label="Vorher-Nachher-Schieber" />
++          </div>
++          <div class="preview-meta">
++            <span><strong>Aktuelle Folie:</strong> <span id="selected-material">–</span></span>
++            <span id="material-details"></span>
++          </div>
++        </div>
+       </div>
+     </div>
 -  </section>
 +    <script>
-+      const body = document.body;
-+      const portal = document.querySelector('.window-portal');
-+      const apartmentSection = document.getElementById('apartment');
-+      const menuToggle = document.querySelector('.menu-toggle');
-+      const menuPanel = document.getElementById('global-navigation');
-+      const materialOverlay = document.querySelector('.material-overlay');
-+      const overlayClose = document.querySelector('.overlay-close');
-+      const overlayArticles = [...materialOverlay.querySelectorAll('article')];
-+      const filmCards = document.querySelectorAll('.film-card');
-+      const filmDetailsName = document.querySelector('.film-selected');
-+      const filmDetailsDescription = document.querySelector('.film-description');
++      const menuToggle = document.querySelector(".menu-toggle");
++      const menuPanel = document.querySelector(".menu-panel");
++      menuToggle.addEventListener("click", () => {
++        const expanded = menuToggle.getAttribute("aria-expanded") === "true";
++        menuToggle.setAttribute("aria-expanded", (!expanded).toString());
++        menuPanel.setAttribute("aria-hidden", expanded ? "true" : "false");
++      });
  
 -  <!-- FOOTER -->
 -  <footer style="border-top:1px solid rgba(255,255,255,.08);padding:34px 0">
@@ -1703,139 +1397,481 @@ index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5401e013a00f216fe056d312fdc5c3da
 -    });
 -  </script>
 -</body>
-+      function openMenu() {
-+        menuToggle.setAttribute('aria-expanded', 'true');
-+        menuPanel.dataset.open = 'true';
-+      }
++      document.querySelectorAll(".menu-link").forEach((link) => {
++        link.addEventListener("click", () => {
++          menuToggle.setAttribute("aria-expanded", "false");
++          menuPanel.setAttribute("aria-hidden", "true");
++        });
++      });
 +
-+      function closeMenu() {
-+        menuToggle.setAttribute('aria-expanded', 'false');
-+        menuPanel.dataset.open = 'false';
-+      }
++      const portal = document.querySelector(".portal-frame");
++      const loftScene = document.querySelector(".loft-scene");
++      portal.addEventListener("click", () => {
++        loftScene.classList.add("is-visible");
++        loftScene.scrollIntoView({ behavior: "smooth" });
++      });
 +
-+      menuToggle.addEventListener('click', () => {
-+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-+        if (expanded) {
-+          closeMenu();
++      const materialModal = document.querySelector(".material-modal");
++      const modalClose = document.querySelector(".modal-close");
++      const modalTitle = document.getElementById("modal-title");
++      const modalDescription = document.getElementById("modal-description");
++      const materialList = document.querySelector(".material-list");
++      const previewBefore = document.querySelector(".preview-before");
++      const previewAfter = document.querySelector(".preview-after");
++      const previewTexture = document.querySelector(".preview-texture");
++      const previewSlider = document.querySelector(".preview-slider");
++      const selectedMaterial = document.getElementById("selected-material");
++      const materialDetails = document.getElementById("material-details");
++
++      const hotspotData = {
++        sofa: {
++          title: "Sofa Lounge",
++          description:
++            "Mit unseren High-End-Folien lassen sich modulare Sofaelemente in Leder, Samt oder Metall-Optik verwandeln – ganz ohne neues Polstern.",
++          before: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
++          materials: [
++            {
++              id: "leder",
++              name: "Italienisches Leder",
++              detail: "Atmungsaktiv, fein genarbt, mit Antifingerprint-Beschichtung.",
++              texture: "https://images.unsplash.com/photo-1582719478442-4b7b88f5f1bf?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "samt",
++              name: "Samt Royal",
++              detail: "Tiefes Mitternachtsblau mit changierendem Glanz.",
++              texture: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "leinen",
++              name: "Leinen Natur",
++              detail: "Strukturiert, atmungsaktiv, antiallergen.",
++              texture: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "mikrofaser",
++              name: "Performance Mikrofaser",
++              detail: "Wasserabweisend, samtiges Finish, kinderfreundlich.",
++              texture: "https://images.unsplash.com/photo-1616628182497-1e4ad4acf0cf?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "wildleder",
++              name: "Wildleder Taupe",
++              detail: "Natürliche Haptik mit Nanobeschichtung.",
++              texture: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "karbon",
++              name: "Carbon Graphit",
++              detail: "Performance-Oberfläche mit sportlichem Touch.",
++              texture: "https://images.unsplash.com/photo-1616628287025-1ed1d5d295df?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "metall",
++              name: "Titanium",
++              detail: "Metallisch schimmernde Oberfläche mit Soft-Touch.",
++              texture: "https://images.unsplash.com/photo-1616627567555-c60ac69c5d5f?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "perlgrau",
++              name: "Perl Grau",
++              detail: "Mattes Finish mit feinem Glitzeranteil.",
++              texture: "https://images.unsplash.com/photo-1616627567575-0edee79eec1b?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "moos",
++              name: "Moosgrün",
++              detail: "Trendfarbe 2024 – samtig, satt, beruhigend.",
++              texture: "https://images.unsplash.com/photo-1524492449093-2f7e62053c50?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "glacier",
++              name: "Glacier Weiß",
++              detail: "Clean, minimalistisch, pflegeleicht.",
++              texture: "https://images.unsplash.com/photo-1616628287025-1ed1d5d295df?auto=format&fit=crop&w=900&q=80",
++            },
++          ],
++        },
++        tisch: {
++          title: "Esstisch",
++          description:
++            "Der Mittelpunkt der Wohnung erhält mit Stein-, Metall- oder Holzoptiken eine völlig neue Präsenz – inklusive hitzebeständiger Schutzschicht.",
++          before: "https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=1200&q=80",
++          materials: [
++            {
++              id: "marmor",
++              name: "Marmor Carrara",
++              detail: "Fein geäderte Hochglanzfläche mit Tiefenwirkung.",
++              texture: "https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "nussbaum",
++              name: "Nussbaum",
++              detail: "Dunkles Holz mit seidiger Versiegelung.",
++              texture: "https://images.unsplash.com/photo-1600490036275-35f7fd626c4c?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "beton",
++              name: "Beton Loft",
++              detail: "Mineralische Struktur, seidenmatt, warm im Griff.",
++              texture: "https://images.unsplash.com/photo-1523419409543-0c1df022bdd6?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "stahl",
++              name: "Stahl Gebürstet",
++              detail: "Industrie-Look, fingerabdruckarm.",
++              texture: "https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "keramik",
++              name: "Keramik Onyx",
++              detail: "Kratzfest, leicht zu reinigen, tiefschwarzer Spiegelglanz.",
++              texture: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "fliesen",
++              name: "Fliesen Schachbrett",
++              detail: "Retro-Statement mit 3D-Kantenoptik.",
++              texture: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "kalkstein",
++              name: "Kalkstein",
++              detail: "Helles Natursteinfinish, offenporig versiegelt.",
++              texture: "https://images.unsplash.com/photo-1616627367095-6c2c1d4c8768?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "ahorn",
++              name: "Ahorn",
++              detail: "Skandinavisch hell, UV-beständig.",
++              texture: "https://images.unsplash.com/photo-1616628182506-cc35978e1085?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "schiefer",
++              name: "Schiefer",
++              detail: "Natürliche Struktur, geölt, wasserfest.",
++              texture: "https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "glas",
++              name: "Glas Klar",
++              detail: "Transparente Schutzschicht gegen Kratzer.",
++              texture: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=900&q=80",
++            },
++          ],
++        },
++        kueche: {
++          title: "Küchenfront",
++          description:
++            "Die Küchenzeile erhält mit Folien in Holz, Stein oder Supermatt einen neuen Look inklusive Anti-Scratch- und Anti-Fingerprint-Technologie.",
++          before: "https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=1200&q=80",
++          materials: [
++            {
++              id: "supermatt",
++              name: "Supermatt Graphit",
++              detail: "Reflexionsarm, samtiger Griff, selbstheilende Oberfläche.",
++              texture: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "hochglanz",
++              name: "Hochglanz Weiss",
++              detail: "Spiegelglanz mit Nanoversiegelung.",
++              texture: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "betonlight",
++              name: "Beton Hell",
++              detail: "Urbaner Mineral-Look, seidenmatt.",
++              texture: "https://images.unsplash.com/photo-1523419410522-71263e8c9406?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "holz",
++              name: "Eiche Astig",
++              detail: "Fein geölte Holzmaserung, fühlbare Struktur.",
++              texture: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "metall",
++              name: "Metall Champagner",
++              detail: "Metallische Schicht mit warmem Glanz.",
++              texture: "https://images.unsplash.com/photo-1523419409543-0c1df022bdd6?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "stahlblau",
++              name: "Stahlblau",
++              detail: "Mutige Farbe, Anti-Fingerprint.",
++              texture: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "betonanth",
++              name: "Beton Anthrazit",
++              detail: "Markante Betontextur, Soft-Touch.",
++              texture: "https://images.unsplash.com/photo-1523419409543-0c1df022bdd6?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "fliesen",
++              name: "Fliesen Metro",
++              detail: "Klassische Metro-Struktur in Hochglanz.",
++              texture: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "mattweiss",
++              name: "Matt Weiß",
++              detail: "Minimalistisch, zeitlos, pflegeleicht.",
++              texture: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "stahl",
++              name: "Edelstahl",
++              detail: "Professioneller Gastro-Look.",
++              texture: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
++            },
++          ],
++        },
++        wand: {
++          title: "Akzentwand",
++          description:
++            "Verwandeln Sie neutrale Wände in Statements – von Beton über Holzlamellen bis zu metallischen Lichtspielen.",
++          before: "https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=1200&q=80",
++          materials: [
++            {
++              id: "holzlamelle",
++              name: "Holzlamelle",
++              detail: "Vertikale Lamellen in Nussbaum, akustisch wirksam.",
++              texture: "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "beton",
++              name: "Architektenbeton",
++              detail: "Roh, charaktervoll, matt.",
++              texture: "https://images.unsplash.com/photo-1523419410522-71263e8c9406?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "marmor",
++              name: "Calacatta Gold",
++              detail: "Weißer Marmor mit goldener Aderung.",
++              texture: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "oxid",
++              name: "Oxid Kupfer",
++              detail: "Patinierte Metalloptik mit Lichtspiel.",
++              texture: "https://images.unsplash.com/photo-1523419409543-0c1df022bdd6?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "textil",
++              name: "Textil Wand",
++              detail: "Weiche Stoffstruktur mit Akustikfunktion.",
++              texture: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "spiegel",
++              name: "Spiegel Bronze",
++              detail: "Teilreflektierend, weitet den Raum.",
++              texture: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "stein",
++              name: "Naturstein",
++              detail: "Gebrochene Struktur, matt versiegelt.",
++              texture: "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "gold",
++              name: "Gold Leaf",
++              detail: "Luxuriöses Blattgold-Finish mit Schutzlack.",
++              texture: "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "fliesen",
++              name: "Fliesen Grafit",
++              detail: "Großformatige Feinsteinoptik.",
++              texture: "https://images.unsplash.com/photo-1523419410522-71263e8c9406?auto=format&fit=crop&w=900&q=80",
++            },
++            {
++              id: "moody",
++              name: "Deep Petrol",
++              detail: "Supermattes Finish mit Farbtiefe.",
++              texture: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
++            },
++          ],
++        },
++        fenster: {
++          title: "Fensterfolien",
++          description:
++            "Erleben Sie, wie unsere Glasfolien Licht lenken, Wärme reflektieren und Privatsphäre schaffen – ohne den Blick über die Skyline zu verlieren.",
++          before: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80",
++          materials: [
++            {
++              id: "hitzeschutz",
++              name: "Hitzeschutz 70",
++              detail: "Sonnenschutz mit neutralem Erscheinungsbild.",
++              texture: "linear-gradient(180deg, rgba(170, 210, 255, 0.35), rgba(70, 120, 200, 0.55))",
++            },
++            {
++              id: "spiegel",
++              name: "Spiegelfolie",
++              detail: "One-Way-Spiegel mit Tageslichtfunktion.",
++              texture: "linear-gradient(180deg, rgba(200, 200, 210, 0.6), rgba(80, 90, 110, 0.5))",
++            },
++            {
++              id: "privacy",
++              name: "Privacy Frost",
++              detail: "Milchglasoptik, lässt Licht herein, blendet die Sicht aus.",
++              texture: "linear-gradient(180deg, rgba(230, 236, 245, 0.8), rgba(180, 190, 210, 0.8))",
++            },
++            {
++              id: "uv",
++              name: "UV-Blocker",
++              detail: "Maximaler UV-Schutz für Interieurs.",
++              texture: "linear-gradient(180deg, rgba(220, 230, 255, 0.7), rgba(150, 170, 220, 0.6))",
++            },
++            {
++              id: "sicher",
++              name: "Sicherheitsfolie",
++              detail: "Splitterschutz, stoßfest, klar.",
++              texture: "linear-gradient(180deg, rgba(220, 230, 240, 0.35), rgba(120, 140, 160, 0.3))",
++            },
++            {
++              id: "smart",
++              name: "SmartTint",
++              detail: "Schaltbare Folie – von transparent zu blickdicht in Millisekunden.",
++              texture: "linear-gradient(180deg, rgba(210, 220, 230, 0.7), rgba(80, 90, 110, 0.7))",
++            },
++            {
++              id: "antik",
++              name: "Antik Bronze",
++              detail: "Getöntes Glas mit warmer Farbstimmung.",
++              texture: "linear-gradient(180deg, rgba(210, 160, 120, 0.5), rgba(140, 90, 60, 0.5))",
++            },
++            {
++              id: "blau",
++              name: "Sky Blue",
++              detail: "Kühlt Räume optisch und physisch.",
++              texture: "linear-gradient(180deg, rgba(140, 180, 255, 0.45), rgba(40, 80, 160, 0.45))",
++            },
++            {
++              id: "gruen",
++              name: "Forest Shade",
++              detail: "Natürlicher Grünton für Südfronten.",
++              texture: "linear-gradient(180deg, rgba(150, 200, 170, 0.45), rgba(60, 120, 80, 0.45))",
++            },
++            {
++              id: "klar",
++              name: "Crystal Klar",
++              detail: "Nahezu unsichtbarer Schutzfilm.",
++              texture: "linear-gradient(180deg, rgba(240, 250, 255, 0.3), rgba(200, 210, 220, 0.25))",
++            },
++          ],
++        },
++      };
++      const createMaterialOption = (material) => {
++        const button = document.createElement("button");
++        button.type = "button";
++        button.className = "material-option";
++        button.setAttribute("role", "option");
++        button.dataset.materialId = material.id;
++
++        const thumb = document.createElement("div");
++        thumb.className = "material-thumb";
++        if (material.texture.startsWith("http")) {
++          thumb.style.backgroundImage = `url(${material.texture})`;
 +        } else {
-+          openMenu();
-+        }
-+      });
-+
-+      menuPanel.addEventListener('click', (event) => {
-+        if (event.target.tagName === 'A') {
-+          closeMenu();
-+        }
-+      });
-+
-+      function revealApartment() {
-+        if (body.classList.contains('state-apartment')) return;
-+        body.classList.replace('state-window', 'state-apartment');
-+        setTimeout(() => {
-+          apartmentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-+        }, 120);
-+      }
-+
-+      portal.addEventListener('click', revealApartment);
-+      portal.addEventListener('keydown', (event) => {
-+        if (event.key === 'Enter' || event.key === ' ') {
-+          event.preventDefault();
-+          revealApartment();
-+        }
-+      });
-+
-+      function openOverlay(item) {
-+        overlayArticles.forEach((article) => {
-+          article.hidden = article.dataset.item !== item;
-+        });
-+        materialOverlay.setAttribute('aria-hidden', 'false');
-+        const firstButton = materialOverlay.querySelector('article:not([hidden]) button');
-+        if (firstButton) {
-+          firstButton.focus();
-+        }
-+        document.addEventListener('keydown', escCloseOverlay);
-+      }
-+
-+      function closeOverlay() {
-+        materialOverlay.setAttribute('aria-hidden', 'true');
-+        document.removeEventListener('keydown', escCloseOverlay);
-+      }
-+
-+      function escCloseOverlay(event) {
-+        if (event.key === 'Escape') {
-+          closeOverlay();
-+        }
-+      }
-+
-+      overlayClose.addEventListener('click', closeOverlay);
-+      materialOverlay.addEventListener('click', (event) => {
-+        if (event.target === materialOverlay) {
-+          closeOverlay();
-+        }
-+      });
-+
-+      document.querySelectorAll('.hotspot').forEach((hotspot) => {
-+        hotspot.addEventListener('click', () => openOverlay(hotspot.dataset.item));
-+        hotspot.addEventListener('keydown', (event) => {
-+          if (event.key === 'Enter' || event.key === ' ') {
-+            event.preventDefault();
-+            openOverlay(hotspot.dataset.item);
-+          }
-+        });
-+      });
-+
-+      function updateMaterial(button) {
-+        const article = button.closest('article');
-+        const afterPanel = article.querySelector('[data-role="after"]');
-+        const label = button.dataset.label;
-+        const description = button.dataset.description;
-+        const texture = button.dataset.texture;
-+
-+        article.querySelectorAll('.material-swatches button').forEach((btn) => {
-+          btn.setAttribute('aria-pressed', btn === button ? 'true' : 'false');
-+        });
-+
-+        if (afterPanel && texture) {
-+          afterPanel.style.setProperty('--texture', `url('${texture}')`);
++          thumb.style.backgroundImage = material.texture;
 +        }
 +
-+        const nameField = article.querySelector('[data-role="material-name"]');
-+        const descriptionField = article.querySelector('[data-role="description"]');
-+        if (nameField) {
-+          nameField.textContent = label;
-+        }
-+        if (descriptionField) {
-+          descriptionField.innerHTML = description;
-+        }
-+      }
++        const info = document.createElement("div");
++        info.className = "material-info";
++        info.innerHTML = `<strong>${material.name}</strong><span>${material.detail}</span>`;
 +
-+      overlayArticles.forEach((article) => {
-+        const buttons = article.querySelectorAll('.material-swatches button');
-+        buttons.forEach((button, index) => {
-+          button.style.setProperty('--swatch', `url('${button.dataset.texture}')`);
++        button.append(thumb, info);
++        return button;
++      };
++
++      let activeHotspot = null;
++
++      const openModal = (key) => {
++        const hotspot = hotspotData[key];
++        if (!hotspot) return;
++        activeHotspot = key;
++        modalTitle.textContent = hotspot.title;
++        modalDescription.textContent = hotspot.description;
++        previewBefore.style.backgroundImage = `url(${hotspot.before})`;
++        previewAfter.style.backgroundImage = `url(${hotspot.before})`;
++        previewTexture.style.backgroundImage = "none";
++        previewSlider.value = 50;
++        previewAfter.style.width = "50%";
++        selectedMaterial.textContent = "–";
++        materialDetails.textContent = "Wählen Sie eine Folie, um das Ergebnis zu sehen.";
++
++        materialList.innerHTML = "";
++        hotspot.materials.forEach((material, index) => {
++          const option = createMaterialOption(material);
 +          if (index === 0) {
-+            updateMaterial(button);
++            option.classList.add("is-active");
++            selectMaterial(material, option);
 +          }
-+          button.addEventListener('click', () => updateMaterial(button));
++          option.addEventListener("click", () => selectMaterial(material, option));
++          materialList.appendChild(option);
 +        });
++
++        materialModal.setAttribute("aria-hidden", "false");
++        materialModal.classList.add("is-open");
++        modalClose.focus();
++      };
++
++      const selectMaterial = (material, optionEl) => {
++        if (optionEl) {
++          materialList.querySelectorAll(".material-option").forEach((btn) =>
++            btn.classList.toggle("is-active", btn === optionEl)
++          );
++        }
++        selectedMaterial.textContent = material.name;
++        materialDetails.textContent = material.detail;
++        if (material.texture.startsWith("http")) {
++          previewTexture.style.backgroundImage = `url(${material.texture})`;
++        } else {
++          previewTexture.style.backgroundImage = material.texture;
++        }
++      };
++
++      const closeModal = () => {
++        materialModal.classList.remove("is-open");
++        materialModal.setAttribute("aria-hidden", "true");
++        activeHotspot = null;
++      };
++
++      previewSlider.addEventListener("input", (event) => {
++        const value = event.target.value;
++        previewAfter.style.width = `${value}%`;
 +      });
 +
-+      filmCards.forEach((card) => {
-+        const preview = card.querySelector('.film-preview');
-+        const texture = card.dataset.texture;
-+        if (preview && texture) {
-+          preview.style.setProperty('--texture', `url('${texture}')`);
++      modalClose.addEventListener("click", closeModal);
++      materialModal.addEventListener("click", (event) => {
++        if (event.target === materialModal) {
++          closeModal();
 +        }
-+        card.addEventListener('click', () => {
-+          filmCards.forEach((c) => c.setAttribute('aria-pressed', c === card ? 'true' : 'false'));
-+          if (filmDetailsName) {
-+            filmDetailsName.textContent = card.querySelector('strong').textContent;
-+          }
-+          if (filmDetailsDescription) {
-+            filmDetailsDescription.innerHTML = card.dataset.description;
-+          }
++      });
++
++      document.addEventListener("keydown", (event) => {
++        if (event.key === "Escape" && materialModal.classList.contains("is-open")) {
++          closeModal();
++        }
++      });
++
++      document.querySelectorAll(".hotspot").forEach((hotspot) => {
++        hotspot.addEventListener("click", () => openModal(hotspot.dataset.target));
++      });
++
++      document.querySelectorAll(".glass-option").forEach((option) => {
++        option.addEventListener("click", () => {
++          document.querySelectorAll(".glass-option").forEach((opt) => opt.classList.remove("is-active"));
++          option.classList.add("is-active");
 +        });
 +      });
 +    </script>
 +  </body>
  </html>
+ 
+EOF
+)
