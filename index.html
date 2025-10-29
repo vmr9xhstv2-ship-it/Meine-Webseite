@@ -1,2089 +1,1672 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index 8408f1c0cf03bdc52e43385e50c8b46ae791e577..5722e12340654e3161da4badd70cfbffe41e20cc 100644
---- a/index.html
-+++ b/index.html
-@@ -1,425 +1,1671 @@
- <!DOCTYPE html>
- <html lang="de">
--<head>
--  <meta charset="utf-8" />
--  <meta name="viewport" content="width=device-width, initial-scale=1" />
--  <title>FoilVengers – Zukunft der Folien, Technik & Möbel | Wien</title>
--  <meta name="description" content="FoilVengers – Premium Möbelfolierungen & Glasfolien in Wien. Zukunft der Folien, Technik & Möbel. Kostenlose Visualisierung, schnelle Montage, edles Schwarz-Gold Design." />
--  <meta name="theme-color" content="#0b0c10" />
--  <link rel="preconnect" href="https://fonts.googleapis.com">
--  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
--  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
--
--  <style>
--    :root{
--      --bg:#0b0c10; --panel:#10131a; --panel2:#0f1117;
--      --txt:#eef2f7; --muted:#9aa3b2;
--      --gold:#d4af37; --gold2:#f5d76e; --green:#27c93f;
--      --radius:18px; --shadow:0 12px 32px rgba(0,0,0,.35);
--    }
--    *{box-sizing:border-box}
--    html{scroll-behavior:smooth}
--    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--txt);background:linear-gradient(180deg,#0b0c10,#0f1117 40%,#0b0c10 100%);}
--    a{color:inherit;text-decoration:none}
--    img{max-width:100%;display:block;border-radius:16px}
--    .container{width:min(1180px,92%);margin-inline:auto}
--    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);
--         background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:var(--shadow);transition:.2s}
--    .btn:hover{transform:translateY(-1px)}
--    .btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0b0f;border:none;font-weight:700}
--    .pill{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
--    h1{font-size:clamp(34px,5.5vw,60px);letter-spacing:-.02em;margin:0 0 10px}
--    h2{font-size:clamp(26px,3.2vw,38px);margin:0 0 8px}
--    .sub{color:var(--muted);margin:0 0 26px}
--    section{padding:80px 0}
--    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
--    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
--    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px}
--    .row{display:flex;gap:10px;color:var(--muted)}
--    .price{font-weight:800;font-size:26px}
--    .tag{display:inline-block;padding:6px 10px;border:1px dashed rgba(255,255,255,.18);border-radius:10px;font-size:12px;color:var(--muted)}
--    /* NAV / HAMBURGER */
--    .nav{position:sticky;top:0;z-index:50;background:rgba(15,17,23,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
--    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
--    .brand{display:flex;align-items:center;gap:10px}
--    .logo{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#000;background:linear-gradient(135deg,var(--gold),var(--gold2))}
--    .hamb{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:1px solid rgba(255,255,255,.12);cursor:pointer}
--    .hamb span{display:block;width:20px;height:2px;background:#fff;margin:3px 0;border-radius:2px}
--    .drawer{position:fixed;inset:0 0 0 auto;transform:translateX(100%);transition:.25s;background:rgba(0,0,0,.5)}
--    .drawer.open{transform:translateX(0)}
--    .panel{position:absolute;right:0;top:0;height:100%;width:min(320px,86%);background:#0f1117;padding:18px;border-left:1px solid rgba(255,255,255,.08)}
--    .panel a{display:block;padding:14px;border-radius:10px}
--    .panel a:hover{background:rgba(255,255,255,.06)}
--    /* HERO */
--    .hero{padding:90px 0 64px}
--    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
--    .mock{border-radius:22px;padding:8px;background:linear-gradient(180deg,#0f1320,#0a0c12);border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow)}
--    .mock .bar{height:36px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);display:flex;gap:8px;align-items:center;padding:0 10px}
--    .dot{width:10px;height:10px;border-radius:999px;background:#ff6b6b}.dot:nth-child(2){background:#ffd166}.dot:nth-child(3){background:#06d6a0}
--    .screen{padding:14px}
--    /* ALWAYS-ON CALL/WHATSAPP */
--    .floatbar{position:fixed;left:14px;bottom:14px;display:flex;gap:10px;z-index:60}
--    .floatbar a{background:#1f9040;border:1px solid rgba(0,0,0,.2);padding:10px 14px;border-radius:999px;font-weight:700;box-shadow:0 8px 18px rgba(0,0,0,.25)}
--    .floatbar a.wa{background:#25D366}
--    /* FOLIENFORSCHER */
--    .folio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
--    .folio-item{border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03)}
--    .folio-item label{display:block;padding:10px}
--    .total{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
--    /* ACCORDION */
--    details.card summary{cursor:pointer;font-weight:600}
--    /* RESPONSIVE */
--    @media (max-width: 1024px){.hero-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.folio-grid{grid-template-columns:1fr 1fr}}
--    @media (max-width: 640px){.grid-2,.grid-3{grid-template-columns:1fr}.folio-grid{grid-template-columns:1fr}}
--  </style>
--</head>
--<body>
--
--  <!-- Always visible call + WhatsApp -->
--  <div class="floatbar" aria-label="Schnellkontakt">
--    <a href="tel:+430394930590" class="call">📞 Rufen Sie uns jetzt an</a>
--    <a class="wa" target="_blank" rel="noopener" href="https://wa.me/430394930590?text=Hallo%20FoilVengers%2C%20ich%20habe%20eine%20Frage%20zur%20Folierung.">🟢 WhatsApp</a>
--  </div>
--
--  <!-- NAV -->
--  <nav class="nav">
--    <div class="container nav-inner">
--      <div class="brand">
--        <div class="logo">FV</div>
--        <strong>FoilVengers</strong>
--      </div>
--      <div class="hamb" id="hamb" aria-label="Menü öffnen" tabindex="0">
--        <span></span><span></span><span></span>
-+  <head>
-+    <meta charset="utf-8" />
-+    <meta name="viewport" content="width=device-width, initial-scale=1" />
-+    <title>Loft Folienstudio</title>
-+    <style>
-+      :root {
-+        color-scheme: dark;
-+        font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
-+          "Segoe UI", sans-serif;
-+        --bg: #05070f;
-+        --bg-soft: rgba(10, 15, 28, 0.72);
-+        --bg-strong: rgba(5, 8, 18, 0.92);
-+        --frost: rgba(18, 24, 42, 0.68);
-+        --border: rgba(255, 255, 255, 0.08);
-+        --border-strong: rgba(255, 255, 255, 0.14);
-+        --text: #f5f7ff;
-+        --muted: #9aa4c3;
-+        --accent: #7ab8ff;
-+        --accent-strong: #2196f3;
-+        --gold: #d9ac3c;
-+        --glow: rgba(122, 184, 255, 0.35);
-+        --window-night: radial-gradient(circle at 30% 20%, rgba(120, 180, 255, 0.18), transparent 60%),
-+          radial-gradient(circle at 70% 15%, rgba(255, 255, 255, 0.25), transparent 52%),
-+          linear-gradient(135deg, #0c1628, #04050b 65%);
-+        --loft-before: linear-gradient(120deg, rgba(20, 24, 36, 0.85), rgba(12, 16, 28, 0.95)),
-+          url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 675%22 preserveAspectRatio=%22xMidYMid slice%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence baseFrequency=%220.65%22 numOctaves=%223%22/%3E%3C/filter%3E%3Crect width=%221200%22 height=%22675%22 filter=%22url(%23noise)%22 opacity=%220.16%22/%3E%3C/svg%3E");
-+      }
-+
-+      *,
-+      *::before,
-+      *::after {
-+        box-sizing: border-box;
-+      }
-+
-+      body {
-+        margin: 0;
-+        min-height: 100vh;
-+        background: radial-gradient(circle at top, rgba(26, 38, 64, 0.6) 0%, var(--bg) 58%);
-+        color: var(--text);
-+        overflow-x: hidden;
-+        transition: background 0.7s ease;
-+      }
-+
-+      body.modal-open {
-+        overflow: hidden;
-+      }
-+
-+      body.entered {
-+        background: radial-gradient(circle at 45% 15%, rgba(40, 78, 118, 0.72), rgba(9, 12, 22, 0.95));
-+      }
-+
-+      a {
-+        color: inherit;
-+        text-decoration: none;
-+      }
-+
-+      button {
-+        font: inherit;
-+        color: inherit;
-+        background: none;
-+        border: none;
-+        cursor: pointer;
-+      }
-+
-+      img {
-+        display: block;
-+        max-width: 100%;
-+      }
-+
-+      .sr-only {
-+        position: absolute;
-+        width: 1px;
-+        height: 1px;
-+        padding: 0;
-+        margin: -1px;
-+        overflow: hidden;
-+        clip: rect(0, 0, 0, 0);
-+        white-space: nowrap;
-+        border: 0;
-+      }
-+
-+      header {
-+        position: fixed;
-+        inset: 0 0 auto 0;
-+        z-index: 30;
-+        backdrop-filter: saturate(180%) blur(24px);
-+        background: linear-gradient(180deg, rgba(5, 8, 16, 0.92) 0%, rgba(5, 8, 16, 0.44) 80%, transparent);
-+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-+      }
-+
-+      .top-bar {
-+        max-width: 1280px;
-+        margin: 0 auto;
-+        padding: 18px clamp(18px, 2vw, 32px);
-+        display: flex;
-+        align-items: center;
-+        justify-content: space-between;
-+      }
-+
-+      .brand {
-+        display: inline-flex;
-+        align-items: center;
-+        gap: 14px;
-+        letter-spacing: 0.18em;
-+        text-transform: uppercase;
-+        font-weight: 700;
-+        font-size: clamp(0.75rem, 1vw + 0.2rem, 0.9rem);
-+      }
-+
-+      .brand span {
-+        width: 42px;
-+        height: 42px;
-+        border-radius: 14px;
-+        display: grid;
-+        place-items: center;
-+        font-weight: 800;
-+        color: #0d1526;
-+        background: radial-gradient(circle at 30% 30%, #ffffff, #d5dbe8 68%, #adb8cf 100%);
-+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 12px 24px rgba(0, 0, 0, 0.35);
-+      }
-+
-+      nav {
-+        display: flex;
-+        align-items: center;
-+        gap: 28px;
-+      }
-+
-+      .nav-link {
-+        font-size: 0.95rem;
-+        color: var(--muted);
-+        transition: color 0.25s ease;
-+      }
-+
-+      .nav-link:hover,
-+      .nav-link:focus-visible {
-+        color: var(--text);
-+      }
-+
-+      .menu-toggle {
-+        position: relative;
-+        width: 48px;
-+        height: 48px;
-+        border-radius: 16px;
-+        border: 1px solid rgba(255, 255, 255, 0.08);
-+        background: rgba(12, 16, 28, 0.72);
-+        display: none;
-+        place-items: center;
-+        transition: border-color 0.2s ease, background 0.2s ease;
-+      }
-+
-+      .menu-toggle span,
-+      .menu-toggle::before,
-+      .menu-toggle::after {
-+        content: "";
-+        display: block;
-+        width: 22px;
-+        height: 2px;
-+        border-radius: 999px;
-+        background: var(--text);
-+        transition: transform 0.3s ease, opacity 0.3s ease;
-+      }
-+
-+      .menu-toggle span {
-+        width: 16px;
-+      }
-+
-+      .menu-toggle::before {
-+        transform: translateY(-7px);
-+      }
-+
-+      .menu-toggle::after {
-+        transform: translateY(7px);
-+      }
-+
-+      .menu-toggle[aria-expanded="true"] span {
-+        opacity: 0;
-+      }
-+
-+      .menu-toggle[aria-expanded="true"]::before {
-+        transform: translateY(0) rotate(45deg);
-+      }
-+
-+      .menu-toggle[aria-expanded="true"]::after {
-+        transform: translateY(0) rotate(-45deg);
-+      }
-+
-+      .menu-toggle:hover,
-+      .menu-toggle:focus-visible {
-+        border-color: rgba(255, 255, 255, 0.22);
-+        background: rgba(16, 22, 36, 0.9);
-+      }
-+
-+      .menu-panel {
-+        position: fixed;
-+        inset: 80px 24px auto 24px;
-+        background: var(--bg-strong);
-+        border-radius: 28px;
-+        padding: 28px;
-+        border: 1px solid var(--border-strong);
-+        box-shadow: 0 32px 64px rgba(0, 0, 0, 0.35);
-+        transform: translateY(-12px);
-+        opacity: 0;
-+        pointer-events: none;
-+        transition: opacity 0.3s ease, transform 0.3s ease;
-+      }
-+
-+      .menu-panel[aria-hidden="false"] {
-+        opacity: 1;
-+        pointer-events: auto;
-+        transform: translateY(0);
-+      }
-+
-+      .menu-panel a {
-+        display: block;
-+        padding: 12px 0;
-+        font-size: 1.05rem;
-+        color: var(--text);
-+      }
-+
-+      main {
-+        padding-top: 96px;
-+      }
-+
-+      section {
-+        position: relative;
-+        padding: clamp(96px, 12vw, 160px) 0;
-+      }
-+
-+      .section-shell {
-+        width: min(1220px, calc(100% - clamp(32px, 6vw, 96px)));
-+        margin: 0 auto;
-+        display: grid;
-+        gap: clamp(32px, 4vw, 80px);
-+      }
-+
-+      .hero {
-+        padding-top: clamp(120px, 20vw, 220px);
-+      }
-+
-+      .hero-grid {
-+        display: grid;
-+        gap: clamp(32px, 5vw, 72px);
-+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-+        align-items: center;
-+      }
-+
-+      .hero-copy h1 {
-+        font-size: clamp(2.5rem, 5vw, 4.4rem);
-+        letter-spacing: -0.03em;
-+        margin: 0 0 24px;
-+      }
-+
-+      .hero-copy p {
-+        margin: 0;
-+        font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-+        color: var(--muted);
-+        max-width: 480px;
-+      }
-+
-+      .window-stage {
-+        position: relative;
-+        aspect-ratio: 3 / 4;
-+        border-radius: clamp(28px, 5vw, 46px);
-+        overflow: hidden;
-+        background: var(--window-night);
-+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18),
-+          inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-+          0 28px 64px rgba(0, 0, 0, 0.45),
-+          0 8px 24px rgba(66, 140, 255, 0.16);
-+        display: grid;
-+        place-items: center;
-+      }
-+
-+      .window-stage::before {
-+        content: "";
-+        position: absolute;
-+        inset: 0;
-+        background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.18), transparent 42%),
-+          radial-gradient(circle at 70% 18%, rgba(255, 255, 255, 0.25), transparent 52%),
-+          linear-gradient(160deg, rgba(120, 180, 255, 0.42), transparent 58%);
-+        mix-blend-mode: screen;
-+      }
-+
-+      .window-stage button {
-+        position: relative;
-+        width: 82%;
-+        height: 82%;
-+        border-radius: clamp(22px, 4vw, 36px);
-+        border: 1px solid rgba(255, 255, 255, 0.18);
-+        background: linear-gradient(145deg, rgba(15, 20, 30, 0.45), rgba(12, 16, 24, 0.75)),
-+          radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.38), transparent 65%),
-+          linear-gradient(165deg, rgba(96, 120, 160, 0.32), rgba(15, 22, 36, 0.85));
-+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -2px 6px rgba(0, 0, 0, 0.5);
-+        transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s ease;
-+        backdrop-filter: blur(18px);
-+      }
-+
-+      .window-stage button::after {
-+        content: "Jetzt Loft entdecken";
-+        position: absolute;
-+        left: 50%;
-+        bottom: 24px;
-+        transform: translateX(-50%);
-+        padding: 12px 24px;
-+        border-radius: 999px;
-+        background: rgba(8, 14, 24, 0.74);
-+        border: 1px solid rgba(255, 255, 255, 0.18);
-+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.32);
-+        font-size: 0.95rem;
-+        letter-spacing: 0.02em;
-+      }
-+
-+      .window-stage button:hover,
-+      .window-stage button:focus-visible {
-+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -4px 8px rgba(0, 0, 0, 0.6),
-+          0 24px 48px rgba(33, 150, 243, 0.32);
-+        transform: translateY(-10px) scale(1.02);
-+      }
-+      .loft {
-+        display: none;
-+      }
-+
-+      body.entered .loft {
-+        display: block;
-+      }
-+
-+      .loft-stage {
-+        position: relative;
-+        border-radius: clamp(28px, 5vw, 40px);
-+        background: linear-gradient(140deg, rgba(14, 18, 30, 0.92), rgba(6, 8, 16, 0.92)),
-+          url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 720%22 preserveAspectRatio=%22xMidYMid slice%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22060a12%22/%3E%3Cstop offset=%221%22 stop-color=%2210192a%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%221200%22 height=%22720%22 fill=%22url(%23g)%22/%3E%3C/svg%3E");
-+        background-size: cover;
-+        overflow: hidden;
-+        padding: clamp(48px, 8vw, 96px);
-+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
-+      }
-+
-+      .loft-stage::before {
-+        content: "";
-+        position: absolute;
-+        inset: 0;
-+        background: radial-gradient(circle at 65% 25%, rgba(255, 196, 120, 0.2), transparent 60%),
-+          radial-gradient(circle at 35% 15%, rgba(120, 180, 255, 0.22), transparent 52%);
-+        mix-blend-mode: screen;
-+      }
-+
-+      .loft-intro {
-+        max-width: 520px;
-+        position: relative;
-+        z-index: 1;
-+        display: grid;
-+        gap: 18px;
-+      }
-+
-+      .loft-intro h2 {
-+        margin: 0;
-+        font-size: clamp(2.4rem, 4vw, 3.4rem);
-+        letter-spacing: -0.03em;
-+      }
-+
-+      .loft-intro p {
-+        margin: 0;
-+        color: var(--muted);
-+        line-height: 1.6;
-+      }
-+
-+      .loft-scene {
-+        position: relative;
-+        margin-top: clamp(36px, 6vw, 72px);
-+        border-radius: clamp(26px, 4vw, 38px);
-+        overflow: hidden;
-+        background: var(--loft-before);
-+        background-size: cover;
-+        min-height: clamp(420px, 55vw, 620px);
-+      }
-+
-+      .loft-overlay {
-+        position: absolute;
-+        inset: 0;
-+        background: linear-gradient(120deg, rgba(0, 0, 0, 0.35), transparent 60%);
-+      }
-+
-+      .hotspot {
-+        position: absolute;
-+        display: grid;
-+        place-items: center;
-+        width: clamp(52px, 6vw, 74px);
-+        height: clamp(52px, 6vw, 74px);
-+        border-radius: 999px;
-+        background: rgba(8, 14, 24, 0.78);
-+        border: 1px solid rgba(255, 255, 255, 0.22);
-+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.42);
-+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-+      }
-+
-+      .hotspot::after {
-+        content: attr(data-label);
-+        position: absolute;
-+        bottom: -42px;
-+        left: 50%;
-+        transform: translateX(-50%);
-+        padding: 10px 18px;
-+        border-radius: 999px;
-+        background: rgba(12, 18, 30, 0.86);
-+        border: 1px solid rgba(255, 255, 255, 0.12);
-+        font-size: 0.85rem;
-+        letter-spacing: 0.04em;
-+        color: var(--muted);
-+        white-space: nowrap;
-+        opacity: 0;
-+        pointer-events: none;
-+        transition: opacity 0.3s ease, transform 0.3s ease;
-+      }
-+
-+      .hotspot:hover,
-+      .hotspot:focus-visible {
-+        transform: translateY(-6px) scale(1.04);
-+        border-color: rgba(122, 184, 255, 0.7);
-+        box-shadow: 0 24px 48px rgba(122, 184, 255, 0.35);
-+      }
-+
-+      .hotspot:hover::after,
-+      .hotspot:focus-visible::after {
-+        opacity: 1;
-+        transform: translate(-50%, -6px);
-+      }
-+
-+      .hotspot svg {
-+        width: 46%;
-+        fill: none;
-+        stroke: var(--text);
-+        stroke-width: 1.6;
-+      }
-+
-+      .hotspot[data-area="fenster"] {
-+        top: 16%;
-+        right: 18%;
-+      }
-+
-+      .hotspot[data-area="sofa"] {
-+        bottom: 24%;
-+        left: 18%;
-+      }
-+
-+      .hotspot[data-area="tisch"] {
-+        bottom: 18%;
-+        left: 42%;
-+      }
-+
-+      .hotspot[data-area="kueche"] {
-+        top: 36%;
-+        left: 62%;
-+      }
-+
-+      .hotspot[data-area="wand"] {
-+        top: 24%;
-+        left: 32%;
-+      }
-+
-+      .material-modal {
-+        position: fixed;
-+        inset: 0;
-+        display: grid;
-+        place-items: center;
-+        background: rgba(4, 6, 12, 0.62);
-+        backdrop-filter: blur(24px);
-+        opacity: 0;
-+        pointer-events: none;
-+        transition: opacity 0.35s ease;
-+        z-index: 50;
-+      }
-+
-+      .material-modal[aria-hidden="false"] {
-+        opacity: 1;
-+        pointer-events: auto;
-+      }
-+
-+      .material-sheet {
-+        width: min(960px, calc(100% - clamp(32px, 6vw, 96px)));
-+        background: linear-gradient(145deg, rgba(15, 20, 34, 0.96), rgba(6, 10, 18, 0.96));
-+        border-radius: 40px;
-+        border: 1px solid rgba(255, 255, 255, 0.1);
-+        box-shadow: 0 40px 120px rgba(0, 0, 0, 0.48);
-+        padding: clamp(32px, 4vw, 52px);
-+        position: relative;
-+        display: grid;
-+        gap: clamp(28px, 4vw, 48px);
-+      }
-+
-+      .modal-close {
-+        position: absolute;
-+        top: clamp(16px, 2vw, 24px);
-+        right: clamp(16px, 2vw, 24px);
-+        width: 46px;
-+        height: 46px;
-+        border-radius: 16px;
-+        border: 1px solid rgba(255, 255, 255, 0.18);
-+        background: rgba(10, 14, 24, 0.82);
-+        display: grid;
-+        place-items: center;
-+      }
-+
-+      .modal-close span {
-+        position: relative;
-+        display: block;
-+        width: 18px;
-+        height: 18px;
-+      }
-+
-+      .modal-close span::before,
-+      .modal-close span::after {
-+        content: "";
-+        position: absolute;
-+        inset: 50% auto auto 50%;
-+        width: 18px;
-+        height: 2px;
-+        background: var(--text);
-+        border-radius: 999px;
-+      }
-+
-+      .modal-close span::before {
-+        transform: translate(-50%, -50%) rotate(45deg);
-+      }
-+
-+      .modal-close span::after {
-+        transform: translate(-50%, -50%) rotate(-45deg);
-+      }
-+
-+      .modal-head {
-+        display: grid;
-+        gap: 12px;
-+      }
-+
-+      .modal-head h3 {
-+        margin: 0;
-+        font-size: clamp(1.9rem, 3vw, 2.6rem);
-+      }
-+
-+      .modal-head p {
-+        margin: 0;
-+        color: var(--muted);
-+        line-height: 1.6;
-+      }
-+
-+      .preview-stage {
-+        position: relative;
-+        border-radius: clamp(24px, 4vw, 34px);
-+        overflow: hidden;
-+        min-height: clamp(280px, 40vw, 360px);
-+        background: var(--loft-before);
-+      }
-+
-+      .preview-before,
-+      .preview-after {
-+        position: absolute;
-+        inset: 0;
-+        background-size: cover;
-+        background-position: center;
-+      }
-+
-+      .preview-before {
-+        opacity: 0.85;
-+        mix-blend-mode: screen;
-+      }
-+
-+      .preview-after {
-+        clip-path: polygon(0 0, var(--split, 50%) 0, var(--split, 50%) 100%, 0 100%);
-+        transition: clip-path 0.2s ease;
-+      }
-+
-+      .preview-slider {
-+        position: absolute;
-+        top: 0;
-+        bottom: 0;
-+        left: var(--split, 50%);
-+        width: 2px;
-+        background: rgba(255, 255, 255, 0.3);
-+        pointer-events: none;
-+      }
-+
-+      .preview-slider::before {
-+        content: "";
-+        position: absolute;
-+        top: 50%;
-+        left: 50%;
-+        width: 24px;
-+        height: 24px;
-+        border-radius: 999px;
-+        border: 2px solid rgba(255, 255, 255, 0.8);
-+        background: rgba(8, 12, 18, 0.8);
-+        transform: translate(-50%, -50%);
-+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
-+      }
-+
-+      .slider-input {
-+        position: absolute;
-+        inset: 0;
-+        width: 100%;
-+        height: 100%;
-+        opacity: 0;
-+        cursor: ew-resize;
-+      }
-+
-+      .swatch-grid {
-+        display: grid;
-+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-+        gap: clamp(16px, 3vw, 28px);
-+      }
-+
-+      .swatch {
-+        position: relative;
-+        border-radius: 22px;
-+        padding: 18px 18px 24px;
-+        background: rgba(12, 18, 30, 0.8);
-+        border: 1px solid rgba(255, 255, 255, 0.1);
-+        display: grid;
-+        gap: 14px;
-+        align-content: start;
-+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-+      }
-+
-+      .swatch::before {
-+        content: "";
-+        display: block;
-+        height: 96px;
-+        border-radius: 16px;
-+        background: var(--swatch-bg, rgba(255, 255, 255, 0.1));
-+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
-+      }
-+
-+      .swatch strong {
-+        font-size: 1rem;
-+      }
-+
-+      .swatch span {
-+        font-size: 0.85rem;
-+        color: var(--muted);
-+      }
-+
-+      .swatch[aria-selected="true"] {
-+        border-color: var(--accent);
-+        box-shadow: 0 16px 32px rgba(122, 184, 255, 0.25);
-+        transform: translateY(-6px);
-+      }
-+
-+      .modal-meta {
-+        display: flex;
-+        flex-wrap: wrap;
-+        gap: 12px 24px;
-+        color: var(--muted);
-+        font-size: 0.9rem;
-+      }
-+
-+      .modal-meta span {
-+        display: inline-flex;
-+        align-items: center;
-+        gap: 8px;
-+      }
-+
-+      .modal-meta span::before {
-+        content: "";
-+        width: 6px;
-+        height: 6px;
-+        border-radius: 50%;
-+        background: rgba(255, 255, 255, 0.25);
-+      }
-+
-+      .contact-section {
-+        background: linear-gradient(160deg, rgba(6, 10, 18, 0.92), rgba(8, 12, 22, 0.92));
-+        border-radius: clamp(36px, 6vw, 48px);
-+        padding: clamp(64px, 10vw, 120px);
-+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
-+        display: grid;
-+        gap: clamp(48px, 6vw, 84px);
-+      }
-+
-+      .contact-head {
-+        display: grid;
-+        gap: 18px;
-+        text-align: center;
-+        max-width: 620px;
-+        margin: 0 auto;
-+      }
-+
-+      .contact-head h2 {
-+        font-size: clamp(2.4rem, 5vw, 3.6rem);
-+        margin: 0;
-+        letter-spacing: -0.03em;
-+      }
-+
-+      .contact-head p {
-+        margin: 0;
-+        color: var(--muted);
-+        line-height: 1.6;
-+      }
-+
-+      form {
-+        display: grid;
-+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-+        gap: clamp(24px, 4vw, 36px);
-+      }
-+
-+      label {
-+        display: grid;
-+        gap: 12px;
-+        font-size: 0.9rem;
-+        letter-spacing: 0.04em;
-+        text-transform: uppercase;
-+        color: var(--muted);
-+      }
-+
-+      input,
-+      textarea,
-+      select {
-+        width: 100%;
-+        padding: 18px 20px;
-+        border-radius: 18px;
-+        border: 1px solid rgba(255, 255, 255, 0.1);
-+        background: rgba(12, 18, 30, 0.78);
-+        color: var(--text);
-+        font: inherit;
-+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-+      }
-+
-+      textarea {
-+        min-height: 160px;
-+        resize: vertical;
-+      }
-+
-+      input:focus-visible,
-+      textarea:focus-visible,
-+      select:focus-visible {
-+        outline: none;
-+        border-color: rgba(122, 184, 255, 0.6);
-+        box-shadow: 0 0 0 3px rgba(122, 184, 255, 0.25);
-+      }
-+
-+      .form-footer {
-+        grid-column: 1 / -1;
-+        display: flex;
-+        flex-wrap: wrap;
-+        gap: 18px;
-+        align-items: center;
-+        justify-content: space-between;
-+      }
-+
-+      .submit-button {
-+        padding: 18px 32px;
-+        border-radius: 999px;
-+        background: linear-gradient(120deg, #3da4ff, #196bff);
-+        border: none;
-+        font-size: 1.05rem;
-+        letter-spacing: 0.05em;
-+        font-weight: 600;
-+        color: #0a1220;
-+        box-shadow: 0 20px 40px rgba(61, 164, 255, 0.45);
-+      }
-+
-+      .legal-note {
-+        font-size: 0.85rem;
-+        color: var(--muted);
-+      }
-+
-+      .impressum {
-+        background: linear-gradient(160deg, rgba(7, 10, 18, 0.94), rgba(5, 8, 16, 0.94));
-+        border-radius: clamp(36px, 6vw, 48px);
-+        padding: clamp(64px, 10vw, 120px);
-+        box-shadow: 0 32px 72px rgba(0, 0, 0, 0.42);
-+        display: grid;
-+        gap: clamp(32px, 5vw, 64px);
-+      }
-+
-+      .impressum h2 {
-+        margin: 0;
-+        font-size: clamp(2rem, 4vw, 3rem);
-+        letter-spacing: -0.02em;
-+      }
-+
-+      .impressum-columns {
-+        display: grid;
-+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-+        gap: clamp(24px, 4vw, 48px);
-+      }
-+
-+      .impressum h3 {
-+        margin: 0 0 12px;
-+        font-size: 1.1rem;
-+        letter-spacing: 0.02em;
-+      }
-+
-+      .impressum p,
-+      .impressum li {
-+        margin: 0;
-+        color: var(--muted);
-+        line-height: 1.7;
-+      }
-+
-+      .impressum ul {
-+        list-style: none;
-+        padding: 0;
-+        margin: 0;
-+        display: grid;
-+        gap: 8px;
-+      }
-+
-+      footer {
-+        padding: 48px 0;
-+        text-align: center;
-+        color: var(--muted);
-+        font-size: 0.85rem;
-+      }
-+
-+      footer a {
-+        color: var(--accent);
-+      }
-+
-+      @media (max-width: 960px) {
-+        nav {
-+          display: none;
-+        }
-+
-+        .menu-toggle {
-+          display: grid;
-+        }
-+      }
-+
-+      @media (max-width: 720px) {
-+        .hotspot::after {
-+          display: none;
-+        }
-+
-+        .preview-stage {
-+          min-height: 240px;
-+        }
-+      }
-+    </style>
-+  </head>
-+  <body class="pre-entry">
-+    <a class="sr-only" href="#loft">Zum Inhalt springen</a>
-+    <header>
-+      <div class="top-bar">
-+        <a class="brand" href="#start">
-+          <span>LF</span>
-+          Loft Folienstudio
-+        </a>
-+        <nav aria-label="Hauptnavigation">
-+          <a class="nav-link" href="#start">Startseite</a>
-+          <a class="nav-link" href="#kontakt">Kontaktanfrage</a>
-+          <a class="nav-link" href="#impressum">Impressum</a>
-+        </nav>
-+        <button class="menu-toggle" aria-expanded="false" aria-controls="menuPanel">
-+          <span class="sr-only">Menü öffnen</span>
-+          <span></span>
-+        </button>
-       </div>
--    </div>
--    <div class="drawer" id="drawer" aria-hidden="true">
--      <div class="panel">
-+      <div id="menuPanel" class="menu-panel" aria-hidden="true">
-         <a href="#start">Startseite</a>
--        <a href="#moebelfolien">Möbelfolien</a>
--        <a href="#forscher">Möbelfolienforscher</a>
--        <a href="#unsere-folien">Unsere Folien</a>
--        <a href="#erstgespraech">Kostenloses Erstgespräch</a>
--        <a href="#faq">Häufig gestellte Fragen</a>
--      </div>
--    </div>
--  </nav>
--
--  <!-- STARTSEITE -->
--  <header id="start" class="hero">
--    <div class="container hero-grid">
--      <div>
--        <span class="pill">Die Zukunft der <b>Folien</b>, <b>Technik</b> & <b>Möbel</b></span>
--        <h1>Premium-Folierungen für Küche, Möbel & Glas – schneller als jede Renovierung.</h1>
--        <p class="sub">Schwarz-Gold Look, edle Materialien, präzise Verarbeitung. FoilVengers macht Räume stark – ohne Baustelle.</p>
--        <div style="display:flex;gap:12px;flex-wrap:wrap">
--          <a class="btn primary" href="#erstgespraech">Kostenloses Erstgespräch</a>
--          <a class="btn" href="#moebelfolien">Möbelfolien entdecken</a>
--        </div>
--        <div style="margin-top:12px" class="tag">📍 Wien & Umgebung · 🛡️ Schutz | ✨ Design | ⚡ Tempo</div>
-+        <a href="#kontakt">Kontaktanfrage</a>
-+        <a href="#impressum">Impressum</a>
-       </div>
--      <div class="mock">
--        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
--        <div class="screen">
--          <img src="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1600&auto=format&fit=crop" alt="Modernisierte Küche in Schwarz">
--        </div>
--      </div>
--    </div>
--  </header>
--
--  <!-- MÖBELFOLIEN -->
--  <section id="moebelfolien">
--    <div class="container">
--      <h2>Möbelfolien in Perfektion</h2>
--      <p class="sub"><a class="btn primary" href="#visual">Kostenlose Visualisierung</a></p>
--
--      <!-- 1 -->
--      <div class="grid-2" style="align-items:center;margin:24px 0">
--        <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1400&auto=format&fit=crop" alt="Marmoroptik">
--        <div>
--          <h3>Eleganz ohne Baustelle</h3>
--          <p class="sub">Marmor-, Stein-, Holz- und Metall-Optiken – sauber verklebt, in Tagen statt Wochen.</p>
--        </div>
--      </div>
--      <!-- 2 -->
--      <div class="grid-2" style="align-items:center;margin:24px 0">
--        <div>
--          <h3>Individuelle Stilberatung</h3>
--          <p class="sub">Wir empfehlen Kombinationen, die zu Licht, Raum und Nutzung passen – damit es wirklich wirkt.</p>
--        </div>
--        <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=1400&auto=format&fit=crop" alt="Stilberatung">
--      </div>
--      <!-- 3 -->
--      <div class="grid-2" style="align-items:center;margin:24px 0">
--        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1400&auto=format&fit=crop" alt="Vielfalt">
--        <div>
--          <h3>Vielfalt ohne Kompromisse</h3>
--          <p class="sub">Matt, hochglanz, strukturiert – fühlbare Qualität, die hält und pflegeleicht ist.</p>
--        </div>
--      </div>
--      <!-- 4 -->
--      <div class="grid-2" style="align-items:center;margin:24px 0">
--        <div>
--          <h3>Schutz & Beständigkeit</h3>
--          <p class="sub">Kratzfest, hitzebeständig, wasserresistent – ideal für Küche, Bad & viel genutzte Oberflächen.</p>
--        </div>
--        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop" alt="Beständigkeit">
--      </div>
--    </div>
--  </section>
--
--  <!-- KOSTENLOSE VISUALISIERUNG -->
--  <section id="visual">
--    <div class="container">
--      <h2>Einfache, funktionierende & exklusive Beratung</h2>
--      <p class="sub">Laden Sie ein Foto des Raumes, der Küche oder des Möbels hoch. Wir verwandeln es in eine fotorealistische Vorschau. In 24–48 h erhalten Sie Ihre personalisierte Visualisierung.</p>
--      <div class="card">
--        <!-- TODO: Formspree Endpoint eintragen -->
--        <form id="vizForm" action="https://formspree.io/f/XXXXXXXX" method="POST" enctype="multipart/form-data">
--          <div class="grid-3">
--            <label>Ihr Name<br><input name="name" required placeholder="Vor- und Nachname"></label>
--            <label>E-Mail<br><input type="email" name="email" required placeholder="name@domain.at"></label>
--            <label>Telefon (optional)<br><input name="phone" placeholder="+43 …"></label>
-+    </header>
-+    <main>
-+      <section id="start" class="hero">
-+        <div class="section-shell hero-grid">
-+          <div class="hero-copy">
-+            <h1>Das Loft, das sich mit Ihrer Vision verwandelt.</h1>
-+            <p>
-+              Betreten Sie durch ein fotorealistisches Panoramafenster unsere digitale Zwei-Zimmer-Wohnung.
-+              Wählen Sie jede Oberfläche, erleben Sie hochwertige Leder-, Stein- und Glasfolien live im
-+              Vorher/Nachher-Vergleich. Alles in einem Interface, inspiriert von Apples klarer Designsprache.
-+            </p>
-+          </div>
-+          <div class="window-stage" aria-hidden="true">
-+            <button id="portalWindow" type="button" aria-label="Fenster öffnen und Loft betreten"></button>
-           </div>
--          <label style="display:block;margin:12px 0">Bild hochladen (JPG/PNG, max. 15 MB)
--            <input type="file" name="photo" accept="image/*" required>
--          </label>
--          <label>Wunsch-Stil (optional)
--            <input name="style" placeholder="z. B. Schwarz-Gold Matt, Marmor hell …">
--          </label>
--          <button class="btn primary" type="submit">Anfrage senden</button>
--          <span class="tag" id="vizStatus"></span>
--        </form>
--      </div>
--    </div>
--  </section>
--
--  <!-- MÖBELFOLIENFORSCHER -->
--  <section id="forscher">
--    <div class="container">
--      <h2>Möbelfolien-Forscher</h2>
--      <p class="sub">Wählen Sie Ihre Wunsch-Folien. Jede Folie: <b>130 €</b>.</p>
--
--      <div class="folio-grid" id="folioGrid">
--        <!-- 6 Muster -->
--        <div class="folio-item">
--          <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?q=80&w=800&auto=format&fit=crop" alt="Stein">
--          <label><input type="checkbox" value="Stein"> Stein</label>
--        </div>
--        <div class="folio-item">
--          <img src="https://images.unsplash.com/photo-1553532435-93d532a45f25?q=80&w=800&auto=format&fit=crop" alt="Schwarzer Marmor">
--          <label><input type="checkbox" value="Schwarzer Marmor"> Schwarzer Marmor</label>
-         </div>
--        <div class="folio-item">
--          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=800&auto=format&fit=crop" alt="Weißer Marmor">
--          <label><input type="checkbox" value="Weißer Marmor"> Weißer Marmor</label>
-+      </section>
-+      <section id="loft" class="loft">
-+        <div class="section-shell">
-+          <div class="loft-stage">
-+            <div class="loft-intro">
-+              <h2>Premium-Folierungen in jedem Detail.</h2>
-+              <p>
-+                Unser digitales Loft zeigt, wie präzise sich hochwertige Folienlösungen an Möbel, Küchenmodule,
-+                Wände und Glasflächen anpassen. Klicken Sie auf die Hotspots, wählen Sie aus je zehn kuratierten
-+                Oberflächen und vergleichen Sie live. Der Vorher/Nachher-Slider sowie Echtzeit-Beschreibungen
-+                machen jede Entscheidung fühlbar.
-+              </p>
-+            </div>
-+            <div class="loft-scene" role="presentation">
-+              <div class="loft-overlay" aria-hidden="true"></div>
-+              <button class="hotspot" data-area="fenster" data-label="Glasfolien" type="button">
-+                <svg viewBox="0 0 24 24" aria-hidden="true">
-+                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-+                  <line x1="12" y1="4" x2="12" y2="20"></line>
-+                </svg>
-+                <span class="sr-only">Glasfolien konfigurieren</span>
-+              </button>
-+              <button class="hotspot" data-area="sofa" data-label="Sofa &amp; Lounge" type="button">
-+                <svg viewBox="0 0 24 24" aria-hidden="true">
-+                  <path d="M4 10h16v8H4z"></path>
-+                  <path d="M4 10V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"></path>
-+                </svg>
-+                <span class="sr-only">Sofa &amp; Lounge konfigurieren</span>
-+              </button>
-+              <button class="hotspot" data-area="tisch" data-label="Esstisch" type="button">
-+                <svg viewBox="0 0 24 24" aria-hidden="true">
-+                  <rect x="3" y="9" width="18" height="4"></rect>
-+                  <path d="M5 13v5m14-5v5"></path>
-+                </svg>
-+                <span class="sr-only">Esstisch konfigurieren</span>
-+              </button>
-+              <button class="hotspot" data-area="kueche" data-label="Küche" type="button">
-+                <svg viewBox="0 0 24 24" aria-hidden="true">
-+                  <rect x="3" y="5" width="18" height="6"></rect>
-+                  <rect x="3" y="13" width="18" height="6"></rect>
-+                </svg>
-+                <span class="sr-only">Küche konfigurieren</span>
-+              </button>
-+              <button class="hotspot" data-area="wand" data-label="Akzentwand" type="button">
-+                <svg viewBox="0 0 24 24" aria-hidden="true">
-+                  <path d="M4 5h16v14H4z"></path>
-+                  <path d="M4 9h16"></path>
-+                </svg>
-+                <span class="sr-only">Akzentwand konfigurieren</span>
-+              </button>
-+            </div>
-+          </div>
-         </div>
--        <div class="folio-item">
--          <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=800&auto=format&fit=crop" alt="Braunes Holz">
--          <label><input type="checkbox" value="Braunes Holz"> Braunes Holz</label>
-+      </section>
-+      <section id="kontakt">
-+        <div class="section-shell">
-+          <div class="contact-section">
-+            <div class="contact-head">
-+              <h2>Kontakt aufnehmen und Ihr Projekt starten.</h2>
-+              <p>
-+                Wie Apple kombinieren wir technische Präzision mit emotionalem Design. Teilen Sie uns Ihre
-+                Anforderungen mit – unser Expertenteam meldet sich innerhalb eines Werktags mit einer kuratierten
-+                Empfehlung und einem Termin für eine persönliche Beratung.
-+              </p>
-+            </div>
-+            <form>
-+              <label>
-+                Vor- und Nachname
-+                <input type="text" name="name" autocomplete="name" placeholder="Alex Beispiel" required />
-+              </label>
-+              <label>
-+                E-Mail-Adresse
-+                <input type="email" name="email" autocomplete="email" placeholder="alex@example.com" required />
-+              </label>
-+              <label>
-+                Telefonnummer
-+                <input type="tel" name="phone" autocomplete="tel" placeholder="+49 170 000000" />
-+              </label>
-+              <label>
-+                Wunschleistung
-+                <select name="service" required>
-+                  <option value="" disabled selected>Bitte auswählen</option>
-+                  <option>Ganzheitliche Wohnraumfolierung</option>
-+                  <option>Küchen-Upgrade</option>
-+                  <option>Glas- &amp; Sonnenschutzfolien</option>
-+                  <option>Objekt &amp; Retail</option>
-+                  <option>Architektur &amp; Office</option>
-+                </select>
-+              </label>
-+              <label>
-+                Gewünschter Zeitraum
-+                <input type="text" name="timeline" placeholder="z. B. Q3 2024" />
-+              </label>
-+              <label>
-+                Budgetrahmen
-+                <select name="budget">
-+                  <option value="" disabled selected>Bitte auswählen</option>
-+                  <option>&lt; 5.000 €</option>
-+                  <option>5.000 – 15.000 €</option>
-+                  <option>15.000 – 30.000 €</option>
-+                  <option>&gt; 30.000 €</option>
-+                </select>
-+              </label>
-+              <label style="grid-column: 1 / -1;">
-+                Projektbeschreibung
-+                <textarea name="message" placeholder="Erzählen Sie uns von Ihrem Raum, Materialien und Vision." required></textarea>
-+              </label>
-+              <div class="form-footer">
-+                <p class="legal-note">
-+                  Mit dem Absenden akzeptieren Sie unsere Datenschutzrichtlinie und bestätigen, dass wir Sie zur
-+                  Projektabwicklung kontaktieren dürfen.
-+                </p>
-+                <button class="submit-button" type="submit">Anfrage senden</button>
-+              </div>
-+            </form>
-+          </div>
-         </div>
--        <div class="folio-item">
--          <img src="https://images.unsplash.com/photo-1523419409543-63f6dbd49b97?q=80&w=800&auto=format&fit=crop" alt="Helles Holz">
--          <label><input type="checkbox" value="Helles Holz"> Helles Holz</label>
-+      </section>
-+      <section id="impressum">
-+        <div class="section-shell">
-+          <div class="impressum">
-+            <h2>Impressum &amp; rechtliche Angaben</h2>
-+            <div class="impressum-columns">
-+              <div>
-+                <h3>Verantwortlich nach § 5 TMG</h3>
-+                <p>
-+                  Loft Folienstudio GmbH<br />
-+                  Musterstraße 12<br />
-+                  80333 München<br />
-+                  Deutschland
-+                </p>
-+                <p>
-+                  Telefon: +49 (0)89 1234 5670<br />
-+                  E-Mail: studio@loftfolien.de
-+                </p>
-+              </div>
-+              <div>
-+                <h3>Geschäftsführung</h3>
-+                <p>Max Mustermann, Lea Beispiel</p>
-+                <h3>Handelsregister</h3>
-+                <p>
-+                  Amtsgericht München HRB 123456<br />
-+                  Umsatzsteuer-ID: DE123456789
-+                </p>
-+              </div>
-+              <div>
-+                <h3>Verbraucherhinweis</h3>
-+                <p>
-+                  Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer
-+                  Verbraucherschlichtungsstelle teilzunehmen. Bei Fragen wenden Sie sich bitte direkt an unser
-+                  Serviceteam.
-+                </p>
-+                <h3>Inhaltlich Verantwortlicher</h3>
-+                <p>gemäß § 18 Abs. 2 MStV: Max Mustermann (Anschrift wie oben)</p>
-+              </div>
-+              <div>
-+                <h3>Hinweise</h3>
-+                <ul>
-+                  <li>Alle genannten Marken sind Eigentum der jeweiligen Rechteinhaber.</li>
-+                  <li>Visualisierungen dienen als Inspiration und ersetzen keine Bemusterung vor Ort.</li>
-+                  <li>Änderungen und Irrtümer vorbehalten.</li>
-+                </ul>
-+              </div>
-+            </div>
-+          </div>
-         </div>
--        <div class="folio-item">
--          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=800&auto=format&fit=crop" alt="Luzengo Weiß">
--          <label><input type="checkbox" value="Luzengo Weiß"> Luzengo Weiß</label>
-+      </section>
-+    </main>
-+    <footer>
-+      &copy; 2024 Loft Folienstudio GmbH &middot; <a href="#kontakt">Kontakt</a>
-+    </footer>
-+    <div class="material-modal" data-modal aria-hidden="true" role="dialog" aria-modal="true">
-+      <div class="material-sheet" role="document">
-+        <button class="modal-close" type="button" data-close aria-label="Modal schließen">
-+          <span aria-hidden="true"></span>
-+        </button>
-+        <div class="modal-head">
-+          <h3 data-modal-title>Sofa &amp; Lounge</h3>
-+          <p data-modal-description>
-+            Wählen Sie aus luxuriösen Polsterfolien mit außergewöhnlicher Haptik und reflektionsarmen Oberflächen.
-+          </p>
-         </div>
--      </div>
--
--      <div class="card" style="margin-top:16px">
--        <div class="total">
--          <div>Ausgewählt: <b><span id="count">0</span></b> • Summe: <b><span id="sum">€ 0</span></b></div>
--          <a class="btn primary" href="#order">Weiter & bestellen</a>
-+        <div class="preview-stage">
-+          <div class="preview-before" data-preview-before></div>
-+          <div class="preview-after" data-preview-after></div>
-+          <div class="preview-slider"></div>
-+          <input class="slider-input" type="range" min="10" max="90" value="50" step="1" data-slider aria-label="Vorher/Nachher-Schieber" />
-         </div>
-+        <div class="modal-meta" data-modal-meta></div>
-+        <div class="swatch-grid" data-swatch-grid role="listbox" aria-label="Materialauswahl"></div>
-       </div>
-     </div>
--  </section>
--
--  <!-- BESTELLUNG -->
--  <section id="order">
--    <div class="container">
--      <h2>Bestellung abschließen</h2>
--      <div class="card">
--        <!-- TODO: Formspree Endpoint eintragen -->
--        <form id="orderForm" action="https://formspree.io/f/YYYYYYYY" method="POST">
--          <input type="hidden" name="selection" id="selField">
--          <input type="hidden" name="sum" id="sumField">
--          <div class="grid-3">
--            <label>Name<br><input name="name" required></label>
--            <label>E-Mail<br><input type="email" name="email" required></label>
--            <label>Adresse<br><input name="address" required placeholder="Straße, PLZ Ort"></label>
--          </div>
--          <label>Nachricht (optional)
--            <input name="msg" placeholder="Maße, Frontenanzahl, Wunschtermin …">
--          </label>
--          <button class="btn primary" type="submit">Verbindlich anfragen</button>
--          <span class="tag" id="orderStatus"></span>
--        </form>
--      </div>
--    </div>
--  </section>
--
--  <!-- UNSERE FOLIEN -->
--  <section id="unsere-folien">
--    <div class="container">
--      <h2>Unsere Folien</h2>
--      <p class="sub">Hochwertige Markenfolien – optisch stark, technisch zuverlässig.</p>
--      <div class="grid-3">
--        <article class="card">
--          <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1200&auto=format&fit=crop" alt="Hitzeschutz">
--          <h3>Hitzeschutzfolien</h3>
--          <p class="sub">Spürbar kühler & UV-Reduktion für Fensterfronten.</p>
--          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Verbessert Raumklima, reduziert Blendung, schont Möbel. Ideal für Süd/West-Lagen.</p></details>
--        </article>
--        <article class="card">
--          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Werbe- und Designfolien">
--          <h3>Werbe- & Designfolien</h3>
--          <p class="sub">Schaufenster, Logos, Beschriftungen – stark und rückstandsfrei.</p>
--          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Feine Konturschnitte, Matt/Glanz, transluzent oder deckend. Perfekt für Markenauftritte.</p></details>
--        </article>
--        <article class="card">
--          <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1200&auto=format&fit=crop" alt="Sicherheitsfolien">
--          <h3>Sicherheitsfolien</h3>
--          <p class="sub">Splitterschutz & Einbruchhemmung für Glasflächen.</p>
--          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Erhöht Bruchfestigkeit, hält Splitter zusammen, optional Opaque-Sichtschutz.</p></details>
--        </article>
--        <article class="card">
--          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1200&auto=format&fit=crop" alt="UV-Schutz">
--          <h3>UV-Schutzfolien</h3>
--          <p class="sub">Schützt Möbel & Stoffe vor Ausbleichen.</p>
--          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Bis zu 99% UV-Filter, transparent. Ideal für Auslagen & Wohnräume.</p></details>
--        </article>
--        <article class="card">
--          <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?q=80&w=1200&auto=format&fit=crop" alt="Sichtschutz">
--          <h3>Sichtschutzfolien</h3>
--          <p class="sub">Privatsphäre ohne Lichtverlust – Milchglas & Muster.</p>
--          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Individuelle Designs, logos & Linien. Bäder, Büros, Eingänge.</p></details>
--        </article>
--        <article class="card">
--          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1200&auto=format&fit=crop" alt="Smart-Switch">
--          <h3>Smart-Switch-Folie</h3>
--          <p class="sub">Per Knopfdruck von klar zu blickdicht.</p>
--          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Elektrisch schaltbar, Meetingräume & Bäder. Integration durch Fachpartner.</p></details>
--        </article>
--        <article class="card">
--          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200&auto=format&fit=crop" alt="Insektenschutz">
--          <h3>Insektenschutz</h3>
--          <p class="sub">Feinmaschig, stabil, maßgefertigt – Türen & Fenster.</p>
--          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Rahmenlösungen, Schiebe-Elemente, magnetisch. Unauffällig & effektiv.</p></details>
--        </article>
--        <article class="card">
--          <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?q=80&w=1200&auto=format&fit=crop" alt="Anti-Graffiti">
--          <h3>Anti-Graffiti-Folie</h3>
--          <p class="sub">Schützt Oberflächen, lässt sich einfach erneuern.</p>
--          <details class="card"><summary>Mehr erfahren</summary><p class="sub">Transparenter Opferschutz für Glas & Metall – spart Reinigungskosten.</p></details>
--        </article>
--      </div>
--    </div>
--  </section>
--
--  <!-- ERSTGESPRÄCH -->
--  <section id="erstgespraech">
--    <div class="container">
--      <h2>Kostenlose Erstberatung</h2>
--      <p class="sub">Wählen Sie einen Slot – unser Design-Team meldet sich.</p>
--      <div class="grid-3">
--        <a class="card btn" style="justify-content:center" href="mailto:kontakt@foilvengers.at?subject=Erstgespr%C3%A4ch&body=Hallo%20FoilVengers%2C%20ich%20m%C3%B6chte%20eine%20kostenlose%20Erstberatung.">📧 1h Erstberatung (Online)</a>
--        <a class="card btn" style="justify-content:center" href="https://wa.me/430394930590?text=Kostenloser%20QuickCheck%20bitte">⚡ QuickCheck (1h, WhatsApp)</a>
--        <!-- TODO: Wenn du Calendly hast, hier Link einsetzen -->
--        <a class="card btn" style="justify-content:center" href="#visual">🏠 Interieur-Beratung vor Ort (Anfrage)</a>
--      </div>
--    </div>
--  </section>
--
--  <!-- FAQ -->
--  <section id="faq">
--    <div class="container">
--      <h2>Häufig gestellte Fragen</h2>
--      <div class="grid-2">
--        <details class="card"><summary>Wie lange dauert eine Küche?</summary><p class="sub">Meist 2–5 Tage – abhängig von Größe, Material & Vorbereitung.</p></details>
--        <details class="card"><summary>Halten die Folien in der Küche?</summary><p class="sub">Ja. Wir nutzen hitzebeständige, wasserresistente Markenfolien mit starker Haftung.</p></details>
--        <details class="card"><summary>Kann ich Muster sehen?</summary><p class="sub">Klar – im Gespräch oder per Post. Der Möbelfolien-Forscher hilft bei der Vorauswahl.</p></details>
--        <details class="card"><summary>Macht ihr auch Fenster/Schaufenster?</summary><p class="sub">Ja: Hitzeschutz, UV, Sichtschutz, Werbung & Sicherheit.</p></details>
--      </div>
--    </div>
--  </section>
-+    <script>
-+      const body = document.body;
-+      const portalWindow = document.getElementById("portalWindow");
-+      const modal = document.querySelector("[data-modal]");
-+      const modalTitle = document.querySelector("[data-modal-title]");
-+      const modalDescription = document.querySelector("[data-modal-description]");
-+      const modalMeta = document.querySelector("[data-modal-meta]");
-+      const previewBefore = document.querySelector("[data-preview-before]");
-+      const previewAfter = document.querySelector("[data-preview-after]");
-+      const sliderInput = document.querySelector("[data-slider]");
-+      const previewSlider = document.querySelector(".preview-slider");
-+      const swatchGrid = document.querySelector("[data-swatch-grid]");
-+      const modalClose = document.querySelector("[data-close]");
-+      const menuToggle = document.querySelector(".menu-toggle");
-+      const menuPanel = document.getElementById("menuPanel");
- 
--  <!-- FOOTER -->
--  <footer style="border-top:1px solid rgba(255,255,255,.08);padding:34px 0">
--    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
--      <small>© <span id="year"></span> FoilVengers – Leunam Bratkovic, Schlossstraße, 1090 Wien · <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a></small>
--    </div>
--  </footer>
--
--  <!-- IMPRESSUM -->
--  <section id="impressum">
--    <div class="container">
--      <h2>Impressum</h2>
--      <div class="card">
--        <p><strong>FoilVengers – Einzelunternehmen</strong><br>
--        Inhaber: Leunam Bratkovic<br>
--        Schlossstraße, 1090 Wien, Österreich<br>
--        Tel: +43 0394 930 590 · E-Mail: kontakt@foilvengers.at</p>
--        <p>Mitglied der WKÖ (falls zutreffend). UID-Nr. & Firmenbuch-Nr. werden nachgereicht.</p>
--        <p>Verbraucherstreitbeilegung: Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren teilzunehmen.</p>
--      </div>
--    </div>
--  </section>
--
--  <!-- DATENSCHUTZ -->
--  <section id="datenschutz">
--    <div class="container">
--      <h2>Datenschutz</h2>
--      <div class="card">
--        <p>Wir verarbeiten personenbezogene Daten nur zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO).</p>
--        <p>Hosting: GitHub Pages. Beim Seitenaufruf werden technische Daten verarbeitet. Keine Tracking-Cookies.</p>
--        <p>Kontakt: kontakt@foilvengers.at – Rechte auf Auskunft, Berichtigung, Löschung und Beschwerde bestehen.</p>
--      </div>
--    </div>
--  </section>
--
--  <script>
--    // Footer-Jahr
--    document.getElementById('year').textContent = new Date().getFullYear();
--
--    // Drawer
--    const hamb=document.getElementById('hamb'); const drawer=document.getElementById('drawer');
--    function toggle(){drawer.classList.toggle('open'); drawer.setAttribute('aria-hidden', !drawer.classList.contains('open'))}
--    hamb.addEventListener('click',toggle); hamb.addEventListener('keyup',e=>{if(e.key==='Enter') toggle()}); drawer.addEventListener('click',e=>{if(e.target===drawer) toggle()});
--    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',toggle));
--
--    // Folienforscher: Preisberechnung
--    const PRICE = 130;
--    const countEl = document.getElementById('count');
--    const sumEl = document.getElementById('sum');
--    const selField = document.getElementById('selField');
--    const sumField = document.getElementById('sumField');
--    function recalc(){
--      const boxes = [...document.querySelectorAll('#folioGrid input[type=checkbox]')];
--      const picked = boxes.filter(b=>b.checked).map(b=>b.value);
--      const total = picked.length * PRICE;
--      countEl.textContent = picked.length;
--      sumEl.textContent = `€ ${total.toLocaleString('de-AT')}`;
--      selField.value = picked.join(', ');
--      sumField.value = total;
--    }
--    document.querySelectorAll('#folioGrid input[type=checkbox]').forEach(cb=>cb.addEventListener('change',recalc));
--    recalc();
--
--    // Formspree Status (Visualisierung)
--    const vizForm = document.getElementById('vizForm');
--    const vizStatus = document.getElementById('vizStatus');
--    vizForm.addEventListener('submit', async (e)=>{
--      vizStatus.textContent = 'Senden …';
--    });
--
--    // Formspree Status (Bestellung)
--    const orderForm = document.getElementById('orderForm');
--    const orderStatus = document.getElementById('orderStatus');
--    orderForm.addEventListener('submit', async (e)=>{
--      orderStatus.textContent = 'Senden …';
--    });
--  </script>
--</body>
-+      const surfaces = {
-+        sofa: {
-+          title: "Sofa & Lounge",
-+          description:
-+            "Visualisieren Sie weiche Lederoberflächen, atmungsaktive Performance-Textilien und avantgardistische Metallic-Optiken für Ihr Statement-Sofa.",
-+          before:
-+            "linear-gradient(140deg, rgba(36, 38, 48, 0.82), rgba(18, 20, 28, 0.9)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%22272c35%22/%3E%3C/svg%3E\")",
-+          options: [
-+            {
-+              name: "Polarweiß Leder",
-+              category: "Leder",
-+              finish: "matt",
-+              description: "Skandinavische Ruhe mit softem Touch.",
-+              preview:
-+                "linear-gradient(135deg, #f8fbff, #dfe4ed 60%, #c7ceda)",
-+            },
-+            {
-+              name: "Mitternachtsblau Nappa",
-+              category: "Leder",
-+              finish: "seidenmatt",
-+              description: "Tiefes Blau mit dezenter Struktur.",
-+              preview:
-+                "linear-gradient(145deg, #0d1a2c, #142941 55%, #1a3553)",
-+            },
-+            {
-+              name: "Graphit Performance",
-+              category: "High-Tech",
-+              finish: "soft-touch",
-+              description: "Schmutzresistent und atmungsaktiv.",
-+              preview:
-+                "linear-gradient(120deg, #2b3039, #1b1e26)",
-+            },
-+            {
-+              name: "Champagner Luxe",
-+              category: "Velours",
-+              finish: "seidenglanz",
-+              description: "Ultrafeine Fasern mit goldenem Schimmer.",
-+              preview:
-+                "linear-gradient(135deg, #f2e4d0, #d8c3a0 60%, #b69d82)",
-+            },
-+            {
-+              name: "Stonewash Canvas",
-+              category: "Textil",
-+              finish: "matt",
-+              description: "Relaxte Loft-Ästhetik mit Tiefe.",
-+              preview:
-+                "linear-gradient(130deg, #4e5662, #313741 65%, #1f232b)",
-+            },
-+            {
-+              name: "Caramel Suede",
-+              category: "Velours",
-+              finish: "soft",
-+              description: "Lässiger Luxus in warmen Tönen.",
-+              preview:
-+                "linear-gradient(140deg, #c28a58, #9b6234 60%, #724322)",
-+            },
-+            {
-+              name: "Nebula Metallic",
-+              category: "Metallic",
-+              finish: "gloss",
-+              description: "Feine Metallpartikel mit Farbspiel.",
-+              preview:
-+                "linear-gradient(140deg, #8595ad, #62718a 55%, #3f4a5c)",
-+            },
-+            {
-+              name: "Quartz Grey",
-+              category: "Leder",
-+              finish: "struktur",
-+              description: "Kontrastreiche Narbung mit Tiefe.",
-+              preview:
-+                "linear-gradient(140deg, #6a707d, #4b515d 58%, #343a44)",
-+            },
-+            {
-+              name: "Rose Smoke",
-+              category: "Textil",
-+              finish: "matt",
-+              description: "Zarter Nude-Ton für warme Akzente.",
-+              preview:
-+                "linear-gradient(135deg, #d8bfb9, #c09c94 58%, #9a736a)",
-+            },
-+            {
-+              name: "Slate Wave",
-+              category: "High-Tech",
-+              finish: "soft-touch",
-+              description: "Technische Anmutung mit Grip.",
-+              preview:
-+                "linear-gradient(130deg, #323b48, #1f2732 68%, #121821)",
-+            },
-+          ],
-+        },
-+        tisch: {
-+          title: "Esstisch & Sideboard",
-+          description:
-+            "Veredeln Sie Tischplatten und Ablagen mit mineralischen, hölzernen oder hochglänzenden Finishes – ohne Demontage.",
-+          before:
-+            "linear-gradient(140deg, rgba(32, 28, 24, 0.82), rgba(18, 15, 12, 0.92)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%22262018%22/%3E%3C/svg%3E\")",
-+          options: [
-+            {
-+              name: "Nordic Oak",
-+              category: "Holz",
-+              finish: "matt",
-+              description: "Breite Maserung, heller Loft-Look.",
-+              preview:
-+                "linear-gradient(135deg, #d4b48c, #b89368 58%, #8c6b3f)",
-+            },
-+            {
-+              name: "Smoked Walnut",
-+              category: "Holz",
-+              finish: "seidenglanz",
-+              description: "Dunkel geräucherter Klassiker.",
-+              preview:
-+                "linear-gradient(130deg, #5c3b25, #3a2415 65%, #25160d)",
-+            },
-+            {
-+              name: "Pietra Grigia",
-+              category: "Stein",
-+              finish: "matt",
-+              description: "Fein geäderter Grauton.",
-+              preview:
-+                "linear-gradient(140deg, #b8bcc2, #8c929c 60%, #6a717b)",
-+            },
-+            {
-+              name: "Arabescato Marmor",
-+              category: "Marmor",
-+              finish: "gloss",
-+              description: "Skulpturale Maserung in Weiß-Grau.",
-+              preview:
-+                "linear-gradient(135deg, #f8f8f8, #dadde3 58%, #b6bcc7)",
-+            },
-+            {
-+              name: "Concrete Urban",
-+              category: "Beton",
-+              finish: "matt",
-+              description: "Mineralischer Industrial-Charakter.",
-+              preview:
-+                "linear-gradient(140deg, #808487, #5f6468 64%, #3d4247)",
-+            },
-+            {
-+              name: "Bronze Mirror",
-+              category: "Metallic",
-+              finish: "high-gloss",
-+              description: "Spiegelndes Bronze mit Tiefe.",
-+              preview:
-+                "linear-gradient(135deg, #d9b28a, #ae8357 58%, #6e4c2b)",
-+            },
-+            {
-+              name: "Snow Quartz",
-+              category: "Stein",
-+              finish: "poliert",
-+              description: "Glänzende Mikrokristalle.",
-+              preview:
-+                "linear-gradient(145deg, #ffffff, #e6ecf3 55%, #ccd5e2)",
-+            },
-+            {
-+              name: "Noir Timber",
-+              category: "Holz",
-+              finish: "matt",
-+              description: "Tiefschwarze Holztextur.",
-+              preview:
-+                "linear-gradient(140deg, #2b2623, #161310 68%, #080605)",
-+            },
-+            {
-+              name: "Terra Cotta",
-+              category: "Stein",
-+              finish: "satiniert",
-+              description: "Warmtonige, mediterrane Anmutung.",
-+              preview:
-+                "linear-gradient(140deg, #d68658, #b1653a 60%, #7c3d1c)",
-+            },
-+            {
-+              name: "Frosted Glacier",
-+              category: "Glas",
-+              finish: "satiniert",
-+              description: "Kühle, leicht transluzente Oberfläche.",
-+              preview:
-+                "linear-gradient(135deg, #cdd9e8, #a7b9cc 62%, #8290a4)",
-+            },
-+          ],
-+        },
-+        kueche: {
-+          title: "Küche & Fronten",
-+          description:
-+            "Vom Monolith aus Marmor bis zur matten Anti-Fingerprint-Front – gestalten Sie jeden Küchenblock sekundenschnell um.",
-+          before:
-+            "linear-gradient(140deg, rgba(24, 26, 30, 0.88), rgba(12, 14, 18, 0.95)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%2225272c%22/%3E%3C/svg%3E\")",
-+          options: [
-+            {
-+              name: "Arctic Matte",
-+              category: "Supermatt",
-+              finish: "anti-fingerprint",
-+              description: "Sanftes Grau mit Soft-Touch.",
-+              preview:
-+                "linear-gradient(140deg, #d5d9df, #adb4c1 65%, #7d8594)",
-+            },
-+            {
-+              name: "Obsidian Gloss",
-+              category: "Hochglanz",
-+              finish: "spiegelnd",
-+              description: "Tiefschwarzer Spiegel für Statement-Küchen.",
-+              preview:
-+                "linear-gradient(135deg, #15171c, #08090c 60%, #020203)",
-+            },
-+            {
-+              name: "Calacatta Supreme",
-+              category: "Marmor",
-+              finish: "poliert",
-+              description: "Weißer Marmor mit goldener Aderung.",
-+              preview:
-+                "linear-gradient(140deg, #fbf9f6, #e6dfd5 60%, #ccbda9)",
-+            },
-+            {
-+              name: "Titanium Brushed",
-+              category: "Metallic",
-+              finish: "gebürstet",
-+              description: "Industrieller Chic mit feinem Schliff.",
-+              preview:
-+                "linear-gradient(135deg, #9097a1, #6f7681 55%, #4f555f)",
-+            },
-+            {
-+              name: "Midnight Petrol",
-+              category: "Supermatt",
-+              finish: "soft-touch",
-+              description: "Dunkles Petrol mit samtiger Haptik.",
-+              preview:
-+                "linear-gradient(135deg, #1e2c36, #111b22 62%, #0a1217)",
-+            },
-+            {
-+              name: "Ivory Silk",
-+              category: "Hochglanz",
-+              finish: "gloss",
-+              description: "Elfenbeinfarbener Premium-Glanz.",
-+              preview:
-+                "linear-gradient(140deg, #fbf3ea, #e2d3c1 60%, #c5af97)",
-+            },
-+            {
-+              name: "Concrete Steel",
-+              category: "Beton",
-+              finish: "satiniert",
-+              description: "Architektonischer Hybrid aus Beton & Stahl.",
-+              preview:
-+                "linear-gradient(140deg, #9aa0a8, #747a82 60%, #4b5159)",
-+            },
-+            {
-+              name: "Forest Walnut",
-+              category: "Holz",
-+              finish: "seidenglanz",
-+              description: "Vertikale Maserung mit warmem Glow.",
-+              preview:
-+                "linear-gradient(135deg, #6b422b, #4d2b19 62%, #2f160d)",
-+            },
-+            {
-+              name: "Cloudy Taupe",
-+              category: "Supermatt",
-+              finish: "soft",
-+              description: "Ruhevolle Taupe-Nuance mit Tiefe.",
-+              preview:
-+                "linear-gradient(140deg, #c7c1bb, #a89f96 65%, #80776f)",
-+            },
-+            {
-+              name: "Aurora Bronze",
-+              category: "Metallic",
-+              finish: "schimmernd",
-+              description: "Bronzefarbener Verlauf mit Lichtspiel.",
-+              preview:
-+                "linear-gradient(135deg, #c18c60, #8d5b36 62%, #5d3419)",
-+            },
-+          ],
-+        },
-+        wand: {
-+          title: "Akzentwand & Paneele",
-+          description:
-+            "Verwandeln Sie Wände mit großformatigen Folien in architektonische Statements – inklusive akustischer Optionen.",
-+          before:
-+            "linear-gradient(150deg, rgba(24, 28, 36, 0.9), rgba(12, 14, 18, 0.95)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%22262832%22/%3E%3C/svg%3E\")",
-+          options: [
-+            {
-+              name: "Atlas Beton",
-+              category: "Beton",
-+              finish: "matt",
-+              description: "Architektonischer Beton mit Tiefe.",
-+              preview:
-+                "linear-gradient(140deg, #7b7f86, #4f535a 60%, #2f3339)",
-+            },
-+            {
-+              name: "Scandi Pine",
-+              category: "Holz",
-+              finish: "matt",
-+              description: "Vertikale Lamellen in hellem Holz.",
-+              preview:
-+                "linear-gradient(135deg, #d8c6aa, #b99d73 60%, #8d6a3f)",
-+            },
-+            {
-+              name: "Moonlight Slate",
-+              category: "Stein",
-+              finish: "satiniert",
-+              description: "Kühle Schiefertextur mit eleganten Linien.",
-+              preview:
-+                "linear-gradient(140deg, #60656d, #42464d 60%, #2a2d33)",
-+            },
-+            {
-+              name: "Graphite Panels",
-+              category: "Akustik",
-+              finish: "texturiert",
-+              description: "Akustische Rippenstruktur in Anthrazit.",
-+              preview:
-+                "repeating-linear-gradient(90deg, #2c2f36 0 12px, #1d1f25 12px 20px)",
-+            },
-+            {
-+              name: "Lumina Pearl",
-+              category: "Metallic",
-+              finish: "schimmernd",
-+              description: "Perlmutt-Effekte mit subtiler Reflexion.",
-+              preview:
-+                "linear-gradient(140deg, #f4f2f5, #d8d7e0 55%, #b8b7c4)",
-+            },
-+            {
-+              name: "Urban Brick",
-+              category: "Ziegel",
-+              finish: "matt",
-+              description: "Modern interpretierte Loft-Ziegel.",
-+              preview:
-+                "repeating-linear-gradient(90deg, #a5523a 0 32px, #7f3c28 32px 36px)",
-+            },
-+            {
-+              name: "Silk Taupe",
-+              category: "Textil",
-+              finish: "satiniert",
-+              description: "Textile Wandbespannung mit Schimmer.",
-+              preview:
-+                "linear-gradient(135deg, #cdbeb2, #ac9a8a 60%, #8c7766)",
-+            },
-+            {
-+              name: "Aurora Gradient",
-+              category: "Spezial",
-+              finish: "gloss",
-+              description: "Horizontale Lichtverläufe für Statement-Flächen.",
-+              preview:
-+                "linear-gradient(90deg, #1f2d46, #354b6b 40%, #9f6f82 70%, #d3a574)",
-+            },
-+            {
-+              name: "Desert Travertin",
-+              category: "Stein",
-+              finish: "satiniert",
-+              description: "Organische Porenstruktur in warmem Beige.",
-+              preview:
-+                "linear-gradient(135deg, #e1d1bd, #c7ae8e 60%, #a98763)",
-+            },
-+            {
-+              name: "Eclipse Carbon",
-+              category: "Carbon",
-+              finish: "struktur",
-+              description: "Technische Carbon-Optik mit Tiefenwirkung.",
-+              preview:
-+                "repeating-linear-gradient(45deg, #1a1e25 0 12px, #111319 12px 24px)",
-+            },
-+          ],
-+        },
-+        fenster: {
-+          title: "Panoramafenster & Glas",
-+          description:
-+            "Konfigurieren Sie Sonnenschutz, Sichtschutz oder Designfolien für Ihre Fensterfront und erleben Sie Lichtsteuerung live.",
-+          before:
-+            "linear-gradient(140deg, rgba(36, 54, 72, 0.55), rgba(14, 20, 32, 0.85)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%22233244%22/%3E%3C/svg%3E\")",
-+          options: [
-+            {
-+              name: "Hitzeschutz Titan 70",
-+              category: "Sonnenschutz",
-+              finish: "reflektierend",
-+              description: "Reduziert Wärmeeintrag um bis zu 70 Prozent.",
-+              preview:
-+                "linear-gradient(135deg, rgba(140, 170, 200, 0.62), rgba(90, 120, 160, 0.78))",
-+            },
-+            {
-+              name: "Privacy Frost",
-+              category: "Sichtschutz",
-+              finish: "satiniert",
-+              description: "Milchglas-Effekt mit hoher Lichtdurchlässigkeit.",
-+              preview:
-+                "linear-gradient(135deg, rgba(220, 230, 240, 0.72), rgba(180, 196, 212, 0.78))",
-+            },
-+            {
-+              name: "UV Shield 400",
-+              category: "UV-Schutz",
-+              finish: "klar",
-+              description: "Blockiert 99 Prozent schädlicher UV-Strahlung.",
-+              preview:
-+                "linear-gradient(135deg, rgba(150, 180, 220, 0.4), rgba(120, 150, 200, 0.58))",
-+            },
-+            {
-+              name: "Smart Tint",
-+              category: "Elektrochrom",
-+              finish: "dimmbar",
-+              description: "Per App steuerbare Lichtdurchlässigkeit.",
-+              preview:
-+                "linear-gradient(90deg, rgba(210, 220, 235, 0.2), rgba(60, 80, 110, 0.65))",
-+            },
-+            {
-+              name: "Crystal Clear",
-+              category: "Klarfolie",
-+              finish: "optisch neutral",
-+              description: "Schützt vor Kratzern ohne sichtbare Veränderung.",
-+              preview:
-+                "linear-gradient(135deg, rgba(240, 250, 255, 0.35), rgba(190, 210, 235, 0.4))",
-+            },
-+            {
-+              name: "Mirror Blue",
-+              category: "Design",
-+              finish: "spiegelnd",
-+              description: "Blau getönter Spiegel für moderne Fassaden.",
-+              preview:
-+                "linear-gradient(135deg, rgba(80, 140, 210, 0.75), rgba(30, 60, 110, 0.85))",
-+            },
-+            {
-+              name: "Bronze Shield",
-+              category: "Sonnenschutz",
-+              finish: "getönt",
-+              description: "Warmer Bronze-Ton mit Blendkontrolle.",
-+              preview:
-+                "linear-gradient(135deg, rgba(210, 160, 110, 0.65), rgba(120, 80, 40, 0.78))",
-+            },
-+            {
-+              name: "Security Clear",
-+              category: "Sicherheitsfolie",
-+              finish: "klar",
-+              description: "Erhöht Splitterschutz und Einbruchhemmung.",
-+              preview:
-+                "linear-gradient(135deg, rgba(200, 220, 240, 0.45), rgba(150, 180, 210, 0.5))",
-+            },
-+            {
-+              name: "Prism Vision",
-+              category: "Design",
-+              finish: "prismatisch",
-+              description: "Prismatische Lichtbrechung für besondere Effekte.",
-+              preview:
-+                "linear-gradient(135deg, rgba(200, 210, 240, 0.4), rgba(120, 130, 200, 0.68))",
-+            },
-+            {
-+              name: "Night View",
-+              category: "Sichtschutz",
-+              finish: "dual-reflektierend",
-+              description: "Privatsphäre bei Tag, klare Sicht bei Nacht.",
-+              preview:
-+                "linear-gradient(135deg, rgba(60, 90, 130, 0.7), rgba(20, 30, 50, 0.85))",
-+            },
-+          ],
-+        },
-+      };
-+      let activeArea = null;
-+      let lastFocus = null;
-+
-+      const setSplit = (value) => {
-+        const split = `${value}%`;
-+        previewAfter.style.setProperty("--split", split);
-+        previewSlider.style.setProperty("--split", split);
-+        previewSlider.style.left = split;
-+      };
-+
-+      const buildMeta = (areaTitle, option) => {
-+        modalMeta.innerHTML = `
-+          <span>${areaTitle}</span>
-+          <span>Material: ${option.category}</span>
-+          <span>Finish: ${option.finish}</span>
-+          <span>${option.description}</span>
-+        `;
-+      };
-+
-+      const selectSwatch = (areaKey, index) => {
-+        const data = surfaces[areaKey];
-+        const option = data.options[index];
-+        Array.from(swatchGrid.children).forEach((element, i) => {
-+          element.setAttribute("aria-selected", i === index ? "true" : "false");
-+        });
-+        previewAfter.style.background = option.preview;
-+        buildMeta(data.title, option);
-+      };
-+
-+      const buildSwatches = (areaKey) => {
-+        const data = surfaces[areaKey];
-+        swatchGrid.innerHTML = "";
-+        data.options.forEach((option, index) => {
-+          const button = document.createElement("button");
-+          button.type = "button";
-+          button.className = "swatch";
-+          button.setAttribute("role", "option");
-+          button.dataset.index = String(index);
-+          button.dataset.area = areaKey;
-+          button.setAttribute("aria-selected", index === 0 ? "true" : "false");
-+          button.style.setProperty("--swatch-bg", option.preview);
-+          button.innerHTML = `
-+            <strong>${option.name}</strong>
-+            <span>${option.category} · ${option.finish}</span>
-+            <span>${option.description}</span>
-+          `;
-+          button.addEventListener("click", () => {
-+            selectSwatch(areaKey, index);
-+          });
-+          button.addEventListener("keydown", (event) => {
-+            if (event.key === "Enter" || event.key === " ") {
-+              event.preventDefault();
-+              selectSwatch(areaKey, index);
-+            }
-+          });
-+          swatchGrid.appendChild(button);
-+        });
-+      };
-+
-+      const openModal = (areaKey) => {
-+        const data = surfaces[areaKey];
-+        if (!data) return;
-+        activeArea = areaKey;
-+        lastFocus = document.activeElement;
-+        modalTitle.textContent = data.title;
-+        modalDescription.textContent = data.description;
-+        previewBefore.style.background = data.before;
-+        buildSwatches(areaKey);
-+        selectSwatch(areaKey, 0);
-+        sliderInput.value = "50";
-+        setSplit(50);
-+        modal.setAttribute("aria-hidden", "false");
-+        body.classList.add("modal-open");
-+        modalClose.focus();
-+      };
-+
-+      const closeModal = () => {
-+        if (modal.getAttribute("aria-hidden") === "true") return;
-+        modal.setAttribute("aria-hidden", "true");
-+        body.classList.remove("modal-open");
-+        if (lastFocus) {
-+          lastFocus.focus();
-+        }
-+      };
-+
-+      portalWindow.addEventListener("click", () => {
-+        body.classList.add("entered");
-+        body.classList.remove("pre-entry");
-+        setTimeout(() => {
-+          document.getElementById("loft").scrollIntoView({ behavior: "smooth" });
-+        }, 320);
-+      });
-+
-+      document.querySelectorAll(".hotspot").forEach((button) => {
-+        button.addEventListener("click", () => openModal(button.dataset.area));
-+      });
-+
-+      sliderInput.addEventListener("input", (event) => {
-+        setSplit(event.target.value);
-+      });
-+
-+      modalClose.addEventListener("click", closeModal);
-+
-+      modal.addEventListener("click", (event) => {
-+        if (event.target === modal) {
-+          closeModal();
-+        }
-+      });
-+
-+      const toggleMenu = (forceState) => {
-+        const isOpen = forceState !== undefined ? forceState : menuToggle.getAttribute("aria-expanded") !== "true";
-+        menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-+        menuPanel.setAttribute("aria-hidden", isOpen ? "false" : "true");
-+      };
-+
-+      document.addEventListener("keydown", (event) => {
-+        if (event.key === "Escape") {
-+          if (menuToggle.getAttribute("aria-expanded") === "true") {
-+            toggleMenu(false);
-+          } else {
-+            closeModal();
-+          }
-+        }
-+      });
-+
-+      menuToggle.addEventListener("click", () => toggleMenu());
-+      menuPanel.querySelectorAll("a").forEach((link) => {
-+        link.addEventListener("click", () => toggleMenu(false));
-+      });
-+
-+      window.addEventListener("resize", () => {
-+        if (window.innerWidth > 960) {
-+          toggleMenu(false);
-+        }
-+      });
-+    </script>
-+  </body>
- </html>
- 
-EOF
-)
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loft Folienstudio</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        --bg: #05070f;
+        --bg-soft: rgba(10, 15, 28, 0.72);
+        --bg-strong: rgba(5, 8, 18, 0.92);
+        --frost: rgba(18, 24, 42, 0.68);
+        --border: rgba(255, 255, 255, 0.08);
+        --border-strong: rgba(255, 255, 255, 0.14);
+        --text: #f5f7ff;
+        --muted: #9aa4c3;
+        --accent: #7ab8ff;
+        --accent-strong: #2196f3;
+        --gold: #d9ac3c;
+        --glow: rgba(122, 184, 255, 0.35);
+        --window-night: radial-gradient(circle at 30% 20%, rgba(120, 180, 255, 0.18), transparent 60%),
+          radial-gradient(circle at 70% 15%, rgba(255, 255, 255, 0.25), transparent 52%),
+          linear-gradient(135deg, #0c1628, #04050b 65%);
+        --loft-before: linear-gradient(120deg, rgba(20, 24, 36, 0.85), rgba(12, 16, 28, 0.95)),
+          url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 675%22 preserveAspectRatio=%22xMidYMid slice%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence baseFrequency=%220.65%22 numOctaves=%223%22/%3E%3C/filter%3E%3Crect width=%221200%22 height=%22675%22 filter=%22url(%23noise)%22 opacity=%220.16%22/%3E%3C/svg%3E");
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at top, rgba(26, 38, 64, 0.6) 0%, var(--bg) 58%);
+        color: var(--text);
+        overflow-x: hidden;
+        transition: background 0.7s ease;
+      }
+
+      body.modal-open {
+        overflow: hidden;
+      }
+
+      body.entered {
+        background: radial-gradient(circle at 45% 15%, rgba(40, 78, 118, 0.72), rgba(9, 12, 22, 0.95));
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+        color: inherit;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      header {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 30;
+        backdrop-filter: saturate(180%) blur(24px);
+        background: linear-gradient(180deg, rgba(5, 8, 16, 0.92) 0%, rgba(5, 8, 16, 0.44) 80%, transparent);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .top-bar {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 18px clamp(18px, 2vw, 32px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: clamp(0.75rem, 1vw + 0.2rem, 0.9rem);
+      }
+
+      .brand span {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: #0d1526;
+        background: radial-gradient(circle at 30% 30%, #ffffff, #d5dbe8 68%, #adb8cf 100%);
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 12px 24px rgba(0, 0, 0, 0.35);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-link {
+        font-size: 0.95rem;
+        color: var(--muted);
+        transition: color 0.25s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link:focus-visible {
+        color: var(--text);
+      }
+
+      .menu-toggle {
+        position: relative;
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(12, 16, 28, 0.72);
+        display: none;
+        place-items: center;
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+
+      .menu-toggle span,
+      .menu-toggle::before,
+      .menu-toggle::after {
+        content: "";
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--text);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .menu-toggle span {
+        width: 16px;
+      }
+
+      .menu-toggle::before {
+        transform: translateY(-7px);
+      }
+
+      .menu-toggle::after {
+        transform: translateY(7px);
+      }
+
+      .menu-toggle[aria-expanded="true"] span {
+        opacity: 0;
+      }
+
+      .menu-toggle[aria-expanded="true"]::before {
+        transform: translateY(0) rotate(45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"]::after {
+        transform: translateY(0) rotate(-45deg);
+      }
+
+      .menu-toggle:hover,
+      .menu-toggle:focus-visible {
+        border-color: rgba(255, 255, 255, 0.22);
+        background: rgba(16, 22, 36, 0.9);
+      }
+
+      .menu-panel {
+        position: fixed;
+        inset: 80px 24px auto 24px;
+        background: var(--bg-strong);
+        border-radius: 28px;
+        padding: 28px;
+        border: 1px solid var(--border-strong);
+        box-shadow: 0 32px 64px rgba(0, 0, 0, 0.35);
+        transform: translateY(-12px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .menu-panel[aria-hidden="false"] {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .menu-panel a {
+        display: block;
+        padding: 12px 0;
+        font-size: 1.05rem;
+        color: var(--text);
+      }
+
+      main {
+        padding-top: 96px;
+      }
+
+      section {
+        position: relative;
+        padding: clamp(96px, 12vw, 160px) 0;
+      }
+
+      .section-shell {
+        width: min(1220px, calc(100% - clamp(32px, 6vw, 96px)));
+        margin: 0 auto;
+        display: grid;
+        gap: clamp(32px, 4vw, 80px);
+      }
+
+      .hero {
+        padding-top: clamp(120px, 20vw, 220px);
+      }
+
+      .hero-grid {
+        display: grid;
+        gap: clamp(32px, 5vw, 72px);
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        align-items: center;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.5rem, 5vw, 4.4rem);
+        letter-spacing: -0.03em;
+        margin: 0 0 24px;
+      }
+
+      .hero-copy p {
+        margin: 0;
+        font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+        color: var(--muted);
+        max-width: 480px;
+      }
+
+      .window-stage {
+        position: relative;
+        aspect-ratio: 3 / 4;
+        border-radius: clamp(28px, 5vw, 46px);
+        overflow: hidden;
+        background: var(--window-night);
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+          0 28px 64px rgba(0, 0, 0, 0.45),
+          0 8px 24px rgba(66, 140, 255, 0.16);
+        display: grid;
+        place-items: center;
+      }
+
+      .window-stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.18), transparent 42%),
+          radial-gradient(circle at 70% 18%, rgba(255, 255, 255, 0.25), transparent 52%),
+          linear-gradient(160deg, rgba(120, 180, 255, 0.42), transparent 58%);
+        mix-blend-mode: screen;
+      }
+
+      .window-stage button {
+        position: relative;
+        width: 82%;
+        height: 82%;
+        border-radius: clamp(22px, 4vw, 36px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: linear-gradient(145deg, rgba(15, 20, 30, 0.45), rgba(12, 16, 24, 0.75)),
+          radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.38), transparent 65%),
+          linear-gradient(165deg, rgba(96, 120, 160, 0.32), rgba(15, 22, 36, 0.85));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -2px 6px rgba(0, 0, 0, 0.5);
+        transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s ease;
+        backdrop-filter: blur(18px);
+      }
+
+      .window-stage button::after {
+        content: "Jetzt Loft entdecken";
+        position: absolute;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%);
+        padding: 12px 24px;
+        border-radius: 999px;
+        background: rgba(8, 14, 24, 0.74);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.32);
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+      }
+
+      .window-stage button:hover,
+      .window-stage button:focus-visible {
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -4px 8px rgba(0, 0, 0, 0.6),
+          0 24px 48px rgba(33, 150, 243, 0.32);
+        transform: translateY(-10px) scale(1.02);
+      }
+      .loft {
+        display: none;
+      }
+
+      body.entered .loft {
+        display: block;
+      }
+
+      .loft-stage {
+        position: relative;
+        border-radius: clamp(28px, 5vw, 40px);
+        background: linear-gradient(140deg, rgba(14, 18, 30, 0.92), rgba(6, 8, 16, 0.92)),
+          url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 720%22 preserveAspectRatio=%22xMidYMid slice%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22060a12%22/%3E%3Cstop offset=%221%22 stop-color=%2210192a%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%221200%22 height=%22720%22 fill=%22url(%23g)%22/%3E%3C/svg%3E");
+        background-size: cover;
+        overflow: hidden;
+        padding: clamp(48px, 8vw, 96px);
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+      }
+
+      .loft-stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 65% 25%, rgba(255, 196, 120, 0.2), transparent 60%),
+          radial-gradient(circle at 35% 15%, rgba(120, 180, 255, 0.22), transparent 52%);
+        mix-blend-mode: screen;
+      }
+
+      .loft-intro {
+        max-width: 520px;
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 18px;
+      }
+
+      .loft-intro h2 {
+        margin: 0;
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
+        letter-spacing: -0.03em;
+      }
+
+      .loft-intro p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .loft-scene {
+        position: relative;
+        margin-top: clamp(36px, 6vw, 72px);
+        border-radius: clamp(26px, 4vw, 38px);
+        overflow: hidden;
+        background: var(--loft-before);
+        background-size: cover;
+        min-height: clamp(420px, 55vw, 620px);
+      }
+
+      .loft-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(0, 0, 0, 0.35), transparent 60%);
+      }
+
+      .hotspot {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: clamp(52px, 6vw, 74px);
+        height: clamp(52px, 6vw, 74px);
+        border-radius: 999px;
+        background: rgba(8, 14, 24, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.42);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+
+      .hotspot::after {
+        content: attr(data-label);
+        position: absolute;
+        bottom: -42px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(12, 18, 30, 0.86);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .hotspot:hover,
+      .hotspot:focus-visible {
+        transform: translateY(-6px) scale(1.04);
+        border-color: rgba(122, 184, 255, 0.7);
+        box-shadow: 0 24px 48px rgba(122, 184, 255, 0.35);
+      }
+
+      .hotspot:hover::after,
+      .hotspot:focus-visible::after {
+        opacity: 1;
+        transform: translate(-50%, -6px);
+      }
+
+      .hotspot svg {
+        width: 46%;
+        fill: none;
+        stroke: var(--text);
+        stroke-width: 1.6;
+      }
+
+      .hotspot[data-area="fenster"] {
+        top: 16%;
+        right: 18%;
+      }
+
+      .hotspot[data-area="sofa"] {
+        bottom: 24%;
+        left: 18%;
+      }
+
+      .hotspot[data-area="tisch"] {
+        bottom: 18%;
+        left: 42%;
+      }
+
+      .hotspot[data-area="kueche"] {
+        top: 36%;
+        left: 62%;
+      }
+
+      .hotspot[data-area="wand"] {
+        top: 24%;
+        left: 32%;
+      }
+
+      .material-modal {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: rgba(4, 6, 12, 0.62);
+        backdrop-filter: blur(24px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+        z-index: 50;
+      }
+
+      .material-modal[aria-hidden="false"] {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .material-sheet {
+        width: min(960px, calc(100% - clamp(32px, 6vw, 96px)));
+        background: linear-gradient(145deg, rgba(15, 20, 34, 0.96), rgba(6, 10, 18, 0.96));
+        border-radius: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 40px 120px rgba(0, 0, 0, 0.48);
+        padding: clamp(32px, 4vw, 52px);
+        position: relative;
+        display: grid;
+        gap: clamp(28px, 4vw, 48px);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: clamp(16px, 2vw, 24px);
+        right: clamp(16px, 2vw, 24px);
+        width: 46px;
+        height: 46px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(10, 14, 24, 0.82);
+        display: grid;
+        place-items: center;
+      }
+
+      .modal-close span {
+        position: relative;
+        display: block;
+        width: 18px;
+        height: 18px;
+      }
+
+      .modal-close span::before,
+      .modal-close span::after {
+        content: "";
+        position: absolute;
+        inset: 50% auto auto 50%;
+        width: 18px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 999px;
+      }
+
+      .modal-close span::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      .modal-close span::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      .modal-head {
+        display: grid;
+        gap: 12px;
+      }
+
+      .modal-head h3 {
+        margin: 0;
+        font-size: clamp(1.9rem, 3vw, 2.6rem);
+      }
+
+      .modal-head p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .preview-stage {
+        position: relative;
+        border-radius: clamp(24px, 4vw, 34px);
+        overflow: hidden;
+        min-height: clamp(280px, 40vw, 360px);
+        background: var(--loft-before);
+      }
+
+      .preview-before,
+      .preview-after {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .preview-before {
+        opacity: 0.85;
+        mix-blend-mode: screen;
+      }
+
+      .preview-after {
+        clip-path: polygon(0 0, var(--split, 50%) 0, var(--split, 50%) 100%, 0 100%);
+        transition: clip-path 0.2s ease;
+      }
+
+      .preview-slider {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: var(--split, 50%);
+        width: 2px;
+        background: rgba(255, 255, 255, 0.3);
+        pointer-events: none;
+      }
+
+      .preview-slider::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        background: rgba(8, 12, 18, 0.8);
+        transform: translate(-50%, -50%);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+      }
+
+      .slider-input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: ew-resize;
+      }
+
+      .swatch-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: clamp(16px, 3vw, 28px);
+      }
+
+      .swatch {
+        position: relative;
+        border-radius: 22px;
+        padding: 18px 18px 24px;
+        background: rgba(12, 18, 30, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: grid;
+        gap: 14px;
+        align-content: start;
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .swatch::before {
+        content: "";
+        display: block;
+        height: 96px;
+        border-radius: 16px;
+        background: var(--swatch-bg, rgba(255, 255, 255, 0.1));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      .swatch strong {
+        font-size: 1rem;
+      }
+
+      .swatch span {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .swatch[aria-selected="true"] {
+        border-color: var(--accent);
+        box-shadow: 0 16px 32px rgba(122, 184, 255, 0.25);
+        transform: translateY(-6px);
+      }
+
+      .modal-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .modal-meta span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .modal-meta span::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      .contact-section {
+        background: linear-gradient(160deg, rgba(6, 10, 18, 0.92), rgba(8, 12, 22, 0.92));
+        border-radius: clamp(36px, 6vw, 48px);
+        padding: clamp(64px, 10vw, 120px);
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+        display: grid;
+        gap: clamp(48px, 6vw, 84px);
+      }
+
+      .contact-head {
+        display: grid;
+        gap: 18px;
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto;
+      }
+
+      .contact-head h2 {
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        margin: 0;
+        letter-spacing: -0.03em;
+      }
+
+      .contact-head p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: clamp(24px, 4vw, 36px);
+      }
+
+      label {
+        display: grid;
+        gap: 12px;
+        font-size: 0.9rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 18px 20px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(12, 18, 30, 0.78);
+        color: var(--text);
+        font: inherit;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      textarea {
+        min-height: 160px;
+        resize: vertical;
+      }
+
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible {
+        outline: none;
+        border-color: rgba(122, 184, 255, 0.6);
+        box-shadow: 0 0 0 3px rgba(122, 184, 255, 0.25);
+      }
+
+      .form-footer {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .submit-button {
+        padding: 18px 32px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, #3da4ff, #196bff);
+        border: none;
+        font-size: 1.05rem;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+        color: #0a1220;
+        box-shadow: 0 20px 40px rgba(61, 164, 255, 0.45);
+      }
+
+      .legal-note {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .impressum {
+        background: linear-gradient(160deg, rgba(7, 10, 18, 0.94), rgba(5, 8, 16, 0.94));
+        border-radius: clamp(36px, 6vw, 48px);
+        padding: clamp(64px, 10vw, 120px);
+        box-shadow: 0 32px 72px rgba(0, 0, 0, 0.42);
+        display: grid;
+        gap: clamp(32px, 5vw, 64px);
+      }
+
+      .impressum h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.02em;
+      }
+
+      .impressum-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: clamp(24px, 4vw, 48px);
+      }
+
+      .impressum h3 {
+        margin: 0 0 12px;
+        font-size: 1.1rem;
+        letter-spacing: 0.02em;
+      }
+
+      .impressum p,
+      .impressum li {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .impressum ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      footer {
+        padding: 48px 0;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      footer a {
+        color: var(--accent);
+      }
+
+      @media (max-width: 960px) {
+        nav {
+          display: none;
+        }
+
+        .menu-toggle {
+          display: grid;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .hotspot::after {
+          display: none;
+        }
+
+        .preview-stage {
+          min-height: 240px;
+        }
+      }
+    </style>
+  </head>
+  <body class="pre-entry">
+    <a class="sr-only" href="#loft">Zum Inhalt springen</a>
+    <header>
+      <div class="top-bar">
+        <a class="brand" href="#start">
+          <span>LF</span>
+          Loft Folienstudio
+        </a>
+        <nav aria-label="Hauptnavigation">
+          <a class="nav-link" href="#start">Startseite</a>
+          <a class="nav-link" href="#kontakt">Kontaktanfrage</a>
+          <a class="nav-link" href="#impressum">Impressum</a>
+        </nav>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="menuPanel">
+          <span class="sr-only">Menü öffnen</span>
+          <span></span>
+        </button>
+      </div>
+      <div id="menuPanel" class="menu-panel" aria-hidden="true">
+        <a href="#start">Startseite</a>
+        <a href="#kontakt">Kontaktanfrage</a>
+        <a href="#impressum">Impressum</a>
+      </div>
+    </header>
+    <main>
+      <section id="start" class="hero">
+        <div class="section-shell hero-grid">
+          <div class="hero-copy">
+            <h1>Das Loft, das sich mit Ihrer Vision verwandelt.</h1>
+            <p>
+              Betreten Sie durch ein fotorealistisches Panoramafenster unsere digitale Zwei-Zimmer-Wohnung.
+              Wählen Sie jede Oberfläche, erleben Sie hochwertige Leder-, Stein- und Glasfolien live im
+              Vorher/Nachher-Vergleich. Alles in einem Interface, inspiriert von Apples klarer Designsprache.
+            </p>
+          </div>
+          <div class="window-stage" aria-hidden="true">
+            <button id="portalWindow" type="button" aria-label="Fenster öffnen und Loft betreten"></button>
+          </div>
+        </div>
+      </section>
+      <section id="loft" class="loft">
+        <div class="section-shell">
+          <div class="loft-stage">
+            <div class="loft-intro">
+              <h2>Premium-Folierungen in jedem Detail.</h2>
+              <p>
+                Unser digitales Loft zeigt, wie präzise sich hochwertige Folienlösungen an Möbel, Küchenmodule,
+                Wände und Glasflächen anpassen. Klicken Sie auf die Hotspots, wählen Sie aus je zehn kuratierten
+                Oberflächen und vergleichen Sie live. Der Vorher/Nachher-Slider sowie Echtzeit-Beschreibungen
+                machen jede Entscheidung fühlbar.
+              </p>
+            </div>
+            <div class="loft-scene" role="presentation">
+              <div class="loft-overlay" aria-hidden="true"></div>
+              <button class="hotspot" data-area="fenster" data-label="Glasfolien" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                  <line x1="12" y1="4" x2="12" y2="20"></line>
+                </svg>
+                <span class="sr-only">Glasfolien konfigurieren</span>
+              </button>
+              <button class="hotspot" data-area="sofa" data-label="Sofa &amp; Lounge" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 10h16v8H4z"></path>
+                  <path d="M4 10V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"></path>
+                </svg>
+                <span class="sr-only">Sofa &amp; Lounge konfigurieren</span>
+              </button>
+              <button class="hotspot" data-area="tisch" data-label="Esstisch" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="9" width="18" height="4"></rect>
+                  <path d="M5 13v5m14-5v5"></path>
+                </svg>
+                <span class="sr-only">Esstisch konfigurieren</span>
+              </button>
+              <button class="hotspot" data-area="kueche" data-label="Küche" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="6"></rect>
+                  <rect x="3" y="13" width="18" height="6"></rect>
+                </svg>
+                <span class="sr-only">Küche konfigurieren</span>
+              </button>
+              <button class="hotspot" data-area="wand" data-label="Akzentwand" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 5h16v14H4z"></path>
+                  <path d="M4 9h16"></path>
+                </svg>
+                <span class="sr-only">Akzentwand konfigurieren</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="kontakt">
+        <div class="section-shell">
+          <div class="contact-section">
+            <div class="contact-head">
+              <h2>Kontakt aufnehmen und Ihr Projekt starten.</h2>
+              <p>
+                Wie Apple kombinieren wir technische Präzision mit emotionalem Design. Teilen Sie uns Ihre
+                Anforderungen mit – unser Expertenteam meldet sich innerhalb eines Werktags mit einer kuratierten
+                Empfehlung und einem Termin für eine persönliche Beratung.
+              </p>
+            </div>
+            <form>
+              <label>
+                Vor- und Nachname
+                <input type="text" name="name" autocomplete="name" placeholder="Alex Beispiel" required />
+              </label>
+              <label>
+                E-Mail-Adresse
+                <input type="email" name="email" autocomplete="email" placeholder="alex@example.com" required />
+              </label>
+              <label>
+                Telefonnummer
+                <input type="tel" name="phone" autocomplete="tel" placeholder="+49 170 000000" />
+              </label>
+              <label>
+                Wunschleistung
+                <select name="service" required>
+                  <option value="" disabled selected>Bitte auswählen</option>
+                  <option>Ganzheitliche Wohnraumfolierung</option>
+                  <option>Küchen-Upgrade</option>
+                  <option>Glas- &amp; Sonnenschutzfolien</option>
+                  <option>Objekt &amp; Retail</option>
+                  <option>Architektur &amp; Office</option>
+                </select>
+              </label>
+              <label>
+                Gewünschter Zeitraum
+                <input type="text" name="timeline" placeholder="z. B. Q3 2024" />
+              </label>
+              <label>
+                Budgetrahmen
+                <select name="budget">
+                  <option value="" disabled selected>Bitte auswählen</option>
+                  <option>&lt; 5.000 €</option>
+                  <option>5.000 – 15.000 €</option>
+                  <option>15.000 – 30.000 €</option>
+                  <option>&gt; 30.000 €</option>
+                </select>
+              </label>
+              <label style="grid-column: 1 / -1;">
+                Projektbeschreibung
+                <textarea name="message" placeholder="Erzählen Sie uns von Ihrem Raum, Materialien und Vision." required></textarea>
+              </label>
+              <div class="form-footer">
+                <p class="legal-note">
+                  Mit dem Absenden akzeptieren Sie unsere Datenschutzrichtlinie und bestätigen, dass wir Sie zur
+                  Projektabwicklung kontaktieren dürfen.
+                </p>
+                <button class="submit-button" type="submit">Anfrage senden</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section id="impressum">
+        <div class="section-shell">
+          <div class="impressum">
+            <h2>Impressum &amp; rechtliche Angaben</h2>
+            <div class="impressum-columns">
+              <div>
+                <h3>Verantwortlich nach § 5 TMG</h3>
+                <p>
+                  Loft Folienstudio GmbH<br />
+                  Musterstraße 12<br />
+                  80333 München<br />
+                  Deutschland
+                </p>
+                <p>
+                  Telefon: +49 (0)89 1234 5670<br />
+                  E-Mail: studio@loftfolien.de
+                </p>
+              </div>
+              <div>
+                <h3>Geschäftsführung</h3>
+                <p>Max Mustermann, Lea Beispiel</p>
+                <h3>Handelsregister</h3>
+                <p>
+                  Amtsgericht München HRB 123456<br />
+                  Umsatzsteuer-ID: DE123456789
+                </p>
+              </div>
+              <div>
+                <h3>Verbraucherhinweis</h3>
+                <p>
+                  Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer
+                  Verbraucherschlichtungsstelle teilzunehmen. Bei Fragen wenden Sie sich bitte direkt an unser
+                  Serviceteam.
+                </p>
+                <h3>Inhaltlich Verantwortlicher</h3>
+                <p>gemäß § 18 Abs. 2 MStV: Max Mustermann (Anschrift wie oben)</p>
+              </div>
+              <div>
+                <h3>Hinweise</h3>
+                <ul>
+                  <li>Alle genannten Marken sind Eigentum der jeweiligen Rechteinhaber.</li>
+                  <li>Visualisierungen dienen als Inspiration und ersetzen keine Bemusterung vor Ort.</li>
+                  <li>Änderungen und Irrtümer vorbehalten.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      &copy; 2024 Loft Folienstudio GmbH &middot; <a href="#kontakt">Kontakt</a>
+    </footer>
+    <div class="material-modal" data-modal aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="material-sheet" role="document">
+        <button class="modal-close" type="button" data-close aria-label="Modal schließen">
+          <span aria-hidden="true"></span>
+        </button>
+        <div class="modal-head">
+          <h3 data-modal-title>Sofa &amp; Lounge</h3>
+          <p data-modal-description>
+            Wählen Sie aus luxuriösen Polsterfolien mit außergewöhnlicher Haptik und reflektionsarmen Oberflächen.
+          </p>
+        </div>
+        <div class="preview-stage">
+          <div class="preview-before" data-preview-before></div>
+          <div class="preview-after" data-preview-after></div>
+          <div class="preview-slider"></div>
+          <input class="slider-input" type="range" min="10" max="90" value="50" step="1" data-slider aria-label="Vorher/Nachher-Schieber" />
+        </div>
+        <div class="modal-meta" data-modal-meta></div>
+        <div class="swatch-grid" data-swatch-grid role="listbox" aria-label="Materialauswahl"></div>
+      </div>
+    </div>
+    <script>
+      const body = document.body;
+      const portalWindow = document.getElementById("portalWindow");
+      const modal = document.querySelector("[data-modal]");
+      const modalTitle = document.querySelector("[data-modal-title]");
+      const modalDescription = document.querySelector("[data-modal-description]");
+      const modalMeta = document.querySelector("[data-modal-meta]");
+      const previewBefore = document.querySelector("[data-preview-before]");
+      const previewAfter = document.querySelector("[data-preview-after]");
+      const sliderInput = document.querySelector("[data-slider]");
+      const previewSlider = document.querySelector(".preview-slider");
+      const swatchGrid = document.querySelector("[data-swatch-grid]");
+      const modalClose = document.querySelector("[data-close]");
+      const menuToggle = document.querySelector(".menu-toggle");
+      const menuPanel = document.getElementById("menuPanel");
+
+      const surfaces = {
+        sofa: {
+          title: "Sofa & Lounge",
+          description:
+            "Visualisieren Sie weiche Lederoberflächen, atmungsaktive Performance-Textilien und avantgardistische Metallic-Optiken für Ihr Statement-Sofa.",
+          before:
+            "linear-gradient(140deg, rgba(36, 38, 48, 0.82), rgba(18, 20, 28, 0.9)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%22272c35%22/%3E%3C/svg%3E\")",
+          options: [
+            {
+              name: "Polarweiß Leder",
+              category: "Leder",
+              finish: "matt",
+              description: "Skandinavische Ruhe mit softem Touch.",
+              preview:
+                "linear-gradient(135deg, #f8fbff, #dfe4ed 60%, #c7ceda)",
+            },
+            {
+              name: "Mitternachtsblau Nappa",
+              category: "Leder",
+              finish: "seidenmatt",
+              description: "Tiefes Blau mit dezenter Struktur.",
+              preview:
+                "linear-gradient(145deg, #0d1a2c, #142941 55%, #1a3553)",
+            },
+            {
+              name: "Graphit Performance",
+              category: "High-Tech",
+              finish: "soft-touch",
+              description: "Schmutzresistent und atmungsaktiv.",
+              preview:
+                "linear-gradient(120deg, #2b3039, #1b1e26)",
+            },
+            {
+              name: "Champagner Luxe",
+              category: "Velours",
+              finish: "seidenglanz",
+              description: "Ultrafeine Fasern mit goldenem Schimmer.",
+              preview:
+                "linear-gradient(135deg, #f2e4d0, #d8c3a0 60%, #b69d82)",
+            },
+            {
+              name: "Stonewash Canvas",
+              category: "Textil",
+              finish: "matt",
+              description: "Relaxte Loft-Ästhetik mit Tiefe.",
+              preview:
+                "linear-gradient(130deg, #4e5662, #313741 65%, #1f232b)",
+            },
+            {
+              name: "Caramel Suede",
+              category: "Velours",
+              finish: "soft",
+              description: "Lässiger Luxus in warmen Tönen.",
+              preview:
+                "linear-gradient(140deg, #c28a58, #9b6234 60%, #724322)",
+            },
+            {
+              name: "Nebula Metallic",
+              category: "Metallic",
+              finish: "gloss",
+              description: "Feine Metallpartikel mit Farbspiel.",
+              preview:
+                "linear-gradient(140deg, #8595ad, #62718a 55%, #3f4a5c)",
+            },
+            {
+              name: "Quartz Grey",
+              category: "Leder",
+              finish: "struktur",
+              description: "Kontrastreiche Narbung mit Tiefe.",
+              preview:
+                "linear-gradient(140deg, #6a707d, #4b515d 58%, #343a44)",
+            },
+            {
+              name: "Rose Smoke",
+              category: "Textil",
+              finish: "matt",
+              description: "Zarter Nude-Ton für warme Akzente.",
+              preview:
+                "linear-gradient(135deg, #d8bfb9, #c09c94 58%, #9a736a)",
+            },
+            {
+              name: "Slate Wave",
+              category: "High-Tech",
+              finish: "soft-touch",
+              description: "Technische Anmutung mit Grip.",
+              preview:
+                "linear-gradient(130deg, #323b48, #1f2732 68%, #121821)",
+            },
+          ],
+        },
+        tisch: {
+          title: "Esstisch & Sideboard",
+          description:
+            "Veredeln Sie Tischplatten und Ablagen mit mineralischen, hölzernen oder hochglänzenden Finishes – ohne Demontage.",
+          before:
+            "linear-gradient(140deg, rgba(32, 28, 24, 0.82), rgba(18, 15, 12, 0.92)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%22262018%22/%3E%3C/svg%3E\")",
+          options: [
+            {
+              name: "Nordic Oak",
+              category: "Holz",
+              finish: "matt",
+              description: "Breite Maserung, heller Loft-Look.",
+              preview:
+                "linear-gradient(135deg, #d4b48c, #b89368 58%, #8c6b3f)",
+            },
+            {
+              name: "Smoked Walnut",
+              category: "Holz",
+              finish: "seidenglanz",
+              description: "Dunkel geräucherter Klassiker.",
+              preview:
+                "linear-gradient(130deg, #5c3b25, #3a2415 65%, #25160d)",
+            },
+            {
+              name: "Pietra Grigia",
+              category: "Stein",
+              finish: "matt",
+              description: "Fein geäderter Grauton.",
+              preview:
+                "linear-gradient(140deg, #b8bcc2, #8c929c 60%, #6a717b)",
+            },
+            {
+              name: "Arabescato Marmor",
+              category: "Marmor",
+              finish: "gloss",
+              description: "Skulpturale Maserung in Weiß-Grau.",
+              preview:
+                "linear-gradient(135deg, #f8f8f8, #dadde3 58%, #b6bcc7)",
+            },
+            {
+              name: "Concrete Urban",
+              category: "Beton",
+              finish: "matt",
+              description: "Mineralischer Industrial-Charakter.",
+              preview:
+                "linear-gradient(140deg, #808487, #5f6468 64%, #3d4247)",
+            },
+            {
+              name: "Bronze Mirror",
+              category: "Metallic",
+              finish: "high-gloss",
+              description: "Spiegelndes Bronze mit Tiefe.",
+              preview:
+                "linear-gradient(135deg, #d9b28a, #ae8357 58%, #6e4c2b)",
+            },
+            {
+              name: "Snow Quartz",
+              category: "Stein",
+              finish: "poliert",
+              description: "Glänzende Mikrokristalle.",
+              preview:
+                "linear-gradient(145deg, #ffffff, #e6ecf3 55%, #ccd5e2)",
+            },
+            {
+              name: "Noir Timber",
+              category: "Holz",
+              finish: "matt",
+              description: "Tiefschwarze Holztextur.",
+              preview:
+                "linear-gradient(140deg, #2b2623, #161310 68%, #080605)",
+            },
+            {
+              name: "Terra Cotta",
+              category: "Stein",
+              finish: "satiniert",
+              description: "Warmtonige, mediterrane Anmutung.",
+              preview:
+                "linear-gradient(140deg, #d68658, #b1653a 60%, #7c3d1c)",
+            },
+            {
+              name: "Frosted Glacier",
+              category: "Glas",
+              finish: "satiniert",
+              description: "Kühle, leicht transluzente Oberfläche.",
+              preview:
+                "linear-gradient(135deg, #cdd9e8, #a7b9cc 62%, #8290a4)",
+            },
+          ],
+        },
+        kueche: {
+          title: "Küche & Fronten",
+          description:
+            "Vom Monolith aus Marmor bis zur matten Anti-Fingerprint-Front – gestalten Sie jeden Küchenblock sekundenschnell um.",
+          before:
+            "linear-gradient(140deg, rgba(24, 26, 30, 0.88), rgba(12, 14, 18, 0.95)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%2225272c%22/%3E%3C/svg%3E\")",
+          options: [
+            {
+              name: "Arctic Matte",
+              category: "Supermatt",
+              finish: "anti-fingerprint",
+              description: "Sanftes Grau mit Soft-Touch.",
+              preview:
+                "linear-gradient(140deg, #d5d9df, #adb4c1 65%, #7d8594)",
+            },
+            {
+              name: "Obsidian Gloss",
+              category: "Hochglanz",
+              finish: "spiegelnd",
+              description: "Tiefschwarzer Spiegel für Statement-Küchen.",
+              preview:
+                "linear-gradient(135deg, #15171c, #08090c 60%, #020203)",
+            },
+            {
+              name: "Calacatta Supreme",
+              category: "Marmor",
+              finish: "poliert",
+              description: "Weißer Marmor mit goldener Aderung.",
+              preview:
+                "linear-gradient(140deg, #fbf9f6, #e6dfd5 60%, #ccbda9)",
+            },
+            {
+              name: "Titanium Brushed",
+              category: "Metallic",
+              finish: "gebürstet",
+              description: "Industrieller Chic mit feinem Schliff.",
+              preview:
+                "linear-gradient(135deg, #9097a1, #6f7681 55%, #4f555f)",
+            },
+            {
+              name: "Midnight Petrol",
+              category: "Supermatt",
+              finish: "soft-touch",
+              description: "Dunkles Petrol mit samtiger Haptik.",
+              preview:
+                "linear-gradient(135deg, #1e2c36, #111b22 62%, #0a1217)",
+            },
+            {
+              name: "Ivory Silk",
+              category: "Hochglanz",
+              finish: "gloss",
+              description: "Elfenbeinfarbener Premium-Glanz.",
+              preview:
+                "linear-gradient(140deg, #fbf3ea, #e2d3c1 60%, #c5af97)",
+            },
+            {
+              name: "Concrete Steel",
+              category: "Beton",
+              finish: "satiniert",
+              description: "Architektonischer Hybrid aus Beton & Stahl.",
+              preview:
+                "linear-gradient(140deg, #9aa0a8, #747a82 60%, #4b5159)",
+            },
+            {
+              name: "Forest Walnut",
+              category: "Holz",
+              finish: "seidenglanz",
+              description: "Vertikale Maserung mit warmem Glow.",
+              preview:
+                "linear-gradient(135deg, #6b422b, #4d2b19 62%, #2f160d)",
+            },
+            {
+              name: "Cloudy Taupe",
+              category: "Supermatt",
+              finish: "soft",
+              description: "Ruhevolle Taupe-Nuance mit Tiefe.",
+              preview:
+                "linear-gradient(140deg, #c7c1bb, #a89f96 65%, #80776f)",
+            },
+            {
+              name: "Aurora Bronze",
+              category: "Metallic",
+              finish: "schimmernd",
+              description: "Bronzefarbener Verlauf mit Lichtspiel.",
+              preview:
+                "linear-gradient(135deg, #c18c60, #8d5b36 62%, #5d3419)",
+            },
+          ],
+        },
+        wand: {
+          title: "Akzentwand & Paneele",
+          description:
+            "Verwandeln Sie Wände mit großformatigen Folien in architektonische Statements – inklusive akustischer Optionen.",
+          before:
+            "linear-gradient(150deg, rgba(24, 28, 36, 0.9), rgba(12, 14, 18, 0.95)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%22262832%22/%3E%3C/svg%3E\")",
+          options: [
+            {
+              name: "Atlas Beton",
+              category: "Beton",
+              finish: "matt",
+              description: "Architektonischer Beton mit Tiefe.",
+              preview:
+                "linear-gradient(140deg, #7b7f86, #4f535a 60%, #2f3339)",
+            },
+            {
+              name: "Scandi Pine",
+              category: "Holz",
+              finish: "matt",
+              description: "Vertikale Lamellen in hellem Holz.",
+              preview:
+                "linear-gradient(135deg, #d8c6aa, #b99d73 60%, #8d6a3f)",
+            },
+            {
+              name: "Moonlight Slate",
+              category: "Stein",
+              finish: "satiniert",
+              description: "Kühle Schiefertextur mit eleganten Linien.",
+              preview:
+                "linear-gradient(140deg, #60656d, #42464d 60%, #2a2d33)",
+            },
+            {
+              name: "Graphite Panels",
+              category: "Akustik",
+              finish: "texturiert",
+              description: "Akustische Rippenstruktur in Anthrazit.",
+              preview:
+                "repeating-linear-gradient(90deg, #2c2f36 0 12px, #1d1f25 12px 20px)",
+            },
+            {
+              name: "Lumina Pearl",
+              category: "Metallic",
+              finish: "schimmernd",
+              description: "Perlmutt-Effekte mit subtiler Reflexion.",
+              preview:
+                "linear-gradient(140deg, #f4f2f5, #d8d7e0 55%, #b8b7c4)",
+            },
+            {
+              name: "Urban Brick",
+              category: "Ziegel",
+              finish: "matt",
+              description: "Modern interpretierte Loft-Ziegel.",
+              preview:
+                "repeating-linear-gradient(90deg, #a5523a 0 32px, #7f3c28 32px 36px)",
+            },
+            {
+              name: "Silk Taupe",
+              category: "Textil",
+              finish: "satiniert",
+              description: "Textile Wandbespannung mit Schimmer.",
+              preview:
+                "linear-gradient(135deg, #cdbeb2, #ac9a8a 60%, #8c7766)",
+            },
+            {
+              name: "Aurora Gradient",
+              category: "Spezial",
+              finish: "gloss",
+              description: "Horizontale Lichtverläufe für Statement-Flächen.",
+              preview:
+                "linear-gradient(90deg, #1f2d46, #354b6b 40%, #9f6f82 70%, #d3a574)",
+            },
+            {
+              name: "Desert Travertin",
+              category: "Stein",
+              finish: "satiniert",
+              description: "Organische Porenstruktur in warmem Beige.",
+              preview:
+                "linear-gradient(135deg, #e1d1bd, #c7ae8e 60%, #a98763)",
+            },
+            {
+              name: "Eclipse Carbon",
+              category: "Carbon",
+              finish: "struktur",
+              description: "Technische Carbon-Optik mit Tiefenwirkung.",
+              preview:
+                "repeating-linear-gradient(45deg, #1a1e25 0 12px, #111319 12px 24px)",
+            },
+          ],
+        },
+        fenster: {
+          title: "Panoramafenster & Glas",
+          description:
+            "Konfigurieren Sie Sonnenschutz, Sichtschutz oder Designfolien für Ihre Fensterfront und erleben Sie Lichtsteuerung live.",
+          before:
+            "linear-gradient(140deg, rgba(36, 54, 72, 0.55), rgba(14, 20, 32, 0.85)), url(\"data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 400%22%3E%3Crect width=%22600%22 height=%22400%22 fill=%22233244%22/%3E%3C/svg%3E\")",
+          options: [
+            {
+              name: "Hitzeschutz Titan 70",
+              category: "Sonnenschutz",
+              finish: "reflektierend",
+              description: "Reduziert Wärmeeintrag um bis zu 70 Prozent.",
+              preview:
+                "linear-gradient(135deg, rgba(140, 170, 200, 0.62), rgba(90, 120, 160, 0.78))",
+            },
+            {
+              name: "Privacy Frost",
+              category: "Sichtschutz",
+              finish: "satiniert",
+              description: "Milchglas-Effekt mit hoher Lichtdurchlässigkeit.",
+              preview:
+                "linear-gradient(135deg, rgba(220, 230, 240, 0.72), rgba(180, 196, 212, 0.78))",
+            },
+            {
+              name: "UV Shield 400",
+              category: "UV-Schutz",
+              finish: "klar",
+              description: "Blockiert 99 Prozent schädlicher UV-Strahlung.",
+              preview:
+                "linear-gradient(135deg, rgba(150, 180, 220, 0.4), rgba(120, 150, 200, 0.58))",
+            },
+            {
+              name: "Smart Tint",
+              category: "Elektrochrom",
+              finish: "dimmbar",
+              description: "Per App steuerbare Lichtdurchlässigkeit.",
+              preview:
+                "linear-gradient(90deg, rgba(210, 220, 235, 0.2), rgba(60, 80, 110, 0.65))",
+            },
+            {
+              name: "Crystal Clear",
+              category: "Klarfolie",
+              finish: "optisch neutral",
+              description: "Schützt vor Kratzern ohne sichtbare Veränderung.",
+              preview:
+                "linear-gradient(135deg, rgba(240, 250, 255, 0.35), rgba(190, 210, 235, 0.4))",
+            },
+            {
+              name: "Mirror Blue",
+              category: "Design",
+              finish: "spiegelnd",
+              description: "Blau getönter Spiegel für moderne Fassaden.",
+              preview:
+                "linear-gradient(135deg, rgba(80, 140, 210, 0.75), rgba(30, 60, 110, 0.85))",
+            },
+            {
+              name: "Bronze Shield",
+              category: "Sonnenschutz",
+              finish: "getönt",
+              description: "Warmer Bronze-Ton mit Blendkontrolle.",
+              preview:
+                "linear-gradient(135deg, rgba(210, 160, 110, 0.65), rgba(120, 80, 40, 0.78))",
+            },
+            {
+              name: "Security Clear",
+              category: "Sicherheitsfolie",
+              finish: "klar",
+              description: "Erhöht Splitterschutz und Einbruchhemmung.",
+              preview:
+                "linear-gradient(135deg, rgba(200, 220, 240, 0.45), rgba(150, 180, 210, 0.5))",
+            },
+            {
+              name: "Prism Vision",
+              category: "Design",
+              finish: "prismatisch",
+              description: "Prismatische Lichtbrechung für besondere Effekte.",
+              preview:
+                "linear-gradient(135deg, rgba(200, 210, 240, 0.4), rgba(120, 130, 200, 0.68))",
+            },
+            {
+              name: "Night View",
+              category: "Sichtschutz",
+              finish: "dual-reflektierend",
+              description: "Privatsphäre bei Tag, klare Sicht bei Nacht.",
+              preview:
+                "linear-gradient(135deg, rgba(60, 90, 130, 0.7), rgba(20, 30, 50, 0.85))",
+            },
+          ],
+        },
+      };
+      let activeArea = null;
+      let lastFocus = null;
+
+      const setSplit = (value) => {
+        const split = `${value}%`;
+        previewAfter.style.setProperty("--split", split);
+        previewSlider.style.setProperty("--split", split);
+        previewSlider.style.left = split;
+      };
+
+      const buildMeta = (areaTitle, option) => {
+        modalMeta.innerHTML = `
+          <span>${areaTitle}</span>
+          <span>Material: ${option.category}</span>
+          <span>Finish: ${option.finish}</span>
+          <span>${option.description}</span>
+        `;
+      };
+
+      const selectSwatch = (areaKey, index) => {
+        const data = surfaces[areaKey];
+        const option = data.options[index];
+        Array.from(swatchGrid.children).forEach((element, i) => {
+          element.setAttribute("aria-selected", i === index ? "true" : "false");
+        });
+        previewAfter.style.background = option.preview;
+        buildMeta(data.title, option);
+      };
+
+      const buildSwatches = (areaKey) => {
+        const data = surfaces[areaKey];
+        swatchGrid.innerHTML = "";
+        data.options.forEach((option, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "swatch";
+          button.setAttribute("role", "option");
+          button.dataset.index = String(index);
+          button.dataset.area = areaKey;
+          button.setAttribute("aria-selected", index === 0 ? "true" : "false");
+          button.style.setProperty("--swatch-bg", option.preview);
+          button.innerHTML = `
+            <strong>${option.name}</strong>
+            <span>${option.category} · ${option.finish}</span>
+            <span>${option.description}</span>
+          `;
+          button.addEventListener("click", () => {
+            selectSwatch(areaKey, index);
+          });
+          button.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              selectSwatch(areaKey, index);
+            }
+          });
+          swatchGrid.appendChild(button);
+        });
+      };
+
+      const openModal = (areaKey) => {
+        const data = surfaces[areaKey];
+        if (!data) return;
+        activeArea = areaKey;
+        lastFocus = document.activeElement;
+        modalTitle.textContent = data.title;
+        modalDescription.textContent = data.description;
+        previewBefore.style.background = data.before;
+        buildSwatches(areaKey);
+        selectSwatch(areaKey, 0);
+        sliderInput.value = "50";
+        setSplit(50);
+        modal.setAttribute("aria-hidden", "false");
+        body.classList.add("modal-open");
+        modalClose.focus();
+      };
+
+      const closeModal = () => {
+        if (modal.getAttribute("aria-hidden") === "true") return;
+        modal.setAttribute("aria-hidden", "true");
+        body.classList.remove("modal-open");
+        if (lastFocus) {
+          lastFocus.focus();
+        }
+      };
+
+      portalWindow.addEventListener("click", () => {
+        body.classList.add("entered");
+        body.classList.remove("pre-entry");
+        setTimeout(() => {
+          document.getElementById("loft").scrollIntoView({ behavior: "smooth" });
+        }, 320);
+      });
+
+      document.querySelectorAll(".hotspot").forEach((button) => {
+        button.addEventListener("click", () => openModal(button.dataset.area));
+      });
+
+      sliderInput.addEventListener("input", (event) => {
+        setSplit(event.target.value);
+      });
+
+      modalClose.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      const toggleMenu = (forceState) => {
+        const isOpen = forceState !== undefined ? forceState : menuToggle.getAttribute("aria-expanded") !== "true";
+        menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        menuPanel.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      };
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          if (menuToggle.getAttribute("aria-expanded") === "true") {
+            toggleMenu(false);
+          } else {
+            closeModal();
+          }
+        }
+      });
+
+      menuToggle.addEventListener("click", () => toggleMenu());
+      menuPanel.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => toggleMenu(false));
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 960) {
+          toggleMenu(false);
+        }
+      });
+    </script>
+  </body>
+</html>
+
